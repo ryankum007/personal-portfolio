@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ryan Kumar Portfolio Welcome</title>
+    <link rel="stylesheet" href="../CSS/main_style.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+</head>
+<body>
+    <header>
+        <div class="logo" data-aos="fade-down">
+            <h1>RYAN KUMAR</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-aos="fade-down" data-aos-delay="100">Home</a></li>
+                <li><a href="about_me.html" data-aos="fade-down" data-aos-delay="200">About Me</a></li>
+                <li><a href="experience.html" data-aos="fade-down" data-aos-delay="300">Experience</a></li>
+                <li><a href="projects.html" data-aos="fade-down" data-aos-delay="400">Projects</a></li>
+                <li><a href="blog.html" data-aos="fade-down" data-aos-delay="500">Blog</a></li>
+                <li><a href="contact_me.html" data-aos="fade-down" data-aos-delay="600">Contact Me</a></li>
+                <li><a href="https://www.linkedin.com/in/ryan-kumar-4491291aa/" data-aos="fade-down" data-aos-delay="700">LinkedIn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="share-buttons">
+        <button id="share" title="Share using Web Share API" data-aos="fade-up" data-aos-delay="100"><img src="../Photos/share-arrows.svg" alt="Share"></button>
+        <button id="shareLinkedIn" title="Share on LinkedIn" data-aos="fade-up" data-aos-delay="200"><img src="../Photos/linkedin-svgrepo-com.svg" alt="LinkedIn"></button>
+        <button id="shareFacebook" title="Share on Facebook" data-aos="fade-up" data-aos-delay="300"><img src="../Photos/facebook-circle.svg" alt="Facebook"></button>
+        <button id="shareTwitter" title="Share on Twitter" data-aos="fade-up" data-aos-delay="400"><img src="../Photos/X_icon.svg" alt="Twitter"></button>
+        <button id="shareWhatsApp" title="Share on WhatsApp" data-aos="fade-up" data-aos-delay="450"><img src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
+    </div>
+
+    <div class="welcome-block" data-aos="fade-up">
+        <div class="welcome-text" data-aos="zoom-in">
+            <h2 id="typed-output"></h2>
+            <p>
+                My name is Ryan Kumar, and I am a driven and versatile individual with a passion for innovation and leadership. My journey began with the Air Cadets, where I developed strong discipline, teamwork, and leadership skills. Currently, I am pursuing a Bachelor of Software Engineering at McMaster University. I proudly serve as an Engineering Representative and a Welcome Week Representative, roles that allow me to foster a sense of community and represent the interests of my peers. My professional interests lie in the medical and financial sectors, where I aim to leverage technology to create impactful solutions. Whether I am working on high-frequency trading platforms or exploring innovative applications in healthcare, my goal is to make a meaningful difference and push the boundaries of what's possible. Explore my portfolio to learn more about my projects, experiences, and aspirations.
+            </p>
+        </div>
+        
+        <div class="photo slideshow-container polaroid" data-aos="zoom-in-up">
+            <!-- Slides -->
+            <div class="mySlides fade"><img src="../Photos/pic1.JPG" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic2.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic3.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic4.JPG" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic5.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic6.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic7.JPG" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic8.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic9.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic10.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic11.jpeg" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic12.JPG" style="width:100%"></div>
+            <div class="mySlides fade"><img src="../Photos/pic13.JPG" style="width:100%"></div>
+
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- Dot container -->
+            <div class="dot-container" id="dotContainer"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="../JavaScript/slideshow.js"></script>
+    <script src="../JavaScript/typed.js"></script>
+    <script src="../JavaScript/initTyped.js"></script>
+    <script src="../JavaScript/scrollToTop.js"></script>
+    <script src="../JavaScript/themeSwitcher.js"></script>
+    <script src="../JavaScript/socialShare.js"></script>
+    <button id="themeToggle" title="Toggle theme">🌗</button>
+    <button id="scrollToTopBtn" title="Go to top">Top</button>
+</body>
+</html>

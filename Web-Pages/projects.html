@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Projects - Ryan Kumar</title>
+    <link rel="stylesheet" href="../CSS/main_style.css">
+    <link rel="stylesheet" href="../CSS/projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+</head>
+<body>
+    <header>
+        <div class="logo" data-aos="fade-down">
+            <h1>RYAN KUMAR</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-aos="fade-down" data-aos-delay="100">Home</a></li>
+                <li><a href="about_me.html" data-aos="fade-down" data-aos-delay="200">About Me</a></li>
+                <li><a href="experience.html" data-aos="fade-down" data-aos-delay="300">Experience</a></li>
+                <li><a href="projects.html" data-aos="fade-down" data-aos-delay="400">Projects</a></li>
+                <li><a href="blog.html" data-aos="fade-down" data-aos-delay="500">Blog</a></li>
+                <li><a href="contact_me.html" data-aos="fade-down" data-aos-delay="600">Contact Me</a></li>
+                <li><a href="https://www.linkedin.com/in/ryan-kumar-4491291aa/" data-aos="fade-down" data-aos-delay="700">LinkedIn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="share-buttons">
+        <button id="share" title="Share using Web Share API" data-aos="fade-up" data-aos-delay="100"><img src="../Photos/share-arrows.svg" alt="Share"></button>
+        <button id="shareLinkedIn" title="Share on LinkedIn" data-aos="fade-up" data-aos-delay="200"><img src="../Photos/linkedin-svgrepo-com.svg" alt="LinkedIn"></button>
+        <button id="shareFacebook" title="Share on Facebook" data-aos="fade-up" data-aos-delay="300"><img src="../Photos/facebook-circle.svg" alt="Facebook"></button>
+        <button id="shareTwitter" title="Share on Twitter"   data-aos="fade-up" data-aos-delay="400"><img src="../Photos/X_icon.svg" alt="Twitter"></button>
+        <button id="shareWhatsApp" title="Share on WhatsApp" data-aos="fade-up" data-aos-delay="450"><img src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
+    </div>
+
+    <div class="title" data-aos="zoom-in">
+        <h1 id="typed-projects"></h1>
+    </div>
+
+    <div class="content">
+        <h2 data-aos="fade-up">Algorithmic Trading Platform</h2>
+        <ul data-aos="fade-left">
+            <li>Developed a high-frequency trading platform for automated securities trading.</li>
+            <li>Integrated machine learning models to identify patterns and predict stock performance.</li>
+            <li>Achieved a 15% return on investment in the initial quarter post-launch.</li>
+        </ul>
+        
+        <h2 data-aos="fade-up" data-aos-delay="100">Climate Trends Visualizer Application</h2>
+        <ul data-aos="fade-right" data-aos-delay="100">
+            <li>Designed a web application to visualize long-term weather trends using Python and JavaScript.</li>
+            <li>Processed over 50 years of climate data, predicting future conditions with 95% confidence.</li>
+        </ul>
+        
+        <h2 data-aos="fade-up" data-aos-delay="200">Personal Finance Tracker</h2>
+        <ul data-aos="fade-left" data-aos-delay="200">
+            <li>Developed a cross-platform finance app using React Native to track expenses and set budget goals.</li>
+            <li>Implemented OAuth2 authentication and integrated with multiple banking APIs.</li>
+        </ul>
+        
+        <h2 data-aos="fade-up" data-aos-delay="300">Blood Supply Optimization Algorithm</h2>
+        <ul data-aos="fade-right" data-aos-delay="300">
+            <li>Created an AI-based algorithm to predict hospital blood needs, reducing waste by 20% annually</li>
+        </ul>
+    </div>
+
+    <button id="scrollToTopBtn" title="Go to top">Top</button>
+    <button id="themeToggle" title="Toggle theme">🌗</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="../JavaScript/themeSwitcher.js"></script>
+    <script src="../JavaScript/scrollToTop.js"></script>
+    <script src="../JavaScript/typed.js"></script>
+    <script src="../JavaScript/initTyped.js"></script>
+    <script src="../JavaScript/socialShare.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Ryan Kumar</title>
+    <link rel="stylesheet" href="../CSS/main_style.css">
+    <link rel="stylesheet" href="../CSS/about_me.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>RYAN KUMAR</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_me.html">About Me</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact_me.html">Contact Me</a></li>
+                <li><a href="https://www.linkedin.com/in/ryan-kumar-4491291aa/">LinkedIn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="share-buttons">
+        <button id="share" title="Share using Web Share API" data-aos="fade-up" data-aos-delay="100"><img src="../Photos/share-arrows.svg" alt="Share"></button>
+        <button id="shareLinkedIn" title="Share on LinkedIn" data-aos="fade-up" data-aos-delay="200"><img src="../Photos/linkedin-svgrepo-com.svg" alt="LinkedIn"></button>
+        <button id="shareFacebook" title="Share on Facebook" data-aos="fade-up" data-aos-delay="300"><img src="../Photos/facebook-circle.svg" alt="Facebook"></button>
+        <button id="shareTwitter" title="Share on Twitter"   data-aos="fade-up" data-aos-delay="400"><img src="../Photos/X_icon.svg" alt="Twitter"></button>
+        <button id="shareWhatsApp" title="Share on WhatsApp" data-aos="fade-up" data-aos-delay="450"><img src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
+    </div>
+
+    <div class="title">
+        <h1 id="typed-about"></h1>
+    </div>
+
+    <div class="content">
+        <h2>Education</h2>
+        <p>Bachelor of Software Engineering, McMaster University, Hamilton, ON</p>
+        <p>Minors: Business and Innovation</p>
+        <p>Expected Graduation: 2025</p>
+
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Technical Skills</a></li>
+                <li><a href="#tabs-2">Soft Skills</a></li>
+                <li><a href="#tabs-3">Certifications</a></li>
+                <li><a href="#tabs-4">Relevant Courses</a></li>
+                <li><a href="#tabs-5">Interests</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div class="skills-block">
+                    <h1>Technical Skills</h1>
+                    <div class="skill-bar" data-skill="95%">Python</div>
+                    <div class="skill-bar" data-skill="80%">Java</div>
+                    <div class="skill-bar" data-skill="75%">SQL</div>
+                    <div class="skill-bar" data-skill="75%">Swift</div>
+                    <div class="skill-bar" data-skill="75%">Software Testing</div>
+                    <div class="skill-bar" data-skill="70%">C/C#</div>
+                    <div class="skill-bar" data-skill="70%">JavaScript</div>
+                    <div class="skill-bar" data-skill="70%">HTML</div>
+                    <div class="skill-bar" data-skill="60%">MATLAB</div>
+                    <div class="skill-bar" data-skill="60%">Bash</div>
+                </div>
+            </div>
+            <div id="tabs-2">
+                <h2>Soft Skills</h2>
+                <ul class="soft-skills">
+                    <li>Effective Communication</li>
+                    <li>Team Collaboration</li>
+                    <li>Problem Solving</li>
+                    <li>Time Management</li>
+                    <li>Adaptability</li>
+                </ul>
+            </div>
+            <div id="tabs-3">
+                <h2>Certifications</h2>
+                <ul>
+                    <li>Harvard University: Machine Learning and AI with Python</li>
+                    <li>Stanford University: Advanced Cybersecurity Program</li>
+                    <li>Wharton Business School: Business and Financial Modeling Specialization</li>
+                </ul>
+            </div>
+            <div id="tabs-4">
+                <h2>Relevant Courses</h2>
+                <ul>
+                    <li>Data Structures and Algorithms</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Database Management and SQL</li>
+                    <li>Data Mining and Predictive Analytics</li>
+                    <li>Web Development</li>
+                    <li>Machine Learning for Finance</li>
+                    <li>Quantitative Finance</li>
+                </ul>
+            </div>
+            <div id="tabs-5">
+                <h2>Interests</h2>
+                <ul>
+                    <li>Artificial Intelligence</li>
+                    <li>Cybersecurity</li>
+                    <li>Data Science</li>
+                    <li>Web Development</li>
+                    <li>Blockchain Technology</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JavaScript/typed.js"></script>
+    <script src="../JavaScript/initTyped.js"></script>
+    <script src="../JavaScript/animatedSkillBar.js"></script>
+    <script src="../JavaScript/scrollToTop.js"></script>
+    <script src="../JavaScript/themeSwitcher.js"></script>
+    <script src="../JavaScript/socialShare.js"></script>
+    <button id="themeToggle" title="Toggle theme">🌗</button>
+    <button id="scrollToTopBtn" title="Go to top">Top</button>
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+        // Skill bar animation
+        $('.skill-bar').each(function () {
+            var $this = $(this);
+            var skillLevel = $this.data('skill');
+            setTimeout(function () {
+                $this.css('width', skillLevel);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

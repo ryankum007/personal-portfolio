@@ -1,0 +1,15 @@
+@import url('main_style.css');
+
+/* Additional styling for Blog page */
+.blog-post {
+    margin: 20px 100px;
+}
+
+.blog-post h2 {
+    font-size: 2em;
+}
+
+.blog-post p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}

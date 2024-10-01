@@ -1,0 +1,172 @@
+@import url('main_style.css');
+
+/* 
+ * Styling for About Me page
+ */
+
+/* Section heading */
+.section-heading h1 {
+    font-size: 3em;
+    text-align: center; 
+    margin-top: 20px;
+}
+
+/* Education block styling */
+.education-block {
+    margin: 20px; 
+}
+
+/* Education information */
+.education-info {
+    padding: 10px;
+}
+
+.education-info ul {
+    color: #333;
+}
+
+/* Courses section */
+.courses {
+    padding: 10px;
+}
+
+/* Table styling */
+.table {
+    border-collapse: collapse;
+    width: 100%; 
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    font-weight: bold;
+    font-size: 1.2em; 
+}
+
+/* Skills block styling */
+.skills-block {
+    display: flex;
+    flex-direction: column; 
+    padding: 20px;
+}
+
+.skills-block h1 {
+    width: 100%; 
+    text-align: center; 
+    margin-bottom: 20px;
+    color: #333; 
+}
+
+.skills-block h3 {
+    color: #333;
+}
+
+.technical-skills, .languages {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.skills-block ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-block ul li {
+    margin-bottom: 10px; 
+    font-size: 1.2em;
+}
+
+/* Skill bar styling */
+.skill-bar {
+    position: relative;
+    width: 0;
+    height: 30px;
+    background-color: #000;
+    margin: 10px 0;
+    transition: width 2s;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    white-space: nowrap; 
+}
+
+/* Custom tab styles */
+
+/* Tabs container */
+#tabs {
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+    max-width: 100%; 
+    margin: 0 auto; 
+}
+
+/* Tabs list */
+#tabs ul {
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#tabs ul li {
+    margin: 0;
+    padding: 0;
+}
+
+#tabs ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333; 
+    border-radius: 5px; 
+    font-weight: bold;
+    outline: none; 
+}
+
+/* Focused tab styling */
+#tabs ul li a:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px #000; 
+}
+
+/* Hovered tab styling */
+#tabs ul li a:hover {
+    background-color: #666;
+    border-color: #666;
+    color: #fff;
+}
+
+/* Active tab styling */
+#tabs ul li.ui-tabs-active a {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Tab panel styling */
+.ui-tabs-panel {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+}
+
+.ui-tabs-panel ul {
+    list-style: none; 
+    padding-left: 0; 
+    margin-bottom: 10px; 
+}
+
+.ui-tabs-panel ul li {
+    margin-bottom: 10px; 
+    font-size: 1.2em; 
+}

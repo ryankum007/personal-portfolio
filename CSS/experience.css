@@ -1,0 +1,46 @@
+@import url('main_style.css');
+
+/* Additional styling for Experience page */
+.experience-block {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 100px;
+}
+
+.experience {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px; 
+    position: relative; 
+}
+
+.company-logo {
+    max-width: 200px; 
+    max-height: 200px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+.company-logo.left {
+    left: -250px; 
+}
+
+.company-logo.right {
+    right: -250px; 
+}
+
+.company-logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.experience-text {
+    flex: 1;
+}
+
+.experience-block ul li {
+    font-size: 1.2em;
+}

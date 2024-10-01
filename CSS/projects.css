@@ -1,0 +1,20 @@
+@import url('main_style.css');
+
+/* Additional styling for Projects page */
+.projects-block {
+    margin: 20px 100px;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+.projects-block h2 {
+    font-size: 2em;
+}
+
+.projects-block ul li {
+    font-size: 1.2em;
+}
+
+
