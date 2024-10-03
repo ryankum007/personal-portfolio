@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="../CSS/projects.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
+
 <body>
     <header>
         <div class="logo" data-aos="fade-down">
@@ -23,17 +25,23 @@
                 <li><a href="projects.html" data-aos="fade-down" data-aos-delay="400">Projects</a></li>
                 <li><a href="blog.html" data-aos="fade-down" data-aos-delay="500">Blog</a></li>
                 <li><a href="contact_me.html" data-aos="fade-down" data-aos-delay="600">Contact Me</a></li>
-                <li><a href="https://www.linkedin.com/in/ryan-kumar-4491291aa/" data-aos="fade-down" data-aos-delay="700">LinkedIn</a></li>
+                <li><a href="https://www.linkedin.com/in/ryan-kumar-4491291aa/" data-aos="fade-down"
+                        data-aos-delay="700">LinkedIn</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="share-buttons">
-        <button id="share" title="Share using Web Share API" data-aos="fade-up" data-aos-delay="100"><img src="../Photos/share-arrows.svg" alt="Share"></button>
-        <button id="shareLinkedIn" title="Share on LinkedIn" data-aos="fade-up" data-aos-delay="200"><img src="../Photos/linkedin-svgrepo-com.svg" alt="LinkedIn"></button>
-        <button id="shareFacebook" title="Share on Facebook" data-aos="fade-up" data-aos-delay="300"><img src="../Photos/facebook-circle.svg" alt="Facebook"></button>
-        <button id="shareTwitter" title="Share on Twitter"   data-aos="fade-up" data-aos-delay="400"><img src="../Photos/X_icon.svg" alt="Twitter"></button>
-        <button id="shareWhatsApp" title="Share on WhatsApp" data-aos="fade-up" data-aos-delay="450"><img src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
+    <div class="share-buttons" data-aos="fade-down">
+        <button id="share" title="Share using Web Share API" data-aos="fade-up" data-aos-delay="100"><img
+                src="../Photos/share-arrows.svg" alt="Share"></button>
+        <button id="shareLinkedIn" title="Share on LinkedIn" data-aos="fade-up" data-aos-delay="200"><img
+                src="../Photos/linkedin-svgrepo-com.svg" alt="LinkedIn"></button>
+        <button id="shareFacebook" title="Share on Facebook" data-aos="fade-up" data-aos-delay="300"><img
+                src="../Photos/facebook-circle.svg" alt="Facebook"></button>
+        <button id="shareTwitter" title="Share on Twitter" data-aos="fade-up" data-aos-delay="400"><img
+                src="../Photos/X_icon.svg" alt="Twitter"></button>
+        <button id="shareWhatsApp" title="Share on WhatsApp" data-aos="fade-up" data-aos-delay="450"><img
+                src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
     </div>
 
     <div class="title" data-aos="zoom-in">
@@ -41,42 +49,309 @@
     </div>
 
     <div class="content">
-        <h2 data-aos="fade-up">Algorithmic Trading Platform</h2>
-        <ul data-aos="fade-left">
-            <li>Developed a high-frequency trading platform for automated securities trading.</li>
-            <li>Integrated machine learning models to identify patterns and predict stock performance.</li>
-            <li>Achieved a 15% return on investment in the initial quarter post-launch.</li>
-        </ul>
-        
-        <h2 data-aos="fade-up" data-aos-delay="100">Climate Trends Visualizer Application</h2>
-        <ul data-aos="fade-right" data-aos-delay="100">
-            <li>Designed a web application to visualize long-term weather trends using Python and JavaScript.</li>
-            <li>Processed over 50 years of climate data, predicting future conditions with 95% confidence.</li>
-        </ul>
-        
-        <h2 data-aos="fade-up" data-aos-delay="200">Personal Finance Tracker</h2>
-        <ul data-aos="fade-left" data-aos-delay="200">
-            <li>Developed a cross-platform finance app using React Native to track expenses and set budget goals.</li>
-            <li>Implemented OAuth2 authentication and integrated with multiple banking APIs.</li>
-        </ul>
-        
-        <h2 data-aos="fade-up" data-aos-delay="300">Blood Supply Optimization Algorithm</h2>
-        <ul data-aos="fade-right" data-aos-delay="300">
-            <li>Created an AI-based algorithm to predict hospital blood needs, reducing waste by 20% annually</li>
-        </ul>
+        <!-- Algorithmic Trading Platform -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/trading-algo.png" alt="Algorithmic Trading Platform"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>Algorithmic Trading Platform</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed a sophisticated high-frequency trading (HFT) platform using
+                        a combination of Python for data analysis and C++ for low-latency execution, designed to make
+                        rapid trading decisions in real-time financial markets.</li>
+                    <li><strong>Data Processing:</strong> Utilized Pandas and NumPy to process and analyze large volumes
+                        of market data streams, implementing techniques such as time-series analysis, technical
+                        indicators, and statistical arbitrage. The platform processed millions of data points per
+                        second, extracting key features to identify profitable trading opportunities.</li>
+                    <li><strong>Machine Learning Integration:</strong> Integrated advanced machine learning models,
+                        including Linear Regression, LSTM (Long Short-Term Memory) networks, and SVM (Support Vector
+                        Machine) for real-time stock prediction and anomaly detection. These models continuously learned
+                        and adapted to market changes, refining predictions with each trade.</li>
+                    <li><strong>Risk Management:</strong> Developed a comprehensive risk management module using Monte
+                        Carlo simulations to model potential market scenarios and assess the platform's exposure to
+                        volatility. This module helped in optimizing trading positions, implementing stop-loss
+                        strategies, and maintaining a balanced risk-reward profile.</li>
+                    <li><strong>Backtesting Framework:</strong> Designed a robust backtesting framework using Python to
+                        simulate historical trading conditions, validating algorithmic strategies under various market
+                        conditions. Employed historical data sets from Quandl and Yahoo Finance to ensure high accuracy
+                        in performance evaluations.</li>
+                    <li><strong>Deployment:</strong> Containerized the platform using Docker to allow for easy
+                        scalability and isolated testing environments. Employed Kubernetes to manage container
+                        orchestration for production deployment, ensuring seamless scaling in a cloud environment.</li>
+                    <li><strong>Results:</strong> Achieved a 15% return on investment (ROI) in the first quarter
+                        post-launch, outperforming traditional benchmarks. Enhanced the platform's decision-making
+                        speed, enabling it to capitalize on short-term market movements.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Climate Trends Visualizer Application -->
+        <div class="project" data-aos="fade-right">
+            <div class="project-image left" data-aos="zoom-in-right">
+                <!-- <img src="../Photos/weather-trends.png" alt="Climate Trends Visualizer"> -->
+            </div>
+            <div class="project-text" data-aos="fade-left">
+                <h2>Climate Trends Visualizer Application</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed a web-based application that aggregates, processes, and
+                        visualizes over 50 years of global climate data to identify long-term trends and forecast future
+                        climate patterns.</li>
+                    <li><strong>Data Aggregation:</strong> Leveraged Python (Flask) for backend data processing, using
+                        Pandas and NumPy to handle vast datasets. Employed web scraping tools like BeautifulSoup and
+                        Selenium to extract historical climate data from various sources, including government and
+                        scientific databases.</li>
+                    <li><strong>Machine Learning & Prediction:</strong> Implemented advanced machine learning models
+                        such as Random Forest, XGBoost, and LSTM to predict future climate changes based on historical
+                        data. Fine-tuned hyperparameters using GridSearchCV to enhance model accuracy, achieving a 95%
+                        prediction accuracy in forecasting temperature changes and CO2 levels.</li>
+                    <li><strong>Data Visualization:</strong> Used D3.js and Matplotlib to create dynamic, interactive
+                        data visualizations, including heatmaps, line graphs, and predictive charts, offering users an
+                        intuitive way to explore historical trends and future climate projections.</li>
+                    <li><strong>Web Development & Hosting:</strong> Developed the frontend using React for a seamless
+                        user experience, integrating with the Flask backend through REST APIs. Deployed the application
+                        on AWS, using S3 for data storage, EC2 for server hosting, and AWS Lambda for real-time data
+                        processing.</li>
+                    <li><strong>Results:</strong> Provided researchers and the public with an interactive platform to
+                        visualize climate trends, enhancing understanding and raising awareness about climate change's
+                        long-term impacts.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Personal Finance Tracker -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/peronal-finance-tracker.png" alt="Personal Finance Tracker"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>Personal Finance Tracker</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Created a cross-platform finance tracking application using React
+                        Native to assist users in managing their finances efficiently, featuring secure authentication,
+                        real-time data integration, and intuitive data visualization.</li>
+                    <li><strong>Authentication & Security:</strong> Implemented OAuth2.0 authentication to ensure secure
+                        user login and data protection. Utilized JWT (JSON Web Tokens) for session management,
+                        safeguarding sensitive user information during data transmission.</li>
+                    <li><strong>Banking API Integration:</strong> Integrated with banking APIs like Plaid and Yodlee to
+                        fetch real-time financial data, such as bank transactions, account balances, and spending
+                        patterns. Created a custom API gateway using Node.js and Express to securely process and store
+                        financial data in a MongoDB database.</li>
+                    <li><strong>Machine Learning & Analytics:</strong> Employed machine learning algorithms, including
+                        K-Means Clustering and Decision Trees, to analyze spending habits and provide personalized
+                        budgeting advice. Integrated TensorFlow.js to deliver real-time insights on users’ financial
+                        health and spending anomalies.</li>
+                    <li><strong>Data Visualization:</strong> Designed interactive dashboards using Chart.js and D3.js,
+                        displaying insights on income, expenses, and budget trends. Implemented user-friendly graphs and
+                        charts to help users visualize their financial progress, aiding in informed decision-making.
+                    </li>
+                    <li><strong>State Management:</strong> Utilized Redux for centralized state management, ensuring
+                        consistent data updates and a seamless user experience across different devices.</li>
+                    <li><strong>Results:</strong> Reduced users' financial management time by 30% by automating expense
+                        categorization and offering actionable insights, improving budgeting accuracy and fostering
+                        financial literacy.</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Blood Supply Optimization Algorithm -->
+        <div class="project" data-aos="fade-right">
+            <div class="project-image left" data-aos="zoom-in-right">
+                <!-- <img src="../Photos/blood-supply-slgo.png" alt="Blood Supply Optimization Algorithm"> -->
+            </div>
+            <div class="project-text" data-aos="fade-left">
+                <h2>Blood Supply Optimization Algorithm</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Created an AI-driven algorithm using machine learning to predict
+                        hospital blood needs, aiming to reduce wastage and maintain a balanced supply chain.</li>
+                    <li><strong>Data Processing:</strong> Analyzed historical blood demand data using Pandas and NumPy.
+                        Built feature sets incorporating variables like seasonal demand, population density, and past
+                        usage trends.</li>
+                    <li><strong>Machine Learning Models:</strong> Implemented Supervised Learning algorithms, including
+                        Linear Regression and Random Forest, to predict future blood demand with high accuracy.
+                        Incorporated time-series analysis to account for fluctuating demand patterns.</li>
+                    <li><strong>Real-time Decision Making:</strong> Integrated the algorithm into an automated inventory
+                        management system, using APIs to relay stock status to hospital supply chains in real-time.</li>
+                    <li><strong>Results:</strong> Projected to cut blood wastage by 20% annually and significantly
+                        reduce shortages, optimizing supply chain management and improving patient care.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Engineering Capstone Project -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/smoke_detector_image.jpg" alt="Advanced Smoke Detector"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>Engineering Capstone Project – Advanced Smoke Detector</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed an advanced smoke detector with real-time monitoring
+                        capabilities, leveraging multi-sensor technology and AI to aid firefighters in emergency
+                        responses.</li>
+                    <li><strong>Sensor Technology:</strong> Integrated photoelectric, ionization smoke detectors, CO
+                        sensors, temperature, and humidity sensors. Used I2C and SPI communication protocols to
+                        interface these sensors with an ARM Cortex-M microcontroller.</li>
+                    <li><strong>Data Processing & Communication:</strong> Programmed the embedded system using C/C++ for
+                        sensor data processing. Incorporated LoRa and Wi-Fi modules to relay data to a centralized
+                        dashboard.</li>
+                    <li><strong>AI & Machine Learning:</strong> Built AI models using TensorFlow to analyze sensor data,
+                        providing intelligent alerts and optimal evacuation paths for firefighters.</li>
+                    <li><strong>Stakeholder Collaboration:</strong> Worked with the Hamilton Fire Department to gather
+                        requirements, conducting field tests to ensure the system met operational standards.</li>
+                    <li><strong>Results:</strong> Enhanced fire response strategies, improving the safety and efficiency
+                        of rescue operations through real-time insights.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Deep-Space Analogue Research Expedition -->
+        <div class="project" data-aos="fade-right">
+            <div class="project-image left" data-aos="zoom-in-right">
+                <!-- <img src="../Photos/dare_project_image.jpg" alt="Deep-Space Analogue Research"> -->
+            </div>
+            <div class="project-text" data-aos="fade-left">
+                <h2>Deep-Space Analogue Research Expedition (DARE)</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed an autonomous drone system equipped with a suite of sensors
+                        for mapping cave environments, as part of the DARE initiative aimed at exploring
+                        extraterrestrial-like terrains.</li>
+                    <li><strong>Embedded Systems:</strong> Integrated sensors, including LiDAR, infrared, temperature,
+                        ultrasonic, and humidity sensors, using C/C++ to program the embedded systems for precise
+                        control and real-time data acquisition.</li>
+                    <li><strong>Real-time Data Relay:</strong> Created a communication system using Python and MQTT
+                        protocols to relay sensor data to a central control station. Employed WebSockets for real-time
+                        data transmission and monitoring.</li>
+                    <li><strong>Data Processing & Visualization:</strong> Built a data processing pipeline using Node.js
+                        to convert raw sensor data into actionable information. Implemented a visualization platform
+                        using D3.js and Three.js for 3D cave mapping.</li>
+                    <li><strong>Team Collaboration:</strong> Coordinated embedded and software teams, ensuring smooth
+                        integration of hardware and software components. Used Jira for agile project management and Git
+                        for version control.</li>
+                    <li><strong>Results:</strong> Achieved high-precision mapping, allowing researchers to explore and
+                        analyze cave environments, simulating conditions for future extraterrestrial expeditions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Autonomous Car Red-Light System -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/autonomous_car_image.jpg" alt="Autonomous Car Red-Light System"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>SMART Intersection for Self Driving Vehicles</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed a custom roundabout traffic system for autonomous vehicles,
+                        aimed at minimizing congestion by replacing traditional red-light systems.</li>
+                    <li><strong>Simulation:</strong> Built a simulation model using MATLAB and Simulink to test traffic
+                        scenarios and refine system efficiency.</li>
+                    <li><strong>Communication Protocol:</strong> Implemented Vehicle-to-Vehicle (V2V) communication
+                        using Zigbee and 802.11p standards for real-time navigation.</li>
+                    <li><strong>Data Processing:</strong> Designed a real-time decision-making algorithm using
+                        reinforcement learning to optimize traffic flow.</li>
+                    <li><strong>Results:</strong> Demonstrated a significant reduction in traffic delays, supporting the
+                        feasibility of implementing an autonomous roundabout system for smart city management.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Multiplayer Word Guessing Game -->
+        <div class="project" data-aos="fade-right">
+            <div class="project-image left" data-aos="zoom-in-right">
+                <!-- <img src="../Photos/word_guessing_game_image.jpg" alt="Multiplayer Word Guessing Game"> -->
+            </div>
+            <div class="project-text" data-aos="fade-left">
+                <h2>Multiplayer Word Guessing Game</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed a Java-based multiplayer word-guessing game featuring
+                        Player vs. Player (PvP) and AI opponents, with an emphasis on strategic gameplay and
+                        probabilistic decision-making.</li>
+                    <li><strong>AI Opponent:</strong> Implemented probabilistic algorithms to simulate an intelligent
+                        opponent using Markov Chains for enhanced guessing accuracy.</li>
+                    <li><strong>User Interface:</strong> Designed an interactive UI using Java Swing, integrating
+                        real-time feedback mechanisms for user engagement.</li>
+                    <li><strong>Results:</strong> Received an award for outstanding project quality, showcasing
+                        innovative use of AI in gaming.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Battle of Bands: Strategy Game -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/battle_of_bands_image.jpg" alt="Battle of Bands"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>Battle of Bands: Strategy Game</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed an iOS-based tactical game using Swift and UIKit,
+                        incorporating three unique character classes, each with specialized abilities for strategic
+                        gameplay.</li>
+                    <li><strong>Game Mechanics:</strong> Designed mechanics offering 2x attack efficiency with superior
+                        class strategies. Implemented a dynamic decision-making algorithm for AI using Bayesian
+                        Networks.</li>
+                    <li><strong>Customizable UX/UI:</strong> Created a customizable user interface with smooth
+                        transitions using Core Animation.</li>
+                    <li><strong>Results:</strong> Earned an award for combining engaging gameplay with advanced AI,
+                        highlighting strategic gaming potential on mobile platforms.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- High School Exam Review App -->
+        <div class="project" data-aos="fade-right">
+            <div class="project-image left" data-aos="zoom-in-right">
+                <!-- <img src="../Photos/exam_review_app_image.jpg" alt="High School Exam Review App"> -->
+            </div>
+            <div class="project-text" data-aos="fade-left">
+                <h2>High School Exam Review App</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Developed an iOS app using Swift and Core Data to provide students
+                        with an interactive review tool, tailored to their study needs.</li>
+                    <li><strong>Customizable Study Paths:</strong> Enabled personalized study plans for students to
+                        focus on specific courses and topics.</li>
+                    <li><strong>Data Retention:</strong> Integrated a feedback mechanism to store incorrectly answered
+                        questions for later review. Utilized SQLite for data storage and retrieval.</li>
+                    <li><strong>Results:</strong> Maintained a consistent user base, resulting in improved academic
+                        performance among students.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Get a Grip: Robotic Arm Project -->
+        <div class="project" data-aos="fade-left">
+            <div class="project-image right" data-aos="zoom-in-left">
+                <!-- <img src="../Photos/robotic_arm_project_image.jpg" alt="Robotic Arm Project"> -->
+            </div>
+            <div class="project-text" data-aos="fade-right">
+                <h2>Get a Grip: Robotic Arm Project</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Designed and built a Python-based robotic arm controlled by muscle
+                        sensors to assist with container classification and placement in an industrial setting.</li>
+                    <li><strong>Control System:</strong> Used Electromyography (EMG) sensors to detect muscle movements,
+                        achieving 98% accuracy in controlling the robotic arm.</li>
+                    <li><strong>Sterilization Design:</strong> Created a sterilization container using Autodesk
+                        Inventor, enhancing surgical tool sanitization efficiency by 25%.</li>
+                    <li><strong>Results:</strong> Demonstrated human-machine interface technology applications,
+                        significantly improving workflow in medical and industrial environments.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
-    <button id="scrollToTopBtn" title="Go to top">Top</button>
+    <button id="scrollToTopBtn" title="Go to top">⬆️</button>
     <button id="themeToggle" title="Toggle theme">🌗</button>
-
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
+    <script src="../JavaScript/scrollAnimations.js"></script>
     <script src="../JavaScript/themeSwitcher.js"></script>
     <script src="../JavaScript/scrollToTop.js"></script>
     <script src="../JavaScript/typed.js"></script>
     <script src="../JavaScript/initTyped.js"></script>
     <script src="../JavaScript/socialShare.js"></script>
 </body>
+
 </html>

@@ -6,6 +6,12 @@ body {
     padding: 0;
     color: #333;
     background-color: #f4f4f4;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 header {
@@ -14,6 +20,7 @@ header {
     align-items: center;
     padding: 20px;
     color: #fff;
+    background-color: inherit;
 }
 
 header .logo h1 {
@@ -82,6 +89,8 @@ nav ul li a:hover {
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 100vh; /* Ensure content covers at least the full viewport height */
+    padding-bottom: 100px; /* Add space at the bottom */
 }
 
 h2 {
@@ -171,23 +180,24 @@ form input[type="submit"]:hover {
     display: none; 
     position: fixed; 
     bottom: 20px; 
-    right: 30px; 
+    right: 20px; 
     z-index: 99; 
-    font-size: 18px; 
+    font-size: 25px; 
     border: none; 
     outline: none; 
-    background-color: #000000; 
+    background-color: #333; 
     color: white; 
     cursor: pointer; 
-    padding: 15px; 
+    padding: 5px; 
     border-radius: 10px; 
+    width: 40px;
+    height: 40px;
     transition: opacity 0.3s; 
 }
 
 #scrollToTopBtn:hover {
     background-color: #555; 
 }
-
 
 /* Default Light Theme */
 body {
@@ -228,25 +238,6 @@ body.dark-theme header,
 body.dark-theme .title,
 body.dark-theme .content {
     background-color: #000000; 
-    color: #ffffff; 
-}
-
-body.dark-theme header {
-    background-color: #000000; 
-}
-
-body.dark-theme .title {
-    background-color: #000000; 
-}
-
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3,
-body.dark-theme h4,
-body.dark-theme h5,
-body.dark-theme h6,
-body.dark-theme p,
-body.dark-theme label {
     color: #ffffff; 
 }
 
@@ -319,4 +310,41 @@ body.dark-theme .skill-bar {
 .share-buttons button img {
     width: 30px;
     height: 30px;
+}
+
+/* Fade-in and fade-out animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease forwards;
+    opacity: 0; /* Ensure the element is hidden after fade out */
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Disable interactions when hidden */
 }

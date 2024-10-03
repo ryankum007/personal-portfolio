@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const elements = [
-        { id: 'typed-about', strings: ["About Me", "Get to Know Me", "About Me"] },
-        { id: 'typed-projects', strings: ["Projects", "My Work", "Projects"] },
-        { id: 'typed-experience', strings: ["Experience", "My Journey", " My Experience So Far"] },
+        { id: 'typed-about', strings: ["About Me", "Get to Know Me", "A Little Bit About Me"] },
+        { id: 'typed-projects', strings: ["Projects", "My Work", "My Projects"] },
+        { id: 'typed-experience', strings: ["Experience", "The Evolution of a Tech Enthusiast "] },
         { id: 'typed-blog', strings: ["Blog", "My Thoughts", "My Blog"] },
         { id: 'typed-contact', strings: ["Contact Me", "Let's Get In Touch"] }
     ];

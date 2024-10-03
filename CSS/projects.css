@@ -2,19 +2,45 @@
 
 /* Additional styling for Projects page */
 .projects-block {
+    display: flex;
+    flex-direction: column;
     margin: 20px 100px;
 }
 
 .project {
-    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
 }
 
-.projects-block h2 {
-    font-size: 2em;
+.project-image {
+    max-width: 200px;
+    max-height: 200px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.project-image.left {
+    left: -250px;
+}
+
+.project-image.right {
+    right: -250px;
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-text {
+    flex: 1;
 }
 
 .projects-block ul li {
     font-size: 1.2em;
 }
-
-
