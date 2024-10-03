@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     new Typed('#typed-blog', {
-        strings: ["Blog", "My Thoughts", "Latest Updates", "Blog"],
+        strings: ["Blog", "My Thoughts", "Latest Updates", "My Blog"],
         typeSpeed: 50,
         backSpeed: 25,
         startDelay: 500,

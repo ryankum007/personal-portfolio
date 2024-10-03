@@ -1,172 +1,176 @@
-@import url('main_style.css');
-
-/* 
- * Styling for About Me page
- */
-
-/* Section heading */
-.section-heading h1 {
-    font-size: 3em;
-    text-align: center; 
-    margin-top: 20px;
-}
-
-/* Education block styling */
-.education-block {
-    margin: 20px; 
-}
-
-/* Education information */
-.education-info {
-    padding: 10px;
-}
-
-.education-info ul {
-    color: #333;
-}
-
-/* Courses section */
-.courses {
-    padding: 10px;
-}
-
-/* Table styling */
-.table {
-    border-collapse: collapse;
-    width: 100%; 
-}
-
-th, td {
-    text-align: left;
-    padding: 10px;
-    color: #333;
-    border-bottom: 1px solid #ccc;
-}
-
-th {
-    font-weight: bold;
-    font-size: 1.2em; 
-}
-
-/* Skills block styling */
-.skills-block {
+/* About section with border in horizontal layout */
+.about-section {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
+    background: #fff;
+    margin: 20px auto;
+    max-width: 1000px;
+    border: 1px solid #ccc; /* Border around the section */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.skills-block h1 {
-    width: 100%; 
-    text-align: center; 
-    margin-bottom: 20px;
-    color: #333; 
-}
-
-.skills-block h3 {
-    color: #333;
-}
-
-.technical-skills, .languages {
-    width: 100%; 
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.skills-block ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.skills-block ul li {
-    margin-bottom: 10px; 
-    font-size: 1.2em;
-}
-
-/* Skill bar styling */
-.skill-bar {
+/* About block for image and text */
+.about-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
     position: relative;
-    width: 0;
-    height: 30px;
-    background-color: #000;
-    margin: 10px 0;
-    transition: width 2s;
-    color: white;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 5px;
-    white-space: nowrap; 
 }
 
-/* Custom tab styles */
-
-/* Tabs container */
-#tabs {
-    font-family: 'Courier New', Courier, monospace;
-    color: #333;
-    max-width: 100%; 
-    margin: 0 auto; 
+/* Photo styling */
+.about-photo {
+    max-width: 200px;
+    max-height: 200px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Tabs list */
-#tabs ul {
-    padding: 0;
-    margin: 0;
-    border-bottom: 2px solid #ccc;
-    background-color: #f9f9f9;
-    text-align: center;
+.about-photo.left {
+    left: -250px;
 }
 
-#tabs ul li {
-    margin: 0;
-    padding: 0;
+.about-photo.right {
+    right: -250px;
 }
 
-#tabs ul li a {
+.about-photo img {
+    max-width: 100%;
+    height: auto;
     display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #333; 
-    border-radius: 5px; 
-    font-weight: bold;
-    outline: none; 
 }
 
-/* Focused tab styling */
-#tabs ul li a:focus {
-    outline: none; 
-    box-shadow: 0 0 0 2px #000; 
-}
-
-/* Hovered tab styling */
-#tabs ul li a:hover {
-    background-color: #666;
-    border-color: #666;
-    color: #fff;
-}
-
-/* Active tab styling */
-#tabs ul li.ui-tabs-active a {
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
-}
-
-/* Tab panel styling */
-.ui-tabs-panel {
+/* Text inside about-section */
+.about-text {
+    flex: 1;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-top: none;
-    background-color: #fff;
+    text-align: center;
+    width: 90%; /* Adjust width as needed */
 }
 
-.ui-tabs-panel ul {
-    list-style: none; 
-    padding-left: 0; 
-    margin-bottom: 10px; 
+/* Adjust the tabs container to pop out with minimal side margins */
+#tabs {
+    width: 135%; /* Full width minus 5px on each side */
+    margin: 0 5px 0; /* 0 bottom margin */
+    padding: 20px; /* Add padding around the content */
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
 
-.ui-tabs-panel ul li {
-    margin-bottom: 10px; 
-    font-size: 1.2em; 
+/* Reduce padding and font size for tab content */
+#tabs-1, #tabs-2 {
+    padding: 10px; /* Less padding inside the tab content */
+    font-size: 0.9em; /* Smaller font size for a compact look */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+/* Adjust the skills block */
+.skills-block {
+    margin: 10px 0; /* Reduce vertical spacing around the skills block */
+    padding: 15px; /* Adjust padding inside the block */
+    background-color: #fff; /* Optional: background color for contrast */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    font-family: 'Courier New', Courier, monospace; /* Apply the same font as the rest of the site */
+}
+
+/* Align skill bars to the left */
+.skill-bar {
+    width: 90%; /* Adjust the width of the skill bar */
+    margin: 10px 0; /* Remove horizontal centering and use only vertical spacing */
+    padding: 8px; /* Adjust padding inside the skill bar */
+    background-color: #e0e0e0; /* Light background for the skill bar */
+    border-radius: 4px; /* Rounds the corners of the skill bar */
+    text-align: left; /* Align text to the left inside the skill bar */
+    font-family: 'Courier New', Courier, monospace; /* Apply the same font as the rest of the site */
+}
+
+/* Dark Mode for About Section */
+body.dark-theme .about-section {
+    background: #222; /* Dark background */
+    color: #fff; /* Light text color */
+    border: 1px solid #444; /* Darker border */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+}
+
+/* Dark Mode for About Block */
+body.dark-theme .about-block {
+    border-color: #555; /* Adjust border color */
+}
+
+/* Dark Mode for Text */
+body.dark-theme .about-text {
+    color: #ddd; /* Light text color */
+}
+
+/* Tabs Container in Dark Mode */
+body.dark-theme #tabs {
+    background-color: #333; /* Darker background for tabs container */
+}
+
+/* Tabs Content in Dark Mode */
+body.dark-theme #tabs-1,
+body.dark-theme #tabs-2 {
+    background-color: #444; /* Darker background for the tab content */
+    color: #ffffff; /* White text color */
+}
+
+/* Tabs Header (Skills & Certifications) */
+body.dark-theme .ui-tabs-nav {
+    background-color: #555; /* Darker background for tab headers */
+    border: none; /* Remove default border */
+}
+
+body.dark-theme .ui-tabs-nav li a {
+    color: #ffffff; /* White text for tabs */
+}
+
+/* Dark Mode for Skills Block */
+body.dark-theme .skills-block {
+    background-color: #333; /* Dark background */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+}
+
+/* Skill Bar in Dark Mode */
+body.dark-theme .skill-bar {
+    background-color: #555; /* Darker skill bar background */
+}
+
+/* Headings in Dark Mode */
+body.dark-theme h2,
+body.dark-theme h1 {
+    color: #ffffff; /* White color for headings */
+}
+
+/* Selected tab in dark mode */
+body.dark-theme .ui-tabs-active a {
+    background-color: #555; /* Darker background for selected tab */
+    color: #ffffff; /* White text */
+    border: none; /* Remove border */
+}
+
+/* Non-selected tabs in dark mode */
+body.dark-theme .ui-tabs-nav li a {
+    background-color: #333; /* Dark background for unselected tabs */
+    color: #aaa; /* Light grey text */
+}
+
+/* Hover effect for tabs in dark mode */
+body.dark-theme .ui-tabs-nav li a:hover {
+    background-color: #666; /* Slightly lighter background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Apply the same font to the tab headers */
+.ui-tabs-nav li a {
+    font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
+}
+
+/* Apply the same font to the tab content */
+#tabs-1, #tabs-2, .skills-block, .skills-block h1, .skills-block ul {
+    font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
 }
