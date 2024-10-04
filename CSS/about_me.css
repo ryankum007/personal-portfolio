@@ -22,8 +22,8 @@
 
 /* Photo styling */
 .about-photo {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 220px;
+    max-height: 220px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -38,10 +38,14 @@
 }
 
 .about-photo img {
-    max-width: 100%;
-    height: auto;
+    max-width: 220px; /* Set a fixed width */
+    max-height: 300px; /* Set a fixed height */
+    width: 220px; /* Set a fixed width */
+    height: auto; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio */
     display: block;
 }
+
 
 /* Text inside about-section */
 .about-text {
@@ -174,3 +178,13 @@ body.dark-theme .ui-tabs-nav li a:hover {
 #tabs-1, #tabs-2, .skills-block, .skills-block h1, .skills-block ul {
     font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
 }
+
+.about-section {
+    padding-top: 20px; /* Adjust this value to create more or less space */
+}
+
+/* Adding space above the tabs */
+#tabs {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
