@@ -175,7 +175,7 @@ body.dark-theme .ui-tabs-nav li a:hover {
 }
 
 /* Apply the same font to the tab content */
-#tabs-1, #tabs-2, .skills-block, .skills-block h1, .skills-block ul {
+#tabs-1, #tabs-2, #tabs-3, .skills-block, .skills-block h1, .skills-block ul {
     font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
 }
 
