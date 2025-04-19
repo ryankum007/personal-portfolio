@@ -1,0 +1,285 @@
+/* Project slideshow specific styling */
+.project-slideshow-container {
+    max-width: 75%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+body.dark-theme .project-slideshow-container {
+    background-color: #333;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Project filter controls */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #333;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+.filter-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.filter-btn.active {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Dark theme styling for filter buttons */
+body.dark-theme .filter-btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-theme .filter-btn:hover,
+body.dark-theme .filter-btn.active {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
+}
+
+/* Project slides */
+.project-slide {
+    display: none;
+    width: 100%;
+    padding: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-slide.active {
+    display: block;
+}
+
+/* Project title and description */
+.project-title {
+    font-size: 2.5em;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+/* Project description moved above image */
+.project-description {
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0 auto 25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+    line-height: 1.4;
+    max-width: 80%;
+}
+
+/* Project image - removed frame */
+.project-image {
+    width: 65%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px auto;
+    background-color: transparent;
+    border: none;
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Project details */
+.project-details {
+    margin-top: 25px;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-details ul {
+    padding-left: 25px;
+    margin-top: 15px;
+}
+
+.project-details li {
+    margin-bottom: 15px;
+    list-style-type: disc;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Tech tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tech-tag {
+    background-color: #eee;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.95em;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #ddd;
+}
+
+/* Dark theme styling */
+body.dark-theme .project-title,
+body.dark-theme .project-description,
+body.dark-theme .project-details li {
+    color: #fff;
+}
+
+body.dark-theme .tech-tag {
+    background-color: #555;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Navigation controls */
+.project-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    border: none;
+    opacity: 0.7;
+}
+
+.project-nav:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.project-prev {
+    left: -25px;
+}
+
+.project-next {
+    right: -25px;
+}
+
+/* Project indicators - styled like index.html */
+.project-indicators {
+    text-align: center;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: transparent;
+}
+
+.project-dot {
+    cursor: pointer;
+    height: 9px;
+    width: 9px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.project-dot.active {
+    background-color: #717171;
+}
+
+body.dark-theme .project-dot {
+    background-color: #555;
+}
+
+body.dark-theme .project-dot.active {
+    background-color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 1300px) {
+    .project-slideshow-container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-slideshow-container {
+        padding: 20px;
+    }
+    
+    .project-title {
+        font-size: 1.8em;
+    }
+    
+    .project-description {
+        font-size: 1.1em;
+    }
+    
+    .project-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-filters {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-btn {
+        width: 80%;
+    }
+    
+    .project-title {
+        font-size: 1.5em;
+    }
+    
+    .project-description {
+        font-size: 1em;
+        max-width: 95%;
+    }
+    
+    .project-details {
+        max-width: 95%;
+    }
+}
