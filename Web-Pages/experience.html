@@ -10,7 +10,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
-
 <body>
   <header>
     <div class="logo" data-aos="fade-down">
@@ -37,13 +36,12 @@
   </div>
 
   <div class="title" data-aos="zoom-in">
-    <h1>My Experience</h1>
+    <h1 id="typed-experience"></h1>
   </div>
 
-  <!-- Optional Filters -->
   <div class="experience-filters" data-aos="fade-up"></div>
+  <div class="experience-timeline" data-aos="fade-up" data-aos-delay="100"></div>
 
-  <!-- Slideshow container -->
   <div class="experience-slideshow-container" data-aos="fade-up" data-aos-delay="200">
     <div class="experience-nav experience-prev">&#10094;</div>
     <div class="experience-nav experience-next">&#10095;</div>
@@ -56,9 +54,7 @@
   <button id="themeToggle" title="Toggle theme">🌗</button>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script>AOS.init();</script>
   <script src="../JavaScript/typed.js"></script>
   <script src="../JavaScript/initTyped.js"></script>
   <script src="../JavaScript/scrollAnimations.js"></script>

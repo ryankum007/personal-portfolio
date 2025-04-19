@@ -1,168 +1,204 @@
-/* experienceSlideshow.css */
-/* Slideshow container */
 .experience-slideshow-container {
     max-width: 75%;
-    width: 100%;
-    position: relative;
     margin: 40px auto;
-    background-color: #fff;
+    background: #fff;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-    overflow: visible;
-}
-body.dark-theme .experience-slideshow-container {
+    position: relative;
+  }
+  body.dark-theme .experience-slideshow-container {
     background-color: #333;
     box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-}
-
-/* Filters (optional – add if you want categories) */
-.experience-filters {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.filter-btn {
-    padding: 8px 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #333;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-}
-.filter-btn:hover, .filter-btn.active {
-    background-color: #333;
-    color: #fff;
-}
-body.dark-theme .filter-btn {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-}
-body.dark-theme .filter-btn:hover,
-body.dark-theme .filter-btn.active {
-    background-color: #555;
-    border-color: #777;
-}
-
-/* Individual slide */
-.experience-slide {
+  }
+  
+  .experience-slide {
     display: none;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-.experience-slide.active {
+    transform: scale(0.97);
+    transition: transform 0.3s ease-in-out;
+  }
+  .experience-slide.active {
     display: block;
-}
-
-/* Headings & text */
-.experience-title {
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 15px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #333;
-}
-.experience-date {
-    font-size: 1.2em;
-    text-align: center;
-    margin-bottom: 25px;
-    color: #666;
-}
-.experience-details {
-    font-family: 'Courier New', Courier, monospace;
-    max-width: 80%;
-    margin: 0 auto;
-}
-.experience-details ul {
-    list-style: disc inside;
-    margin-top: 15px;
-}
-.experience-details li {
-    margin-bottom: 12px;
-    line-height: 1.6;
-    font-size: 1.2em;
-    color: #333;
-}
-body.dark-theme .experience-details li {
-    color: #fff;
-}
-
-/* Logo/image */
-.experience-image {
+    transform: scale(1);
+  }
+  .fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  
+  .experience-image {
     width: 20%;
-    margin: 0 auto 30px;
+    margin: 0 auto 10px;
     display: block;
-}
-.experience-image img {
+  }
+  .experience-image img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
-}
-
-/* Navigation arrows */
-.experience-nav {
+  }
+  
+  .experience-title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .experience-date {
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Courier New', monospace;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  .experience-details {
+    font-family: 'Courier New', monospace;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .experience-details ul {
+    list-style: disc inside;
+    margin-top: 10px;
+  }
+  .experience-details li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+  }
+  body.dark-theme .experience-details li {
+    color: #fff;
+  }
+  
+  .experience-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .tech-tag {
+    background-color: #eee;
+    color: #333;
+    padding: 8px 16px;
+    font-size: 0.95em;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid #ccc;
+  }
+  body.dark-theme .tech-tag {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
+  }
+  
+  .experience-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-color: rgba(0,0,0,0.5);
     color: #fff;
     font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    opacity: 0.7;
-    transition: background-color 0.3s ease;
     border: none;
+    opacity: 0.7;
     z-index: 10;
-}
-.experience-nav:hover {
+  }
+  .experience-nav:hover {
     background-color: rgba(0,0,0,0.8);
     opacity: 1;
-}
-.experience-prev { left: -25px; }
-.experience-next { right: -25px; }
-
-/* Dots/indicators */
-.experience-indicators {
+  }
+  .experience-prev { left: -25px; }
+  .experience-next { right: -25px; }
+  
+  .experience-indicators {
     text-align: center;
     margin-top: 25px;
-}
-.experience-dot {
+  }
+  .experience-dot {
     height: 9px;
     width: 9px;
     margin: 0 3px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
-    cursor: pointer;
     transition: background-color 0.6s ease;
-}
-.experience-dot.active {
+    cursor: pointer;
+  }
+  .experience-dot.active {
     background-color: #717171;
-}
-body.dark-theme .experience-dot {
+  }
+  body.dark-theme .experience-dot {
     background-color: #555;
-}
-body.dark-theme .experience-dot.active {
+  }
+  body.dark-theme .experience-dot.active {
     background-color: #fff;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    .experience-title { font-size: 1.8em; }
-    .experience-nav { width: 40px; height: 40px; font-size: 20px; }
-}
-@media (max-width: 480px) {
-    .experience-details { max-width: 95%; }
-    .experience-title { font-size: 1.5em; }
-}
+  }
+  
+  .experience-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 8px 18px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    background: #f4f4f4;
+    cursor: pointer;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: #333;
+    color: #fff;
+  }
+  body.dark-theme .filter-btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+  }
+  body.dark-theme .filter-btn.active {
+    background-color: #555;
+  }
+  
+  .experience-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .milestone {
+    font-size: 0.9em;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background-color: #ddd;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+  }
+  .milestone.active,
+  .milestone:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  body.dark-theme .milestone {
+    background-color: #444;
+    color: #ccc;
+  }
+  body.dark-theme .milestone.active {
+    background-color: #fff;
+    color: #000;
+  }
+  

@@ -1,5 +1,3 @@
-// experienceData.js
-
 const experienceData = [
     {
       logo: '../Photos/Tery_fox.png',
@@ -7,11 +5,13 @@ const experienceData = [
       company: 'Terry Fox Cancer Research, Toronto, ON',
       role: 'Project Coordinator',
       date: 'May 2024 - Aug 2024',
+      type: 'Leadership',
+      techTags: ['Project Management', 'QA', 'Team Communication'],
       details: [
-        'Fostered clear communication across the team, reducing deadline misses by 20%, showcasing leadership in maintaining project timeliness and efficiency.',
-        'Increased productivity by 15% by strategically matching tasks to team members’ skills, demonstrating a deep understanding of individual strengths and effective team management.',
-        'Expedited the QA process while maintaining a 98% quality rate, underscoring a commitment to delivering high‑quality products within stringent timelines.',
-        'Managed stakeholder relations effectively, accelerating project approval by 25% through proactive communication and negotiation, highlighting the ability to engage and align key partners with project goals.'
+        'Fostered clear communication across the team, reducing deadline misses by 20%.',
+        'Increased productivity by 15% by matching tasks to team strengths.',
+        'Maintained a 98% quality rate while expediting QA processes.',
+        'Accelerated project approval by 25% through stakeholder alignment.'
       ]
     },
     {
@@ -20,25 +20,29 @@ const experienceData = [
       company: 'Gore Mutual Insurance, Toronto, ON',
       role: 'Associate Software Engineer',
       date: 'May 2021 - Aug 2023',
+      type: 'Software',
+      techTags: ['Angular', 'TypeScript', 'AWS', 'Jira'],
       details: [
-        'Enhanced productivity by initiating peer brainstorming sessions, reducing debugging time by 20% through collaborative problem‑solving and knowledge sharing.',
-        'Implemented best practices in system architecture and maintenance, achieving 99% system uptime and ensuring robust and reliable operations.',
-        'Optimized application performance by refining code efficiency and leveraging advanced algorithms, reducing load times by 25%, which significantly improved user experience.',
-        'Developed a high‑performance Angular application, incorporating user feedback to increase engagement by 40% and drive customer satisfaction.',
-        'Led a complex data migration project, utilizing meticulous planning and execution strategies to achieve a 95% accuracy rate, ensuring data integrity and seamless transition.'
+        'Reduced debugging time by 20% via collaborative peer sessions.',
+        'Ensured 99% system uptime through architectural best practices.',
+        'Improved UX by reducing load times by 25%.',
+        'Developed high-performance Angular apps increasing engagement by 40%.',
+        'Executed data migration with 95% accuracy and high integrity.'
       ]
     },
     {
       logo: '../Photos/deep_space_analogue_research.jpeg',
-      alt: 'Deep‑Space Analogue Research',
-      company: 'Deep‑Space Analogue Research Expedition (DARE), Hamilton, ON',
+      alt: 'Deep-Space Analogue Research',
+      company: 'Deep-Space Analogue Research Expedition (DARE), Hamilton, ON',
       role: 'Software Team Lead',
       date: 'Dec 2022 - Jul 2023',
+      type: 'Research',
+      techTags: ['Python', 'Data Collection', 'Team Leadership'],
       details: [
-        'Fostered clear communication across the team, reducing deadline misses by 20%, showcasing leadership in maintaining project timeliness and efficiency.',
-        'Increased productivity by 15% by strategically matching tasks to team members’ skills, demonstrating a deep understanding of individual strengths and effective team management.',
-        'Expedited the QA process while maintaining a 98% quality rate, underscoring a commitment to delivering high‑quality products within stringent timelines.',
-        'Managed stakeholder relations effectively, accelerating project approval by 25% through proactive communication and negotiation, highlighting the ability to engage and align key partners with project goals.'
+        'Reduced deadline misses by 20% through clear communication.',
+        'Increased productivity by 15% via optimized task assignments.',
+        'Maintained 98% QA quality while accelerating deliverables.',
+        'Improved stakeholder alignment for 25% faster approval.'
       ]
     },
     {
@@ -47,11 +51,13 @@ const experienceData = [
       company: 'Bloomberg Trading Challenge, New York, NY',
       role: 'Team Lead / Data Analyst',
       date: 'Jan 2021 - Apr 2021',
+      type: 'Research',
+      techTags: ['Python', 'Pandas', 'Data Visualization'],
       details: [
-        'Led competitive efforts in a simulated trading environment.',
-        'Engineered and graphically represented Data Frames of the S&P 500 index using Python.',
-        'Conducted advanced quantitative analysis, writing custom Python scripts to extract, process, and interpret complex financial data, enhancing our trading decisions.',
-        'Designed and presented data visualizations that clearly communicated investment impact and growth trends, contributing to strategic decisions that improved our portfolio performance.'
+        'Led competitive team in a simulated trading environment.',
+        'Used Python to analyze and visualize S&P 500 performance.',
+        'Conducted quantitative analysis to drive trading decisions.',
+        'Created investment impact charts to guide strategy.'
       ]
     },
     {
@@ -60,15 +66,13 @@ const experienceData = [
       company: 'McMaster Engineering Society, Hamilton, ON',
       role: 'First Year Rep',
       date: 'Sep 2020 - Dec 2021',
+      type: 'Leadership',
+      techTags: ['Public Speaking', 'Advocacy', 'Organizing Events'],
       details: [
-        'Elected by the student body to advocate on their behalf.',
-        'Collaborated on program reports submitted to the board.',
-        'Guided tours and answered questions for prospective students and parents.',
-        'Represented university values at campus events.',
-        'Maintained communication with students through public gatherings and events.',
-        'Developed strong organizational skills through group projects.',
-        'Used analytical skills to solve challenging problems.',
-        'Showed initiative and creativity in tackling difficult tasks.'
+        'Elected representative advocating for student concerns.',
+        'Collaborated on program reports and university events.',
+        'Guided campus tours and facilitated information sessions.',
+        'Built organizational and communication skills through leadership.'
       ]
     },
     {
@@ -77,15 +81,13 @@ const experienceData = [
       company: 'Cedar Fair Entertainment Company, Vaughan, ON',
       role: 'Ride Operator',
       date: 'Jun 2020 - Nov 2020',
+      type: 'Customer Service',
+      techTags: ['Ride Safety', 'Customer Service', 'Training'],
       details: [
-        'Ensured safety by engaging devices and monitoring rides.',
-        'Resolved guest issues by collaborating with supervisors.',
-        'Operated various rides, ensuring passenger safety.',
-        'Trained new operators on safety and ride procedures.',
-        'Conducted daily ride inspections for functionality and safety.',
-        'Enhanced customer service by providing directions and assistance.',
-        'Exceeded job requirements to improve service.',
-        'Developed strong customer service and product knowledge skills.'
+        'Monitored and ensured safety across all operated rides.',
+        'Resolved guest issues and coordinated with supervisors.',
+        'Trained new ride operators in safety protocols.',
+        'Performed inspections and delivered exceptional guest service.'
       ]
     },
     {
@@ -94,30 +96,28 @@ const experienceData = [
       company: 'REACH, Toronto, ON',
       role: 'Coding Camp Councillor',
       date: 'Mar 2020 - Sep 2020',
+      type: 'Software',
+      techTags: ['HTML', 'CSS', 'JavaScript', 'Teaching'],
       details: [
-        'Communicated with parents about camper activities and concerns.',
-        'Led groups of children through camp activities.',
-        'Worked with children of varying ages and skill levels.',
-        'Created and implemented engaging lesson plans.',
-        'Applied innovative teaching methods to meet learning objectives.',
-        'Graded quizzes and projects to provide feedback.',
-        'Evaluated student performance and provided progress reports.',
-        'Developed semester outlines and instructional plans.'
+        'Taught kids how to code using fun and interactive lessons.',
+        'Led diverse age groups through tech-focused activities.',
+        'Implemented engaging curriculum and assessed progress.',
+        'Maintained communication with parents and wrote feedback.'
       ]
     },
     {
       logo: '../Photos/AirCadets.png',
       alt: 'Air Cadets',
       company: 'Air Cadets, Veteran Support',
-      role: 'Flight Sergeant – 2nd Year Level 5 – Senior – Mentor',
-      date: 'Sep 2016 - Sep 2021',
+      role: 'Flight Sergeant - Level 5 Senior Mentor',
+      date: 'Sep 2016 - Sep 2021',
+      type: 'Leadership',
+      techTags: ['Aviation', 'Survival Training', 'Leadership'],
       details: [
-        'Achieved Glider Pilot License through rigorous training and practical flight experience.',
-        'Organized and led various community service events such as the Poppy Campaign and Remembrance Day ceremonies.',
-        'Developed leadership skills by mentoring younger cadets and teaching aviation principles, survival skills, drill and ceremony.',
-        'Managed and coordinated events like Rotary for Kids Against Hunger, field training exercises, sports days, team building events, and community clean‑ups.',
-        'Participated in advanced training courses, including aviation, survival, and marksmanship.',
-        'Provided support and assistance at events like the Robby Burns Dinner, fostering community relations.'
+        'Earned Glider Pilot License after rigorous training.',
+        'Led community events and ceremonies like Remembrance Day.',
+        'Mentored junior cadets and led survival skills instruction.',
+        'Coordinated major events including fundraisers and drills.'
       ]
     }
   ];
