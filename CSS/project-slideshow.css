@@ -94,24 +94,6 @@ body.dark-theme .filter-btn.active {
     max-width: 80%;
 }
 
-/* Project image - removed frame */
-.project-image {
-    width: 65%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 30px auto;
-    background-color: transparent;
-    border: none;
-}
-
-.project-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: contain;
-}
 
 /* Project details */
 .project-details {
@@ -282,4 +264,7 @@ body.dark-theme .project-dot.active {
     .project-details {
         max-width: 95%;
     }
+
+    
+      
 }

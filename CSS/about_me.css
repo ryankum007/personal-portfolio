@@ -15,34 +15,40 @@
 /* About block for image and text */
 .about-block {
     display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    position: relative;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 30px; /* Reduced margin */
+    /* position: relative; Removed */
+    gap: 20px; /* Add gap between photo and text */
 }
 
 /* Photo styling */
 .about-photo {
-    max-width: 220px;
-    max-height: 220px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 250px; /* Fixed width */
+    height: 250px; /* Fixed height for consistent sizing */
+    flex-shrink: 0; /* Prevent photo from shrinking */
+    border-radius: 8px; /* Add rounded corners to photos */
+    overflow: hidden; /* Ensure image stays within rounded bounds */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
 }
 
 .about-photo.left {
-    left: -250px;
+    margin-right: 25px; /* Add space between photo and text */
 }
 
 .about-photo.right {
-    right: -250px;
+    margin-left: 25px; /* Add space between text and photo */
+    order: 1; /* Move photo to the right side in flex layout */
+}
+
+/* Ensure text comes first when photo is on the right */
+.about-block:has(.about-photo.right) .about-text {
+    order: 0;
 }
 
 .about-photo img {
-    max-width: 220px; /* Set a fixed width */
-    max-height: 300px; /* Set a fixed height */
-    width: 220px; /* Set a fixed width */
-    height: auto; /* Set a fixed height */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+    width: 100%; /* Fill the container width */
+    height: 100%; /* Fill the container height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio and fills the container */
     display: block;
 }
 
@@ -50,47 +56,520 @@
 /* Text inside about-section */
 .about-text {
     flex: 1;
-    padding: 20px;
+    padding: 15px 25px; /* Adjust padding */
+    text-align: left; /* Align text left */
+    line-height: 1.6;
+    /* width: 90%; Removed fixed width, flex handles it */
+}
+
+.about-text.full-width {
+    flex-basis: 100%; /* Allow text to take full width when no image */
+    text-align: center; /* Center text if it's the only element */
+    padding: 15px 0; /* Adjust padding */
+}
+
+/* Typewriter-themed Tabs Container */
+.typewriter-tabs {
+    width: 100%;
+    margin: 20px 0 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid #333;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typewriter key-like tabs */
+.typewriter-tabs > ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 10px 0;
+    background-color: #e0e0e0;
+    border-bottom: 2px solid #333;
+    gap: 5px;
+}
+
+.typewriter-tabs > ul > li {
+    margin-bottom: 0;
+}
+
+.typewriter-tabs > ul > li > a {
+    display: block;
+    padding: 8px 15px;
+    background-color: #d0d0d0;
+    color: #333;
+    border: 1px solid #999;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 2px;
+}
+
+.typewriter-tabs > ul > li > a:hover {
+    background-color: #e8e8e8;
+    transform: translateY(-3px);
+}
+
+.typewriter-tabs > ul > li.ui-tabs-active > a {
+    background-color: #f8f8f8;
+    border-bottom-color: #f8f8f8;
+    box-shadow: 0 -3px 7px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Typewriter content area */
+.typewriter-content {
+    padding: 25px;
+    background-color: #f8f8f8;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+}
+
+/* Typewriter header with icon */
+.typewriter-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px dotted #333;
+}
+
+.typewriter-icon {
+    font-size: 1.8em;
+    margin-right: 15px;
+    background-color: #e0e0e0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.typewriter-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Skills container */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Skill bar wrapper */
+.skill-bar-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+/* Skill label */
+.skill-label {
+    width: 120px;
+    padding: 8px 15px;
+    font-weight: bold;
+    color: #333;
+    background-color: #d0d0d0;
+    border-radius: 4px;
+    margin-right: 15px;
     text-align: center;
-    width: 90%; /* Adjust width as needed */
+    border: 1px solid #999;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
 }
 
-/* Adjust the tabs container to pop out with minimal side margins */
-#tabs {
-    width: 135%; /* Full width minus 5px on each side */
-    margin: 0 5px 0; /* 0 bottom margin */
-    padding: 20px; /* Add padding around the content */
-    background-color: #f9f9f9; /* Light background color for contrast */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+/* Skill bar container */
+.skill-bar-container {
+    flex: 1;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #bbb;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Reduce padding and font size for tab content */
-#tabs-1, #tabs-2 {
-    padding: 10px; /* Less padding inside the tab content */
-    font-size: 0.9em; /* Smaller font size for a compact look */
-    border-radius: 8px; /* Optional: rounded corners */
-}
-
-/* Adjust the skills block */
-.skills-block {
-    margin: 10px 0; /* Reduce vertical spacing around the skills block */
-    padding: 15px; /* Adjust padding inside the block */
-    background-color: #fff; /* Optional: background color for contrast */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
-    font-family: 'Courier New', Courier, monospace; /* Apply the same font as the rest of the site */
-}
-
-/* Align skill bars to the left */
+/* Skill bar */
 .skill-bar {
-    width: 90%; /* Adjust the width of the skill bar */
-    margin: 10px 0; /* Remove horizontal centering and use only vertical spacing */
-    padding: 8px; /* Adjust padding inside the skill bar */
-    background-color: #e0e0e0; /* Light background for the skill bar */
-    border-radius: 4px; /* Rounds the corners of the skill bar */
-    text-align: left; /* Align text to the left inside the skill bar */
-    font-family: 'Courier New', Courier, monospace; /* Apply the same font as the rest of the site */
+    height: 100%;
+    width: 0; /* Start at 0 for animation */
+    background: linear-gradient(to right, #444, #555);
+    color: transparent;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 1.5s ease-in-out;
+    position: relative;
+    text-align: left;
+    padding-left: 5px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Cursor blink effect */
+.cursor-blink {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Typewriter paper texture */
+.typewriter-content {
+    background-image: linear-gradient(#f8f8f8 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(100,100,100,0.05) 1px, transparent 1px);
+    background-size: 100% 20px, 20px 100%;
+    position: relative;
+}
+
+/* Add typewriter ribbon effect */
+.typewriter-tabs::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 10%;
+    right: 10%;
+    height: 5px;
+    background-color: #cc0000;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Skill level indicators - replacing percentages */
+.skill-bar::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 5px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Certification container */
+.certification-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.certification-item {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.certification-icon {
+    font-size: 1.8em;
+    margin-right: 15px;
+    background-color: #d0d0d0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.certification-details {
+    flex: 1;
+}
+
+.certification-details h4 {
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.certification-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Coursework container */
+.coursework-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.coursework-item {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.coursework-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.coursework-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    background-color: #d0d0d0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.coursework-name {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Goals container */
+.goals-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.goal-item {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.goal-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.goal-icon {
+    font-size: 1.5em;
+    margin-right: 15px;
+    background-color: #d0d0d0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.goal-text {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Interests container */
+.interests-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.interest-item {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.interest-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.interest-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    background-color: #d0d0d0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.interest-text {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Dark mode styles for typewriter elements */
+body.dark-theme .typewriter-tabs {
+    background-color: #2a2a2a;
+    border-color: #555;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .typewriter-tabs > ul {
+    background-color: #222;
+    border-bottom-color: #555;
+}
+
+body.dark-theme .typewriter-tabs > ul > li > a {
+    background-color: #333;
+    color: #ddd;
+    border-color: #666;
+}
+
+body.dark-theme .typewriter-tabs > ul > li > a:hover {
+    background-color: #444;
+}
+
+body.dark-theme .typewriter-tabs > ul > li.ui-tabs-active > a {
+    background-color: #2a2a2a;
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-theme .typewriter-content {
+    background-color: #2a2a2a;
+    color: #ddd;
+}
+
+body.dark-theme .typewriter-header {
+    border-bottom-color: #555;
+}
+
+body.dark-theme .typewriter-icon,
+body.dark-theme .certification-icon,
+body.dark-theme .coursework-icon,
+body.dark-theme .goal-icon,
+body.dark-theme .interest-icon {
+    background-color: #333;
+    border-color: #666;
+    color: #ddd;
+}
+
+body.dark-theme .typewriter-header h3 {
+    color: #ddd;
+}
+
+body.dark-theme .skill-bar-wrapper,
+body.dark-theme .certification-item,
+body.dark-theme .coursework-item,
+body.dark-theme .goal-item,
+body.dark-theme .interest-item {
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-theme .skill-label,
+body.dark-theme .skill-percentage {
+    background-color: #444;
+    color: #ddd;
+    border-color: #666;
+}
+
+body.dark-theme .skill-bar-container {
+    background-color: #222;
+    border-color: #555;
+}
+
+body.dark-theme .skill-bar {
+    background-color: #5a9cf0;
+}
+
+body.dark-theme .certification-details h4,
+body.dark-theme .coursework-name,
+body.dark-theme .goal-text,
+body.dark-theme .interest-text {
+    color: #ddd;
+}
+
+body.dark-theme .certification-details p {
+    color: #aaa;
+}
+
+/* Dark Mode for Collapsible Header */
+body.dark-theme .collapsible-header {
+    background-color: #444; /* Darker header background */
+    border-color: #555;
+    color: #eee;
+}
+
+body.dark-theme .collapsible-header::after {
+    color: #aaa;
+}
+
+/* Dark Mode for Collapsible Content */
+body.dark-theme .collapsible-content {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #ddd;
 }
 
 /* Dark Mode for About Section */
@@ -174,9 +653,181 @@ body.dark-theme .ui-tabs-nav li a:hover {
     font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
 }
 
+/* Styles for Collapsible Sections */
+.collapsible-section {
+    margin-bottom: 20px; /* Space between collapsible sections */
+}
+
+.collapsible-header {
+    cursor: pointer;
+    padding: 15px 20px;
+    background-color: #f0f0f0; /* Slightly different background */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+    position: relative; /* For positioning the arrow */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em; /* Slightly larger font for header */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+    background-color: #e0e0e0; /* Highlight on hover */
+}
+
+.collapsible-header::after {
+    content: '+'; /* Use '+' for collapsed state */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, content 0.3s ease; /* Added content transition */
+}
+
+.collapsible-header.active::after {
+    content: '−'; /* Use '−' (minus) for expanded state */
+    transform: translateY(-50%); /* No rotation needed */
+}
+
+.collapsible-content {
+    padding: 0 18px; /* Keep horizontal padding */
+    max-height: 0; /* Start collapsed */
+    overflow: hidden;
+    background-color: #ffffff; /* White background for content */
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smooth transition for height and padding */
+}
+
+.collapsible-content.open {
+    padding: 15px 18px; /* Add padding back when open */
+    /* max-height will be set by JS */
+}
+
+/* Adjustments for layout */
+.about-section {
+    max-width: 950px; /* Adjust max-width */
+    padding: 15px; /* Reduce padding */
+}
+
+.about-block {
+    margin-bottom: 20px; /* Reduce space between blocks */
+    align-items: flex-start; /* Align items top */
+}
+
+.about-photo {
+    max-width: 180px; /* Slightly smaller photos */
+    max-height: 180px;
+}
+
+.about-photo.left {
+    left: -200px; /* Adjust photo position */
+}
+
+.about-photo.right {
+    right: -200px; /* Adjust photo position */
+}
+
+.about-text {
+    padding: 10px 20px; /* Adjust padding */
+    width: 100%; /* Ensure text takes available space */
+    text-align: left; /* Align text left for better readability */
+}
+
 /* Apply the same font to the tab content */
 #tabs-1, #tabs-2, #tabs-3, #tabs-4, .skills-block, .skills-block h1, .skills-block ul {
     font-family: 'Courier New', Courier, monospace; /* Match the main site's font */
+}
+
+/* Styles for Collapsible Sections */
+.collapsible-section {
+    margin-bottom: 20px; /* Space between collapsible sections */
+}
+
+.collapsible-header {
+    cursor: pointer;
+    padding: 15px 20px;
+    background-color: #f0f0f0; /* Slightly different background */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+    position: relative; /* For positioning the arrow */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em; /* Slightly larger font for header */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+    background-color: #e0e0e0; /* Highlight on hover */
+}
+
+.collapsible-header::after {
+    content: '+'; /* Use '+' for collapsed state */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, content 0.3s ease; /* Added content transition */
+}
+
+.collapsible-header.active::after {
+    content: '−'; /* Use '−' (minus) for expanded state */
+    transform: translateY(-50%); /* No rotation needed */
+}
+
+.collapsible-content {
+    padding: 0 18px; /* Keep horizontal padding */
+    max-height: 0; /* Start collapsed */
+    overflow: hidden;
+    background-color: #ffffff; /* White background for content */
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smooth transition for height and padding */
+}
+
+.collapsible-content.open {
+    padding: 15px 18px; /* Add padding back when open */
+    /* max-height will be set by JS */
+}
+
+/* Adjustments for layout */
+.about-section {
+    max-width: 950px; /* Adjust max-width */
+    padding: 15px; /* Reduce padding */
+}
+
+.about-block {
+    margin-bottom: 20px; /* Reduce space between blocks */
+    align-items: flex-start; /* Align items top */
+}
+
+.about-photo {
+    max-width: 180px; /* Slightly smaller photos */
+    max-height: 180px;
+}
+
+.about-photo.left {
+    left: -200px; /* Adjust photo position */
+}
+
+.about-photo.right {
+    right: -200px; /* Adjust photo position */
+}
+
+.about-text {
+    padding: 10px 20px; /* Adjust padding */
+    width: 100%; /* Ensure text takes available space */
+    text-align: left; /* Align text left for better readability */
 }
 
 .about-section {

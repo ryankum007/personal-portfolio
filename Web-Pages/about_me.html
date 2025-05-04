@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> <!-- Added defer -->
 </head>
 
 <body>
@@ -46,206 +46,465 @@
                 src="../Photos/whatsapp.svg" alt="WhatsApp"></button>
     </div>
 
-    <div class="title" data-aos="zoom-in"></div>
+    <div class="title" data-aos="zoom-in">
         <h1 id="typed-about"></h1>
     </div>
 
-    <div class="about-section" data-aos="fade-right">
-        <h2>My Journey: Pieces, Pixels, and Passion</h2>
+    <div class="about-section" data-aos="fade-up">
+        <!-- Collapsible Section 1: My Journey -->
+        <div id="journey-section" class="collapsible-section">
+            <h2 class="collapsible-header" data-aos="fade-up">My Journey: Pieces, Pixels, and Passion</h2>
+            <div class="collapsible-content">
+                <!-- First Paragraph with Left Photo -->
+                <div class="about-block">
+                    <div class="about-photo left" data-aos="zoom-in-right">
+                        <img src="../Photos/Photo1.png" alt="Childhood Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <p>Growing up in the vibrant suburb of Mckinnon in Melbourne, Australia, I spent my childhood surrounded by adventure and curiosity. I loved playing basketball and catching the waves while surfing. In 2015, I made a significant move to Canada, which has been my home ever since. From a young age, I was captivated by technology, often dismantling anything I could get my hands on just to understand how it worked before putting it back together. In fact, the first time I "solved" a Rubik's cube, I did so by pulling it apart and carefully reassembling the pieces.</p>
+                    </div>
+                </div>
 
-        <!-- First Paragraph with Left Photo -->
-        <div class="about-block">
-            <div class="about-photo left" data-aos="zoom-in-right">
-                <img src="../Photos/Photo1.jpg" alt="Childhood Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>Growing up in the vibrant suburb of Mckinnon in Melbourne, Australia, I spent my childhood surrounded by
-                    adventure and curiosity. I loved playing basketball and catching the waves while surfing. In 2015, I
-                    made a significant move to Canada, which has been my home ever since. From a young age, I was captivated
-                    by technology, often dismantling anything I could get my hands on just to understand how it worked
-                    before putting it back together. In fact, the first time I "solved" a Rubik's cube, I did so by pulling
-                    it apart and carefully reassembling the pieces.</p>
-            </div>
-        </div>
+                <!-- Second Paragraph with Right Photo -->
+                <div class="about-block">
+                    <div class="about-photo right" data-aos="zoom-in-left">
+                        <img src="../Photos/Photo2.jpeg" alt="Engineering Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-right">
+                        <p>I once dreamed of becoming a heart surgeon, even delivering a Grade 6 graduation speech on it, I quickly realized my passion lay in engineering. I began coding, creating small apps and games on Scratch, and developing my skills through hands-on experimentation. Over the years, my passion only deepened, leading me to enroll in computer science classes both in and out of high school. This journey sparked the creation of apps like "Battle of the Bands" – an iOS strategy game where players tactically command units like Woodwinds, Brass, and Percussion – and "Trivia Time," an exam-preparation app for high school courses.</p>
+                    </div>
+                </div>
 
-        <!-- Second Paragraph with Right Photo -->
-        <div class="about-block">
-            <div class="about-photo right" data-aos="zoom-in-left">
-                <img src="../Photos/Photo2.jpeg" alt="Engineering Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>I once dreamed of becoming a heart surgeon, even delivering a Grade 6 graduation speech on it, I quickly
-                    realized my passion lay in engineering. I began coding, creating small apps and games on Scratch, and
-                    developing my skills through hands-on experimentation. Over the years, my passion only deepened, leading
-                    me to enroll in computer science classes both in and out of high school. This journey sparked the
-                    creation of apps like "Battle of the Bands" – an iOS strategy game where players tactically command
-                    units like Woodwinds, Brass, and Percussion – and "Trivia Time," an exam-preparation app for high school
-                    courses.</p>    
-            </div>
-        </div>
+                <!-- Third Paragraph with Left Photo -->
+                <div class="about-block">
+                    <div class="about-photo left" data-aos="zoom-in-right">
+                        <img src="../Photos/Photo3.jpeg" alt="University Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <p>After high school, I planned to attend Monash University in Australia for a Bachelor of Engineering with honors, but the COVID-19 pandemic shifted my path. I stayed in Canada and enrolled at McMaster University for Software Engineering. My time at McMaster has been incredibly rewarding; I got involved with the McMaster Engineering Society, serving as a First-Year Representative and organizing events like hackathons to foster community engagement. I also took on the role of a Welcome Week Rep, helping incoming students transition smoothly into university life. Now set to graduate in April 2025, I'm excited to continue building my career in software engineering, blending creativity with problem-solving.</p>
+                    </div>
+                </div>
+            </div> <!-- End of journey-section collapsible-content -->
+        </div> <!-- End of journey-section -->
 
-        <!-- Third Paragraph with Left Photo -->
-        <div class="about-block">
-            <div class="about-photo left" data-aos="zoom-in-right">
-                <img src="../Photos/Photo3.jpeg" alt="University Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>After high school, I planned to attend Monash University in Australia for a Bachelor of Engineering with
-                    honors, but the COVID-19 pandemic shifted my path. I stayed in Canada and enrolled at McMaster
-                    University for Software Engineering. My time at McMaster has been incredibly rewarding; I got involved
-                    with the McMaster Engineering Society, serving as a First-Year Representative and organizing events like
-                    hackathons to foster community engagement. I also took on the role of a Welcome Week Rep, helping
-                    incoming students transition smoothly into university life. Now set to graduate in April 2025, I'm
-                    excited to continue building my career in software engineering, blending creativity with
-                    problem-solving.</p>    
-            </div>
-        </div>
+        <!-- Collapsible Section 2: The Career Chronicles -->
+        <div id="career-section" class="collapsible-section">
+            <h2 class="collapsible-header" data-aos="fade-up">The Career Chronicles</h2>
+            <div class="collapsible-content">
+                <!-- Career Chronicle 1: Rides Operator -->
+                <div class="about-block">
+                    <div class="about-photo right" data-aos="zoom-in-left">
+                        <img src="../Photos/Photo9.jpeg" alt="Rides Operator Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-right">
+                        <p>My journey in the working world kicked off with a thrilling start as a Rides Operator at Canada's Wonderland. Talk about an epic first job! I got an insider's look at how those intricate roller coasters functioned. It was fascinating to be part of the team that made the magic happen. I gained an appreciation for the complexity behind every twist, turn, and loop. Plus, it wasn’t just about pushing buttons—it was learning how safety systems worked, managing crowd control, and mastering the art of a perfect “enjoy the ride!” wave. Not to mention, I got to experience the joy (and sometimes terror) on people’s faces firsthand.</p>
+                    </div>
+                </div>
 
+                <!-- Career Chronicle 2: Coding Camp Counselor -->
+                <div class="about-block">
+                    <div class="about-photo left" data-aos="zoom-in-right">
+                        <img src="../Photos/Photo7.jpg" alt="Camp Counselor Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <p>From there, I switched gears to something even closer to my heart: a camp counselor at a coding camp. This job was easily one of my favorites. Imagine spending your days teaching eager kids how to code while watching them struggle, understand, and finally break into smiles of triumph—just like I did when I first started out. It was incredibly rewarding to see them grow and share that spark of excitement I had for tech. Plus, I got to brush up on my own skills in the process (turns out, explaining recursion to an 8-year-old is harder than you'd think!).</p>
+                    </div>
+                </div>
 
-        <h2>The Career Chronicles</h2>
+                <!-- Career Chronicle 3: Gore Mutual -->
+                <div class="about-block">
+                    <div class="about-photo right" data-aos="zoom-in-left">
+                        <img src="../Photos/Photo6.png" alt="Gore Mutual Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-right">
+                        <p>Next came my role at Gore Mutual, which was originally supposed to last just four months. But hey, I guess they liked my passion, work ethic, and dedication because I ended up staying there for over two and a half years! It was an amazing experience working in such a dynamic environment, learning the ropes of corporate life, and applying my problem-solving skills to real-world challenges. This job helped me sharpen my time management, communication, and technical skills, all while giving me a sense of pride in the impact I was making. It was like leveling up in a game, one project at a time.</p>
+                    </div>
+                </div>
 
-        <!-- Career Chronicle 1: Rides Operator -->
-        <div class="about-block">
-            <div class="about-photo right" data-aos="zoom-in-left">
-                <img src="../Photos/Photo9.jpeg" alt="Rides Operator Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>My journey in the working world kicked off with a thrilling start as a Rides Operator at Canada's
-                    Wonderland. Talk about an epic first job! I got an insider's look at how those intricate roller coasters
-                    functioned. It was fascinating to be part of the team that made the magic happen. I gained an
-                    appreciation for the complexity behind every twist, turn, and loop. Plus, it wasn’t just about pushing
-                    buttons—it was learning how safety systems worked, managing crowd control, and mastering the art of a
-                    perfect “enjoy the ride!” wave. Not to mention, I got to experience the joy (and sometimes terror) on
-                    people’s faces firsthand.</p>    
-            </div>
-        </div>
+                <!-- Career Chronicle 4: Project Coordinator -->
+                <div class="about-block">
+                    <div class="about-photo left" data-aos="zoom-in-right">
+                        <img src="../Photos/Photo5.JPG" alt="Project Coordinator Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <p>After that, I took on the role of Project Coordinator at the Terry Fox Cancer Research Institute. Here, I spent four months juggling multiple tasks, coordinating projects, and even doing a bit of inventory magic. It was a whirlwind of packing boxes, promoting research in schools, and ensuring financial records were shipshape. This job not only strengthened my organizational skills but also gave me a profound sense of purpose. Working for a cause that impacts so many lives was humbling and truly eye-opening.</p>
+                    </div>
+                </div>
 
-        <!-- Career Chronicle 2: Coding Camp Counselor -->
-        <div class="about-block">
-            <div class="about-photo left" data-aos="zoom-in-right">
-                <img src="../Photos/Photo7.jpg" alt="Camp Counselor Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>From there, I switched gears to something even closer to my heart: a camp counselor at a coding camp.
-                    This job was easily one of my favorites. Imagine spending your days teaching eager kids how to code
-                    while watching them struggle, understand, and finally break into smiles of triumph—just like I did when
-                    I first started out. It was incredibly rewarding to see them grow and share that spark of excitement I
-                    had for tech. Plus, I got to brush up on my own skills in the process (turns out, explaining recursion
-                    to an 8-year-old is harder than you'd think!).</p>    
-            </div>
-        </div>
+                <!-- Career Chronicle 5: Summary -->
+                <div class="about-block">
+                    <div class="about-photo right" data-aos="zoom-in-left">
+                        <img src="../Photos/Photo4.JPG" alt="Summary Photo">
+                    </div>
+                    <div class="about-text" data-aos="fade-right">
+                        <p>Each of these roles taught me so much and shaped me both personally and professionally. I’ve learned to navigate complex systems, whether it's roller coasters or project plans, and developed a knack for communicating and leading in different environments. They were all amazing stepping stones, each contributing to who I am today.</p>
+                    </div>
+                </div>
 
-        <!-- Career Chronicle 3: Gore Mutual -->
-        <div class="about-block">
-            <div class="about-photo right" data-aos="zoom-in-left">
-                <img src="../Photos/Photo6.png" alt="Gore Mutual Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>Next came my role at Gore Mutual, which was originally supposed to last just four months. But hey, I
-                    guess they liked my passion, work ethic, and dedication because I ended up staying there for over two
-                    and a half years! It was an amazing experience working in such a dynamic environment, learning the ropes
-                    of corporate life, and applying my problem-solving skills to real-world challenges. This job helped me
-                    sharpen my time management, communication, and technical skills, all while giving me a sense of pride in
-                    the impact I was making. It was like leveling up in a game, one project at a time.</p>      
-            </div>
-        </div>
+                <!-- Career Chronicle 6: Future -->
+                <div class="about-block">
+                    <!-- No photo for this block -->
+                    <div class="about-text full-width" data-aos="fade-up">
+                        <p>Now, I’m on the lookout for my next adventure. What challenges and opportunities await? I can’t wait to find out!</p>
+                    </div>
+                </div>
+            </div> <!-- End of career-section collapsible-content -->
+        </div> <!-- End of career-section -->
 
-        <!-- Career Chronicle 4: Project Coordinator -->
-        <div class="about-block">
-            <div class="about-photo left" data-aos="zoom-in-right">
-                <img src="../Photos/Photo5.JPG" alt="Project Coordinator Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>After that, I took on the role of Project Coordinator at the Terry Fox Cancer Research Institute. Here, I
-                    spent four months juggling multiple tasks, coordinating projects, and even doing a bit of inventory
-                    magic. It was a whirlwind of packing boxes, promoting research in schools, and ensuring financial
-                    records were shipshape. This job not only strengthened my organizational skills but also gave me a
-                    profound sense of purpose. Working for a cause that impacts so many lives was humbling and truly
-                    eye-opening.</p>    
-            </div>
-        </div>
-
-        <!-- Career Chronicle 5: Summary  -->
-        <div class="about-block">
-            <div class="about-photo right" data-aos="zoom-in-left">
-                <img src="../Photos/Photo4.JPG" alt="Project Coordinator Photo">
-            </div>
-            <div class="about-text" data-aos="fade-up">
-                <p>Each of these roles taught me so much and shaped me both personally and professionally. I’ve learned to
-                    navigate complex systems, whether it's roller coasters or project plans, and developed a knack for
-                    communicating and leading in different environments. They were all amazing stepping stones, each
-                    contributing to who I am today.</p>
-    
-                  
-            </div>
-        </div>
-
-        <!-- Career Chronicle 6: Future -->
-        <div class="about-block">
-            <!--<div class="about-photo left" data-aos="zoom-in-right">
-                <img src="../Photos/Photo8.JPG" alt="Project Coordinator Photo">
-            </div>-->
-            <div class="about-text" data-aos="fade-up">
-                <p>Now, I’m on the lookout for my next adventure. What challenges and opportunities await? I can’t wait to
-                    find out!</p> 
-            </div>
-        </div>
-
-        <h2>Skills and Certifications</h2>
+        <!-- Skills and Certifications Section (Moved outside collapsible sections) -->
+        <h2 data-aos="fade-up">My Engineering DNA</h2>
 
         <!-- Skills Tabs Section -->
-        <div id="tabs" data-aos="zoom-in" data-aos-duration="800">
+        <div id="tabs" data-aos="zoom-in" data-aos-duration="800" class="typewriter-tabs">
             <ul>
-                <li><a href="#tabs-1">Skills & Certifications</a></li>
-                <li><a href="#tabs-2">Courswork</a></li>
-                <li><a href="#tabs-3">Goals</a></li>
-                <li><a href="#tabs-4">Interests & Hobbies</a></li>
+                <li><a href="#tabs-1">Programming Languages</a></li>
+                <li><a href="#tabs-2">Frameworks & Tech</a></li>
+                <li><a href="#tabs-3">Soft Skills</a></li>
+                <li><a href="#tabs-4">Certifications</a></li>
+                <li><a href="#tabs-5">Coursework</a></li>
+                <li><a href="#tabs-6">Goals</a></li>
+                <li><a href="#tabs-7">Interests</a></li>
             </ul>
-            <div id="tabs-1" data-aos="zoom-in" data-aos-duration="800">
-                <!-- Technical Skills Bar -->
-                <div class="skills-block">
-                    <h1>Technical Skills</h1>
-                    <div class="skill-bar" data-skill="90%">Python</div>
-                    <div class="skill-bar" data-skill="80%">Java</div>
-                    <div class="skill-bar" data-skill="70%">JavaScript</div>
-                    <div class="skill-bar" data-skill="70%">TypeScript</div>
-                    <div class="skill-bar" data-skill="70%">SQL</div>
-                    <div class="skill-bar" data-skill="70%">Swift</div>
-                    <div class="skill-bar" data-skill="70%">C++</div>
-                    <div class="skill-bar" data-skill="60%">HTML</div>
-
-                    <!-- Add more skills here as needed -->
+            <div id="tabs-1" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Programming Languages Skills -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">⌨️</span>
+                    <h3>Programming Languages</h3>
                 </div>
-                <h2>Certifications</h2>
-                <ul>
-                    <li>AWS Certified Solutions Architect</li>
-                    <li>Meta Android & iOS Developer Certificate</li>
-                    <!-- Add more certifications here as needed -->
-                </ul>
+                <div class="skills-container">
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Python</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Java</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">JavaScript</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">TypeScript</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">SQL</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Swift</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">C++</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">HTML/CSS</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="85%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="tabs-2">
-                <h2>Coursework</h2>
-                <ul>
-                    <li>Data Structures & Algorithms</li>
-                    <li>Web Development</li>
-                    <!-- Add more interests here as needed -->
-                </ul>
+            
+            <div id="tabs-2" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Frameworks & Technologies -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">🔧</span>
+                    <h3>Frameworks & Technologies</h3>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">React</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Node.js</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Spring Boot</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Git/GitHub</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Docker</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">AWS</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">MongoDB</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">CI/CD Pipelines</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="85%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="tabs-3">
-                <h2>Goals</h2>
-                <ul>
-                    <li>Artificial Intelligence</li>
-                    <li>Web Development</li>
-                    <!-- Add more interests here as needed -->
-                </ul>
+            
+            <div id="tabs-3" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Soft Skills -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">🧠</span>
+                    <h3>Soft Skills</h3>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Teamwork</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Problem Solving</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Communication</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Time Management</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Adaptability</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-label">Critical Thinking</div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-skill="90%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="tabs-4">
-                <h2>Interests & Hobbies</h2>
-                <ul>
-                    <li>Artificial Intelligence</li>
-                    <li>Web Development</li>
-                    <!-- Add more interests here as needed -->
-                </ul>
+            
+            <div id="tabs-4" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Certifications -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">🏆</span>
+                    <h3>Certifications</h3>
+                </div>
+                <div class="certification-container">
+                    <div class="certification-item">
+                        <div class="certification-icon">📜</div>
+                        <div class="certification-details">
+                            <h4>AWS Cloud Practitioner</h4>
+                            <p>Validation of fundamental AWS knowledge and cloud expertise - Certification Pending</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">📜</div>
+                        <div class="certification-details">
+                            <h4>Amplify Me Finance Accelerator Certificate</h4>
+                            <p>Amplify ME: Investment Bank - Sales & Trading, Asset Management - Portfolios in Practice</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">📜</div>
+                        <div class="certification-details">
+                            <h4>Oracle Certified Associate Java Programmer</h4>
+                            <p>Proficiency in Java programming fundamentals</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">📜</div>
+                        <div class="certification-details">
+                            <h4>Microsoft Certified: Azure Fundamentals</h4>
+                            <p>Foundation in Microsoft Azure cloud services and concepts</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">📜</div>
+                        <div class="certification-details">
+                            <h4>Scrum Foundation Professional Certificate</h4>
+                            <p>Knowledge of Scrum framework and Agile methodologies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-5" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Coursework -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">📚</span>
+                    <h3>Coursework</h3>
+                </div>
+                <div class="coursework-container">
+                    <div class="coursework-item">
+                        <div class="coursework-icon">📊</div>
+                        <div class="coursework-name">Data Structures & Algorithms</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">🌐</div>
+                        <div class="coursework-name">Web Development (Full Stack)</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">💾</div>
+                        <div class="coursework-name">Database Management Systems</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">🔄</div>
+                        <div class="coursework-name">Software Engineering Principles</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">🧩</div>
+                        <div class="coursework-name">Object-Oriented Programming</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">📱</div>
+                        <div class="coursework-name">Mobile App Development</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">☁️</div>
+                        <div class="coursework-name">Cloud Computing</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">🤖</div>
+                        <div class="coursework-name">Artificial Intelligence Fundamentals</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">🔌</div>
+                        <div class="coursework-name">Computer Networks</div>
+                    </div>
+                    <div class="coursework-item">
+                        <div class="coursework-icon">💻</div>
+                        <div class="coursework-name">Operating Systems</div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-6" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Professional Goals -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">🎯</span>
+                    <h3>Professional Goals</h3>
+                </div>
+                <div class="goals-container">
+                    <div class="goal-item">
+                        <div class="goal-icon">🔧</div>
+                        <div class="goal-text">Master full-stack development with modern frameworks</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🌟</div>
+                        <div class="goal-text">Contribute to open-source projects to build portfolio</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">☁️</div>
+                        <div class="goal-text">Develop expertise in cloud architecture and deployment</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🤖</div>
+                        <div class="goal-text">Learn machine learning and AI application development</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">📜</div>
+                        <div class="goal-text">Obtain advanced AWS certifications</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">👥</div>
+                        <div class="goal-text">Mentor junior developers and improve leadership skills</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">📱</div>
+                        <div class="goal-text">Develop a mobile application with 10,000+ downloads</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🎤</div>
+                        <div class="goal-text">Present at a tech conference within the next three years</div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-7" data-aos="zoom-in" data-aos-duration="800" class="typewriter-content">
+                <!-- Interests & Hobbies -->
+                <div class="typewriter-header">
+                    <span class="typewriter-icon">🎮</span>
+                    <h3>Interests & Hobbies</h3>
+                </div>
+                <div class="interests-container">
+                    <div class="interest-item">
+                        <div class="interest-icon">🏦</div>
+                        <div class="interest-text">Financial Markets and Algorithmic Trading</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🧠</div>
+                        <div class="interest-text">Artificial Intelligence research</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🎨</div>
+                        <div class="interest-text">Web Development and UI/UX design</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">💻</div>
+                        <div class="interest-text">Hackathons and coding competitions</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">👥</div>
+                        <div class="interest-text">Tech meetups and conferences</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">✈️</div>
+                        <div class="interest-text">Travel and exploring new cultures</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">📷</div>
+                        <div class="interest-text">Photography and digital media</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">📚</div>
+                        <div class="interest-text">Reading</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🏀</div>
+                        <div class="interest-text">Basketball and other team sports</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -262,21 +521,71 @@
     <script src="../JavaScript/scrollToTop.js"></script>
     <script src="../JavaScript/themeSwitcher.js"></script>
     <script src="../JavaScript/socialShare.js"></script>
+    <script src="../JavaScript/about_me.js"></script>
     <button id="themeToggle" title="Toggle theme">🌗</button>
     <button id="scrollToTopBtn" title="Go to top">⬆️</button>
     <script>
         $(function () {
+            // Initialize tabs with the new structure
             $("#tabs").tabs();
+            
+            // Add typewriter sound effect on tab click
+            $("#tabs ul li a").on('click', function() {
+                playTypewriterSound();
+            });
+            
+            // Skill bar animation with typewriter effect
+            $('.skill-bar').each(function (index) {
+                var $this = $(this);
+                var skillLevel = $this.data('skill');
+                setTimeout(function () {
+                    $this.css('width', skillLevel);
+                    // Add subtle typing animation to the skill bars
+                    if ($this.text().length > 0) {
+                        $this.css('color', '#fff');
+                    }
+                }, 500 + (index * 100)); // Staggered animation
+            });
+            
+            // Add hover effect to all items with icons
+            $('.certification-item, .coursework-item, .goal-item, .interest-item').hover(function() {
+                $(this).find('div[class$="-icon"]').css('transform', 'rotate(10deg)');
+            }, function() {
+                $(this).find('div[class$="-icon"]').css('transform', 'rotate(0deg)');
+            });
         });
-
-        // Skill bar animation
-        $('.skill-bar').each(function () {
-            var $this = $(this);
-            var skillLevel = $this.data('skill');
-            setTimeout(function () {
-                $this.css('width', skillLevel);
-            }, 1000);
-        });
+        
+        // Simulate typewriter sound
+        function playTypewriterSound() {
+            // Create a simple click sound
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.type = 'square';
+            oscillator.frequency.value = 800;
+            gainNode.gain.value = 0.1;
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.start();
+            setTimeout(() => {
+                oscillator.stop();
+            }, 50);
+        }
+        
+        // Add cursor blink effect to skill bars
+        setInterval(function() {
+            $('.skill-bar').each(function() {
+                if ($(this).width() > 0) {
+                    $(this).append('<span class="cursor-blink">|</span>');
+                    setTimeout(function() {
+                        $('.cursor-blink').remove();
+                    }, 50);
+                }
+            });
+        }, 1000);
     </script>
 </body>
 

@@ -1,0 +1,295 @@
+/* Typewriter-themed Skills Section Styles */
+
+/* Tabs container with typewriter styling */
+.typewriter-tabs {
+    background-color: #f5f1e6 !important; /* Vintage paper color */
+    border: 2px solid #8b7d6b !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(139, 125, 107, 0.1) !important;
+    padding: 20px !important;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* Add typewriter texture overlay */
+.typewriter-tabs::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(0,0,0,0.03)" stroke-width="0.5"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 6px;
+}
+
+/* Tab navigation styling */
+.typewriter-tabs > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: #e0d8c8 !important;
+    border: 1px solid #8b7d6b !important;
+    border-radius: 5px !important;
+    padding: 5px !important;
+    position: relative;
+    z-index: 2;
+}
+
+.typewriter-tabs > ul > li {
+    margin: 0 !important;
+}
+
+.typewriter-tabs > ul > li > a {
+    background-color: #d0c8b8 !important;
+    color: #5a4a3f !important;
+    border: 1px solid #8b7d6b !important;
+    border-radius: 5px !important;
+    padding: 8px 12px !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.typewriter-tabs > ul > li > a:hover {
+    background-color: #c0b8a8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.typewriter-tabs > ul > li.ui-tabs-active > a {
+    background-color: #8b7d6b !important;
+    color: #f5f1e6 !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(0);
+}
+
+/* Tab content styling */
+.typewriter-content {
+    background-color: #f5f1e6 !important;
+    border: 1px solid #8b7d6b !important;
+    border-radius: 0 0 5px 5px !important;
+    padding: 20px !important;
+    position: relative;
+    z-index: 2;
+    margin-top: 10px !important;
+}
+
+/* Typewriter heading */
+.typewriter-heading {
+    font-family: 'Courier New', Courier, monospace !important;
+    color: #5a4a3f !important;
+    border-bottom: 2px solid #8b7d6b !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 20px !important;
+    position: relative;
+    display: inline-block;
+}
+
+.typewriter-heading::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #8b7d6b, transparent);
+}
+
+/* Skill container with typewriter key */
+.typewriter-skill-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Skill bar styling */
+.typewriter-skill-container .skill-bar {
+    flex: 1;
+    height: 35px;
+    background-color: #5a4a3f !important;
+    color: #f5f1e6 !important;
+    border-radius: 4px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Typewriter key styling */
+.typewriter-key {
+    width: 40px;
+    height: 40px;
+    background-color: #d0c8b8;
+    border: 2px solid #8b7d6b;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #5a4a3f;
+    margin-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+    position: relative;
+    transform: rotate(2deg);
+    transition: all 0.2s ease;
+}
+
+.typewriter-key:hover {
+    transform: rotate(-2deg) scale(1.1);
+}
+
+/* Typewriter key press effect */
+.typewriter-skill-container:hover .typewriter-key {
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Certification list styling */
+.certification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.certification-item {
+    display: flex;
+    align-items: center;
+    background-color: #e0d8c8;
+    border: 1px solid #8b7d6b;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.certification-item .typewriter-key {
+    width: 60px;
+    height: 40px;
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+.certification-item p {
+    margin: 0;
+    color: #5a4a3f;
+    font-weight: bold;
+}
+
+/* Typewriter ribbon effect for skill bars */
+.skill-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.3), 
+        rgba(255,255,255,0.5), 
+        rgba(255,255,255,0.3));
+}
+
+/* Add typewriter sound effect with JavaScript */
+.typewriter-sound {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+/* Dark mode styles */
+body.dark-theme .typewriter-tabs {
+    background-color: #2a2a2a !important;
+    border-color: #555 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .typewriter-tabs > ul {
+    background-color: #333 !important;
+    border-color: #555 !important;
+}
+
+body.dark-theme .typewriter-tabs > ul > li > a {
+    background-color: #444 !important;
+    color: #ddd !important;
+    border-color: #555 !important;
+}
+
+body.dark-theme .typewriter-tabs > ul > li > a:hover {
+    background-color: #555 !important;
+}
+
+body.dark-theme .typewriter-tabs > ul > li.ui-tabs-active > a {
+    background-color: #666 !important;
+    color: #fff !important;
+}
+
+body.dark-theme .typewriter-content {
+    background-color: #2a2a2a !important;
+    border-color: #555 !important;
+}
+
+body.dark-theme .typewriter-heading {
+    color: #ddd !important;
+    border-bottom-color: #555 !important;
+}
+
+body.dark-theme .typewriter-skill-container .skill-bar {
+    background-color: #444 !important;
+    color: #ddd !important;
+}
+
+body.dark-theme .typewriter-key {
+    background-color: #444;
+    border-color: #555;
+    color: #ddd;
+}
+
+body.dark-theme .certification-item {
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-theme .certification-item p {
+    color: #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .typewriter-tabs > ul {
+        flex-direction: column;
+    }
+    
+    .typewriter-skill-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .typewriter-key {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    .certification-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .certification-item .typewriter-key {
+        margin-bottom: 10px;
+    }
+}

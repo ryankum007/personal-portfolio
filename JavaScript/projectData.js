@@ -2,178 +2,194 @@
 const projectData = [
     {
         id: 1,
+        title: "IoT/Embedded Smart Fire Alarm System",
+        type: "Hardware",
+        techStack: ["ESP32", "React", "MQTT", "MongoDB", "Thermal Imaging"],
+        //image: "../Photos/fire-alarm-system.jpg",
+        shortDescription: "Multi-sensor fire detection platform with real-time dashboard and emergency alerts",
+        details: [
+          "Designed and engineered a smart fire alarm integrating ESP32 with sensors for smoke, temperature, humidity, and CO levels.",
+          "Built a real-time dashboard using React and MQTT to visualize sensor readings and trigger alerts within milliseconds.",
+          "Logged data to MongoDB for persistence and trend analysis across 400+ fire simulation trials.",
+          "Reduced false alarms by 75% through environmental calibration algorithms and redundancy checks.",
+          "Cut detection latency by 60 seconds on average compared to commercial systems through optimized data streaming.",
+          "Tested across varied indoor environments for robustness in smoke, heat, and multi-sensor edge cases."
+        ]
+      },
+      {
+        id: 2,
+        title: "SoleMate",
+        type: "Mobile",
+        techStack: ["React Native", "TensorFlow", "REST API", "CNN", "Cloud Hosting"],
+        //image: "../Photos/solemate.jpg",
+        shortDescription: "Mobile app that classifies shoes from user photos using CNN-based AI",
+        details: [
+          "Built and deployed a React Native app for real-time shoe recognition powered by a CNN trained on 10K+ samples.",
+          "Connected front-end to a REST API backend for image classification with TensorFlow on the cloud.",
+          "Applied transfer learning and data augmentation to achieve 92% classification accuracy in varied lighting conditions.",
+          "Reduced average inference time by 45% using optimized model quantization and hosted endpoints.",
+          "Enabled users to browse product suggestions or verify authenticity based on model confidence scores."
+        ]
+      },
+      {
+        id: 3,
+        title: "TimeTracker+",
+        type: "Web",
+        techStack: ["Angular", "Node.js", "PostgreSQL", "AWS", "EC2", "RDS", "S3"],
+        //image: "../Photos/time-tracker.png",
+        shortDescription: "Enterprise-grade dashboard for time tracking, cost allocation, and team analytics",
+        details: [
+          "Built a full-stack Angular + Node.js application to manage employee work hours and departmental costs.",
+          "Implemented secure REST APIs for data submission and querying with full token-based auth and rate-limiting.",
+          "Deployed infrastructure on AWS (EC2 for backend, RDS for data, S3 for logs) with CI/CD for automated updates.",
+          "Designed data visualizations for burn rate and cost analytics, enabling finance teams to identify inefficiencies.",
+          "Adhered to OWASP standards and ensured GDPR-compliant data storage practices across all modules."
+        ]
+      },
+      
+      {
+        id: 4,
         title: "Algorithmic Trading Platform",
         type: "AI",
         techStack: ["Python", "C++", "TensorFlow", "PyTorch", "Docker"],
-        image: "../Photos/trading-algo.png", 
-        shortDescription: "Next-generation high-frequency trading platform with advanced ML algorithms for market prediction",
+        //image: "../Photos/trading-algo.png",
+        shortDescription: "High-frequency trading system using ML to predict market trends.",
         details: [
-            "Architected a cutting-edge high-frequency trading (HFT) platform capable of executing 10,000+ trades per second with sub-millisecond latency",
-            "Engineered custom C++ kernel modules for ultra-fast market data processing, reducing execution time by 73% compared to industry standard solutions",
-            "Implemented ensemble of LSTM, Transformer, and custom neural network models for predictive analytics with 81% directional accuracy",
-            "Integrated with 15+ global exchanges and dark pools via custom FIX protocol implementation",
-            "Achieved 15% ROI in the first quarter post-launch, outperforming benchmark indices by 11.3%",
-            "Developed automated backtesting framework running 10,000+ simulations daily across 20 years of historical data"
+          "Built a trading engine in C++ that could execute thousands of trades per second.",
+          "Used Python to train LSTM and Transformer models to predict stock price direction.",
+          "Connected the platform to multiple exchanges using a custom protocol handler.",
+          "Set up daily backtests on historical data to measure model performance.",
+          "Tracked return on investment over time to compare with market benchmarks.",
+          "Used Docker for environment setup and job automation."
         ]
-    },
-    {
-        id: 2,
+      },
+      {
+        id: 5,
         title: "Climate Trends Visualizer",
         type: "Web",
         techStack: ["Python", "Flask", "React", "D3.js", "AWS", "GIS"],
-        image: "../Photos/weather-trends.png",
-        shortDescription: "Interactive visualization platform transforming complex climate data into actionable insights with ML-powered forecasting",
+        //image: "../Photos/weather-trends.png",
+        shortDescription: "Web tool to explore climate data with charts and maps.",
         details: [
-            "Developed a groundbreaking web platform processing and visualizing 2.3 petabytes of global climate data from 1970-present",
-            "Engineered custom GIS integration for high-resolution mapping of climate patterns with 1km² precision worldwide",
-            "Built scalable Flask backend using AWS Lambda and DynamoDB for real-time data processing of satellite imagery",
-            "Created interactive React components with D3.js visualizations handling 10+ million data points with 60fps performance",
-            "Implemented ML models with 95% prediction accuracy for temperature and precipitation forecasting up to 10 years in advance",
-            "Featured by National Geographic and the World Economic Forum for its impact on climate research and policy development"
+          "Created a Flask API to serve global weather data going back several decades.",
+          "Used React and D3.js to build charts that update in real time with filters.",
+          "Mapped climate patterns using GIS layers with location-based filtering.",
+          "Deployed to AWS with Lambda for backend and S3 for static site hosting.",
+          "Added temperature and rainfall prediction models with 90%+ accuracy.",
+          "Worked with large datasets and handled data cleaning and formatting."
         ]
-    },
-    {
-        id: 3,
+      },
+      {
+        id: 6,
         title: "Personal Finance Tracker",
         type: "Mobile",
         techStack: ["React Native", "Node.js", "MongoDB", "TensorFlow", "AWS Amplify"],
-        image: "../Photos/personal-finance-tracker.png",
-        shortDescription: "Revolutionary cross-platform finance app with AI-powered insights, predictive budgeting, and multi-bank integration",
+        //image: "../Photos/personal-finance-tracker.png",
+        shortDescription: "Mobile app that helps users track spending and budget better.",
         details: [
-            "Designed and launched a feature-rich mobile finance platform with 99.9% uptime and military-grade encryption",
-            "Implemented seamless integration with 500+ financial institutions worldwide via OAuth2.0 authentication",
-            "Engineered custom TensorFlow models analyzing 2+ years of transaction data to predict spending patterns with 92% accuracy",
-            "Built real-time notification system processing 10,000+ daily alerts with less than 100ms latency",
-            "Reduced users' average financial management time by 6.2 hours monthly while improving savings rates by 30%",
-            "Scaled to 250,000+ users within 6 months of launch with 4.8/5 average rating across app stores"
+          "Built a finance app in React Native with secure user login and data sync.",
+          "Used Node.js and MongoDB for backend storage of user transactions.",
+          "Connected to banks using OAuth for pulling in transaction history.",
+          "Trained a TensorFlow model to give budgeting tips based on spending habits.",
+          "Sent notifications for large transactions or unusual activity.",
+          "Deployed with AWS Amplify for fast release and scaling."
         ]
-    },
-    {
-        id: 4,
+      },
+      {
+        id: 7,
         title: "Blood Supply Optimization",
         type: "AI",
         techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "Prophet", "Tableau"],
-        image: "../Photos/blood-supply-algo.png",
-        shortDescription: "Life-saving AI system revolutionizing hospital blood inventory management with predictive analytics",
+        //image: "../Photos/blood-supply-algo.png",
+        shortDescription: "AI tool to help hospitals better manage blood inventory.",
         details: [
-            "Created an award-winning AI system that revolutionized blood supply chain management across 26 major hospitals",
-            "Developed sophisticated time-series forecasting models analyzing 10+ years of transfusion records and seasonal patterns",
-            "Engineered custom patient classification algorithms to predict blood type demand with 96.7% accuracy",
-            "Reduced emergency blood transfers between facilities by 78% through intelligent distribution optimization",
-            "Decreased blood wastage by 42% annually, saving an estimated $3.6M in healthcare costs",
-            "Presented research findings at the International Society of Blood Transfusion conference, receiving industry recognition"
+          "Analyzed blood usage data from hospitals to forecast demand by blood type.",
+          "Used Prophet and Scikit-learn to build time series models.",
+          "Built dashboards in Tableau to show predictions and inventory needs.",
+          "Helped reduce waste and improve delivery between hospital locations.",
+          "Cleaned and organized years of transfusion data for use in ML models.",
+          "Worked with doctors and hospital admins to gather system feedback."
         ]
-    },
-    {
-        id: 5,
-        title: "Advanced Smoke Detector",
-        type: "Hardware",
-        techStack: ["C/C++", "ARM", "TensorFlow Lite", "IoT", "AWS IoT Core"],
-        image: "../Photos/smoke_detector_image.jpg",
-        shortDescription: "Next-gen IoT smoke detection system with AI environmental analysis and automated emergency response",
-        details: [
-            "Engineered a revolutionary smoke detection system with multi-spectral sensors capable of identifying 15+ types of fire hazards",
-            "Designed custom PCB with ARM Cortex-M7 microcontroller optimized for edge AI processing with 20+ hour backup power",
-            "Implemented TensorFlow Lite models that distinguish between cooking smoke, chemical fires, and false positives with 99.8% accuracy",
-            "Created mesh network capability allowing 200+ units to communicate across 50,000+ sq ft buildings with redundant connectivity",
-            "Integrated with smart home systems and emergency services reducing average response time by 3.2 minutes",
-            "Awarded two patents for novel detection algorithms and distributed sensing architecture"
-        ]
-    },
-    {
-        id: 6,
+      },
+      {
+        id: 8,
         title: "Deep-Space Analogue Research",
         type: "Hardware",
         techStack: ["Python", "C/C++", "MQTT", "ROS", "Node.js", "Three.js"],
-        image: "../Photos/dare_project_image.jpg",
-        shortDescription: "Pioneering autonomous drone swarm system for mapping extreme and extraterrestrial-like environments",
+        //image: "../Photos/dare_project_image.jpg",
+        shortDescription: "Drone system for mapping caves with no GPS signal.",
         details: [
-            "Led development of a revolutionary drone swarm system that autonomously maps geologically complex cave systems unreachable by humans",
-            "Engineered multi-spectral sensor array capturing 6TB+ of environmental data per mission across light, radiation, gas composition and geological formations",
-            "Designed fault-tolerant communication system maintaining connectivity 1.2km underground with 99.97% reliability",
-            "Created stunning 3D visualization platform with Three.js and custom WebGL shaders processing billion+ data points",
-            "Implemented autonomous path-finding algorithms enabling drones to navigate through unmapped terrain with 10cm precision",
-            "System adopted by NASA JPL for Mars cave exploration simulation and extreme environment research"
+          "Built a drone control system that sends sensor data through MQTT.",
+          "Used ROS to coordinate tasks like movement and sensor logging.",
+          "Mapped cave environments with multiple drones using real-time data.",
+          "Built a 3D viewer with Three.js to see the environment as the drones explored.",
+          "Handled offline logging and fault handling when connections dropped.",
+          "Tested the system in analog environments for space exploration."
         ]
-    },
-    {
-        id: 7,
+      },
+      {
+        id: 9,
         title: "SMART Intersection System",
         type: "AI",
         techStack: ["MATLAB", "Simulink", "Reinforcement Learning", "Computer Vision", "5G"],
-        image: "../Photos/autonomous_car_image.jpg",
-        shortDescription: "Revolutionary traffic control system for autonomous vehicles using distributed reinforcement learning",
+        //image: "../Photos/autonomous_car_image.jpg",
+        shortDescription: "Traffic system that helps autonomous cars move safely at intersections.",
         details: [
-            "Pioneered groundbreaking intelligent traffic system coordinating autonomous and manual vehicles at complex intersections",
-            "Developed multi-agent reinforcement learning models reducing transit time by 43% compared to traditional traffic light systems",
-            "Engineered sophisticated simulation environment in Simulink modeling 10,000+ vehicle interactions with physics-accurate parameters",
-            "Implemented V2V communication protocols using 5G and DSRC with end-to-end latency under 5ms for critical safety operations",
-            "Created computer vision systems identifying pedestrians and cyclists with 99.96% accuracy in adverse weather conditions",
-            "Demonstrated 73% reduction in congestion and 91% decrease in near-miss incidents during 6-month pilot program"
+          "Simulated traffic flows in Simulink to test how cars respond at intersections.",
+          "Trained reinforcement learning agents to choose when to stop or go.",
+          "Built camera-based system to detect pedestrians and cyclists in real-time.",
+          "Tested low-latency communication between vehicles using 5G protocols.",
+          "Reduced congestion and safety incidents in test simulations.",
+          "Worked with real traffic footage to tune models and camera parameters."
         ]
-    },
-    {
-        id: 8,
+      },
+      {
+        id: 10,
         title: "Word Guessing Game",
         type: "Web",
         techStack: ["Java", "JavaFX", "Markov Chains", "NLP", "WebSockets"],
-        image: "../Photos/word_guessing_game_image.jpg",
-        shortDescription: "Addictive multiplayer word game with sophisticated AI opponents powered by NLP and Markov models",
+        //image: "../Photos/word_guessing_game_image.jpg",
+        shortDescription: "Multiplayer word game with smart AI opponents.",
         details: [
-            "Created engaging multiplayer word game supporting 10,000+ concurrent users with 20ms network responsiveness",
-            "Implemented sophisticated AI opponents using natural language processing and adaptive difficulty scaling",
-            "Developed proprietary Markov Chain vocabulary model trained on 12M+ English texts with context-awareness",
-            "Built real-time matchmaking system with ELO-based ranking algorithm across 5 difficulty tiers",
-            "Designed responsive UI with custom animations and accessibility features supporting 8 languages",
-            "Won 'Best Game Design' award at university showcase and featured in Java Developer Monthly magazine"
+          "Built a turn-based game in JavaFX where users guess secret words.",
+          "Used Markov Chains to make AI players choose realistic guesses.",
+          "Added multiplayer with WebSocket support and ranking system.",
+          "Included difficulty scaling and performance tracking features.",
+          "Ran tests to improve AI response times and reduce game lag.",
+          "Designed a polished UI with animations and sound effects."
         ]
-    },
-    {
-        id: 9,
+      },
+      {
+        id: 11,
         title: "Battle of Bands",
         type: "Mobile",
         techStack: ["Swift", "UIKit", "Core Animation", "Bayesian Networks", "SpriteKit"],
-        image: "../Photos/battle_of_bands_image.jpg",
-        shortDescription: "Captivating iOS tactical game featuring dynamic combat systems and advanced AI opponents",
+        //image: "../Photos/battle_of_bands_image.jpg",
+        shortDescription: "iOS game with characters, upgrades, and turn-based combat.",
         details: [
-            "Developed visually stunning iOS game with 60+ hours of gameplay and complex strategic mechanics",
-            "Created 3 unique character classes with 12 subclasses each featuring distinct abilities and progression paths",
-            "Engineered sophisticated AI opponents using Bayesian decision networks that adapt to player strategies",
-            "Implemented physics-based battle system with 200+ unique animations and particle effects",
-            "Designed procedurally generated campaign mode with 1,000+ unique encounters and branching storylines",
-            "Featured on Apple's 'Games We Love' collection with 500,000+ downloads and 4.7/5 star rating"
+          "Created a tactical game in Swift using SpriteKit and UIKit.",
+          "Designed characters with different powers and attack types.",
+          "Used Bayesian models to let AI opponents learn from player behavior.",
+          "Built animation and visual effects for battles and level transitions.",
+          "Added game progression and save/load features using Core Data.",
+          "Tested on multiple iOS devices for performance and touch accuracy."
         ]
-    },
-    {
-        id: 10,
+      },
+      {
+        id: 12,
         title: "Exam Review App",
         type: "Mobile",
         techStack: ["Swift", "Core Data", "SQLite", "Machine Learning", "AWS"],
-        image: "../Photos/exam_review_app_image.jpg",
-        shortDescription: "Personalized exam preparation platform with adaptive learning algorithms that evolve with student progress",
+        //image: "../Photos/exam_review_app_image.jpg",
+        shortDescription: "Mobile app for personalized study sessions and quiz prep.",
         details: [
-            "Designed comprehensive study app supporting 15+ academic disciplines with 50,000+ questions and materials",
-            "Built adaptive learning algorithm analyzing student performance to customize review materials and optimize retention",
-            "Implemented spaced repetition system boosting average test scores by 27% compared to traditional study methods",
-            "Created collaborative study features allowing students to share notes and create group study sessions",
-            "Developed offline mode with intelligent content syncing, reducing data usage by 78% while maintaining functionality",
-            "Deployed to 12+ universities as official study companion with measurable improvement in student performance"
+          "Created an app to help students review for exams with flashcards and quizzes.",
+          "Stored user progress using Core Data and synced with AWS.",
+          "Used spaced repetition algorithms to plan review schedules.",
+          "Tracked quiz scores and recommended topics to revisit.",
+          "Allowed users to share notes and study sets with classmates.",
+          "Improved average test scores during pilot trials at 2 schools."
         ]
-    },
-    {
-        id: 11,
-        title: "Robotic Arm Project",
-        type: "Hardware",
-        techStack: ["Python", "EMG", "Autodesk Inventor", "ROS", "Computer Vision"],
-        image: "../Photos/robotic_arm_project_image.jpg",
-        shortDescription: "Advanced prosthetic-inspired robotic system controlled by muscle signals with precision object recognition",
-        details: [
-            "Engineered cutting-edge robotic arm with 6 degrees of freedom achieving human-like dexterity and 0.1mm precision",
-            "Implemented EMG sensor array processing muscle signals with 98% accuracy using custom signal processing algorithms",
-            "Developed computer vision system capable of identifying 100+ objects and adjusting grip strength automatically",
-            "Created medical-grade sterilization container allowing operation in hospital and laboratory settings",
-            "Built intuitive training system reducing learning curve from weeks to hours for new operators",
-            "Prototype adopted by leading research hospital for development of next-generation assistive technologies"
-        ]
-    }
+      }
+        
 ];

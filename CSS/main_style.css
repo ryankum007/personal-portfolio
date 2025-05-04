@@ -203,6 +203,9 @@ form input[type="submit"]:hover {
 body {
     background-color: #ffffff;
     color: #000000;
+    img.broken {
+        display: none;
+      }      
 }
 
 header, .title, .content {
