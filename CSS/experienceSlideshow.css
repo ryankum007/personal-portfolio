@@ -30,12 +30,12 @@
   }
   
   .experience-image {
-    width: 20%;
+    width: 13%;
     margin: 0 auto 10px;
     display: block;
   }
   .experience-image img {
-    max-width: 100%;
+    max-width: 70%;
     height: auto;
     object-fit: contain;
   }

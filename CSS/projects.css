@@ -15,28 +15,6 @@
     position: relative;
 }
 
-.project-image {
-    max-width: 200px;
-    max-height: 200px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.project-image.left {
-    left: -250px;
-}
-
-.project-image.right {
-    right: -250px;
-}
-
-.project-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
 .project-text {
     flex: 1;
 }
