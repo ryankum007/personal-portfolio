@@ -7,11 +7,15 @@ const shareData = {
 
 async function share() {
     try {
-        await navigator.share({
-            title: shareData.title,
-            text: shareData.text,
-            url: shareData.url
-        });
+        if (navigator.share) {
+            await navigator.share({
+                title: shareData.title,
+                text: shareData.text,
+                url: shareData.url
+            });
+        } else {
+            console.warn("Web Share API not supported in this browser.");
+        }
     } catch (error) {
         console.error("Error sharing:", error);
     }
@@ -42,42 +46,57 @@ function shareOnWhatsApp() {
 }
 
 // Event listeners for share buttons
-document.getElementById("shareLinkedIn").addEventListener("click", () => {
-    try {
-        shareOnLinkedIn();
-    } catch (err) {
-        console.error("Error sharing:", err);
-    }
-});
+const shareLinkedInBtn = document.getElementById("shareLinkedIn");
+if (shareLinkedInBtn) {
+    shareLinkedInBtn.addEventListener("click", () => {
+        try {
+            shareOnLinkedIn();
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+}
 
-document.getElementById("share").addEventListener("click", () => {
-    try {
-        share();
-    } catch (err) {
-        console.error("Error sharing:", err);
-    }
-});
+const shareBtn = document.getElementById("share");
+if (shareBtn) {
+    shareBtn.addEventListener("click", () => {
+        try {
+            share();
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+}
 
-document.getElementById("shareFacebook").addEventListener("click", () => {
-    try {
-        shareOnFacebook();
-    } catch (err) {
-        console.error("Error sharing:", err);
-    }
-});
+const shareFacebookBtn = document.getElementById("shareFacebook");
+if (shareFacebookBtn) {
+    shareFacebookBtn.addEventListener("click", () => {
+        try {
+            shareOnFacebook();
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+}
 
-document.getElementById("shareTwitter").addEventListener("click", () => {
-    try {
-        shareOnTwitter();
-    } catch (err) {
-        console.error("Error sharing:", err);
-    }
-});
+const shareTwitterBtn = document.getElementById("shareTwitter");
+if (shareTwitterBtn) {
+    shareTwitterBtn.addEventListener("click", () => {
+        try {
+            shareOnTwitter();
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+}
 
-document.getElementById("shareWhatsApp").addEventListener("click", () => {
-    try {
-        shareOnWhatsApp();
-    } catch (err) {
-        console.error("Error sharing:", err);
-    }
-});
+const shareWhatsAppBtn = document.getElementById("shareWhatsApp");
+if (shareWhatsAppBtn) {
+    shareWhatsAppBtn.addEventListener("click", () => {
+        try {
+            shareOnWhatsApp();
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+}
