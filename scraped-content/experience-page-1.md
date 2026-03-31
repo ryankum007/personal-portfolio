@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "RYAN KUMAR" [level=1] [ref=e4]
+    - navigation [ref=e5]:
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Home" [ref=e8] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=e9]:
+          - link "About Me" [ref=e10] [cursor=pointer]:
+            - /url: about_me.html
+        - listitem [ref=e11]:
+          - link "Experience" [ref=e12] [cursor=pointer]:
+            - /url: experience.html
+        - listitem [ref=e13]:
+          - link "Projects" [ref=e14] [cursor=pointer]:
+            - /url: projects.html
+        - listitem [ref=e15]:
+          - link "Contact Me" [ref=e16] [cursor=pointer]:
+            - /url: contact_me.html
+        - listitem [ref=e17]:
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/ryan-kumar-4491291aa/
+  - generic [ref=e19]:
+    - button "Share" [ref=e20] [cursor=pointer]:
+      - img "Share" [ref=e21]
+    - button "LinkedIn" [ref=e22] [cursor=pointer]:
+      - img "LinkedIn" [ref=e23]
+    - button "Facebook" [ref=e24] [cursor=pointer]:
+      - img "Facebook" [ref=e25]
+    - button "Twitter" [ref=e26] [cursor=pointer]:
+      - img "Twitter" [ref=e27]
+    - button "WhatsApp" [ref=e28] [cursor=pointer]:
+      - img "WhatsApp" [ref=e29]
+  - generic [ref=e30]:
+    - heading "The Evolution of a Tech Enthusiast" [level=1] [ref=e69]
+    - text: "|"
+  - generic [ref=e31]:
+    - button "All" [ref=e32] [cursor=pointer]
+    - button "Software" [ref=e33] [cursor=pointer]
+    - button "Research" [ref=e34] [cursor=pointer]
+    - button "Leadership" [ref=e35] [cursor=pointer]
+    - button "Customer Service" [ref=e36] [cursor=pointer]
+  - generic [ref=e37]:
+    - generic [ref=e38] [cursor=pointer]: ❮
+    - generic [ref=e39] [cursor=pointer]: ❯
+    - generic [ref=e41]:
+      - img "Terry Fox Cancer Research" [ref=e42]
+      - heading "Terry Fox Cancer Research, Toronto, ON" [level=2] [ref=e43]
+      - paragraph [ref=e44]:
+        - emphasis [ref=e45]: Project Coordinator
+        - text: "| May 2024 - Aug 2024"
+      - list [ref=e47]:
+        - listitem [ref=e48]: Led the end-to-end logistics for over 2,000 school campaign kits across Canada, ensuring 100% on-time delivery.
+        - listitem [ref=e49]: Automated logistics workflows with Google Apps Script, reducing packing errors by 40%.
+        - listitem [ref=e50]: Managed $500K+ in campaign materials with full fiscal transparency and reporting accountability.
+        - listitem [ref=e51]: Built internal scheduling tools to optimize volunteer deployment and inventory handling.
+        - listitem [ref=e52]: Collaborated with school boards and non-profit partners to expand campaign reach across 10+ provinces.
+        - listitem [ref=e53]: Standardized packaging SOPs and trained 15+ volunteers on streamlined fulfillment processes.
+        - listitem [ref=e54]: Reduced response time for stakeholder queries by building internal tracking dashboards.
+      - generic [ref=e55]:
+        - generic [ref=e56]: Project Management
+        - generic [ref=e57]: Apps Script
+        - generic [ref=e58]: Logistics
+  - button "🌗" [ref=e68] [cursor=pointer]
