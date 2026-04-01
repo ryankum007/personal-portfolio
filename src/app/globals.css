@@ -108,6 +108,11 @@ p, .body {
   transform: translateY(100%);
 }
 
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
 /* Custom scrollbar (subtle) */
 ::-webkit-scrollbar {
   width: 4px;
@@ -122,11 +127,24 @@ p, .body {
   border-radius: 2px;
 }
 
+/* Mobile typography adjustments */
+@media (max-width: 768px) {
+  .label-uppercase {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .grain::after {
+    display: none;
   }
 }

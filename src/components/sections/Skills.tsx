@@ -16,17 +16,32 @@ export default function Skills() {
     const section = sectionRef.current;
     if (!section) return;
 
-    // Animate skill groups
+    // Animate skill groups with stagger
     const groups = section.querySelectorAll(".skill-group");
-    groups.forEach((group) => {
+    groups.forEach((group, i) => {
       gsap.from(group, {
         y: 40,
         opacity: 0,
         duration: 0.7,
+        delay: i * 0.1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: group,
           start: "top 85%",
+        },
+      });
+
+      // Stagger individual skill items within each group
+      const items = group.querySelectorAll("p, span");
+      gsap.from(items, {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.04,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: group,
+          start: "top 80%",
         },
       });
     });

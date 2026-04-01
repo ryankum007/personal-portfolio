@@ -13,9 +13,12 @@ export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const section = sectionRef.current;
     const textEl = textRef.current;
+    const imageContainer = imageContainerRef.current;
     if (!section || !textEl) return;
 
     const paragraphs = textEl.querySelectorAll(".about-line");
@@ -30,6 +33,19 @@ export default function About() {
         start: "top 60%",
       },
     });
+
+    // Image reveal
+    if (imageContainer) {
+      gsap.from(imageContainer, {
+        clipPath: "inset(100% 0% 0% 0%)",
+        duration: 1,
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: imageContainer,
+          start: "top 75%",
+        },
+      });
+    }
   }, []);
 
   // Split bio into sentences for staggered reveal
@@ -80,7 +96,7 @@ export default function About() {
         </div>
 
         {/* Photo — asymmetric right with parallax */}
-        <div className="relative md:col-span-4 md:col-start-9">
+        <div ref={imageContainerRef} className="relative md:col-span-4 md:col-start-9" style={{ clipPath: "inset(0% 0% 0% 0%)" }}>
           <ParallaxImage
             src={siteContent.about.image}
             alt="Ryan Kumar"

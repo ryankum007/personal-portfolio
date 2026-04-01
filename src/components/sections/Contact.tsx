@@ -12,6 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
 
+  const lineRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -28,6 +30,19 @@ export default function Contact() {
         start: "top 70%",
       },
     });
+
+    // Decorative line
+    if (lineRef.current) {
+      gsap.from(lineRef.current, {
+        scaleX: 0,
+        duration: 0.8,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+        },
+      });
+    }
   }, []);
 
   return (
@@ -46,16 +61,18 @@ export default function Contact() {
           Get in Touch
         </TextReveal>
 
+        <div ref={lineRef} className="mx-auto mt-6 h-[1px] w-16 origin-center bg-dark/30" />
+
         <TextReveal
           as="h2"
-          className="mx-auto mt-6 max-w-[900px] font-display text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] text-dark"
+          className="mx-auto mt-8 max-w-[900px] font-display text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] text-dark"
           splitBy="words"
           stagger={0.05}
         >
           Let&apos;s build something together
         </TextReveal>
 
-        <p className="contact-reveal mx-auto mt-6 max-w-[50ch] font-body text-lg text-dark/60">
+        <p className="contact-reveal mx-auto mt-8 max-w-[50ch] font-body text-lg text-dark/60">
           Currently open to new opportunities. Whether you have a project in
           mind or just want to connect, I&apos;d love to hear from you.
         </p>

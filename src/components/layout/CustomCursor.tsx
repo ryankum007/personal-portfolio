@@ -6,6 +6,7 @@ import gsap from "gsap";
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
+  const boundElements = useRef(new WeakSet<Element>());
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -13,7 +14,10 @@ export default function CustomCursor() {
     if (!cursor || !follower) return;
 
     // Hide on touch devices
-    if ("ontouchstart" in window) {
+    if (
+      "ontouchstart" in window ||
+      window.matchMedia("(pointer: coarse)").matches
+    ) {
       cursor.style.display = "none";
       follower.style.display = "none";
       return;
@@ -58,35 +62,27 @@ export default function CustomCursor() {
       });
     };
 
-    window.addEventListener("mousemove", moveCursor);
-
-    const interactiveElements = document.querySelectorAll(
-      "a, button, [data-cursor-hover]"
-    );
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter);
-      el.addEventListener("mouseleave", handleMouseLeave);
-    });
-
-    // Re-observe for dynamically added elements
-    const observer = new MutationObserver(() => {
-      const newElements = document.querySelectorAll(
+    const bindInteractiveElements = () => {
+      const elements = document.querySelectorAll(
         "a, button, [data-cursor-hover]"
       );
-      newElements.forEach((el) => {
+      elements.forEach((el) => {
+        if (boundElements.current.has(el)) return;
+        boundElements.current.add(el);
         el.addEventListener("mouseenter", handleMouseEnter);
         el.addEventListener("mouseleave", handleMouseLeave);
       });
-    });
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+    bindInteractiveElements();
+
+    const observer = new MutationObserver(bindInteractiveElements);
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       observer.disconnect();
-      interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleMouseEnter);
-        el.removeEventListener("mouseleave", handleMouseLeave);
-      });
     };
   }, []);
 

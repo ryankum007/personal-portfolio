@@ -16,15 +16,16 @@ export default function Experience() {
     if (!section) return;
 
     const cards = section.querySelectorAll(".exp-card");
-    cards.forEach((card) => {
+    cards.forEach((card, i) => {
       gsap.from(card, {
-        y: 60,
+        y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
+        delay: i * 0.05,
         ease: "power3.out",
         scrollTrigger: {
           trigger: card,
-          start: "top 85%",
+          start: "top 88%",
         },
       });
     });

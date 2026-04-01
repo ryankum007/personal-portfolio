@@ -75,16 +75,9 @@ export default function Preloader() {
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-dark"
     >
       {/* Counter */}
-      <div className="absolute bottom-8 right-8">
-        <span
-          ref={counterRef}
-          className="font-body text-[clamp(1rem,2vw,1.5rem)] tabular-nums text-light/40"
-        >
-          0
-        </span>
-        <span className="font-body text-[clamp(1rem,2vw,1.5rem)] text-light/40">
-          %
-        </span>
+      <div className="absolute bottom-8 right-8 font-body text-[clamp(1rem,2vw,1.5rem)] tabular-nums text-light/40">
+        <span ref={counterRef}>0</span>
+        <span>%</span>
       </div>
 
       {/* Name */}

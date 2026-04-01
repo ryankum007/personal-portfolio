@@ -16,7 +16,7 @@ export default function Projects() {
     if (!section) return;
 
     const items = section.querySelectorAll(".project-item");
-    items.forEach((item) => {
+    items.forEach((item, i) => {
       gsap.from(item, {
         y: 50,
         opacity: 0,
@@ -26,6 +26,15 @@ export default function Projects() {
           trigger: item,
           start: "top 88%",
         },
+      });
+
+      // Subtle hover lift on desktop
+      const el = item as HTMLElement;
+      el.addEventListener("mouseenter", () => {
+        gsap.to(el, { y: -4, duration: 0.3, ease: "power2.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        gsap.to(el, { y: 0, duration: 0.4, ease: "power2.out" });
       });
     });
   }, []);
