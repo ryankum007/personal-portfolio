@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
+  ssr: false,
+});
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,6 +18,18 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const [showScene, setShowScene] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    setIsMobile(mobile);
+    // Delay 3D load until after preloader
+    if (!mobile) {
+      const timer = setTimeout(() => setShowScene(true), 3800);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     const name = nameRef.current;
@@ -100,10 +117,13 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen flex-col items-center justify-center px-[clamp(1.5rem,5vw,6rem)]"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[clamp(1.5rem,5vw,6rem)]"
     >
+      {/* 3D Scene — behind text, desktop only */}
+      {showScene && !isMobile && <HeroScene />}
+
       {/* Name */}
-      <h1 ref={nameRef} className="text-center">
+      <h1 ref={nameRef} className="relative z-10 text-center">
         <span className="block">
           {firstName.split("").map((char, i) => (
             <span key={`f-${i}`} className="inline-block overflow-hidden">
@@ -127,13 +147,13 @@ export default function Hero() {
       {/* Decorative line */}
       <div
         ref={lineRef}
-        className="mt-6 h-[1px] w-16 origin-left bg-dark/30"
+        className="relative z-10 mt-6 h-[1px] w-16 origin-left bg-dark/30"
       />
 
       {/* Subtitle */}
       <p
         ref={subtitleRef}
-        className="mt-5 text-center font-body text-[clamp(0.875rem,1.5vw,1.125rem)] font-light tracking-[0.15em] uppercase text-muted"
+        className="relative z-10 mt-5 text-center font-body text-[clamp(0.875rem,1.5vw,1.125rem)] font-light tracking-[0.15em] uppercase text-muted"
       >
         {siteContent.personal.title} &mdash;{" "}
         {siteContent.personal.university}

@@ -13,15 +13,30 @@ export default function Footer() {
     const footer = footerRef.current;
     if (!footer) return;
 
+    // Divider line animate
+    const divider = footer.querySelector(".footer-divider");
+    if (divider) {
+      gsap.from(divider, {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 0.8,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 95%",
+        },
+      });
+    }
+
     gsap.from(footer.querySelectorAll(".footer-item"), {
-      y: 20,
+      y: 15,
       opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
+      duration: 0.5,
+      stagger: 0.08,
       ease: "power3.out",
       scrollTrigger: {
         trigger: footer,
-        start: "top 90%",
+        start: "top 92%",
       },
     });
   }, []);
@@ -31,39 +46,51 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      ref={footerRef}
-      className="border-t border-dark/10 px-[clamp(1.5rem,5vw,6rem)] py-8"
-    >
-      <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 md:flex-row">
-        <p className="footer-item font-body text-sm text-muted">
-          &copy; {new Date().getFullYear()} Ryan Kumar. All rights reserved.
-        </p>
+    <footer ref={footerRef} className="px-[clamp(1.5rem,5vw,6rem)] py-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="footer-divider mb-8 h-[1px] w-full bg-dark/10" />
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="footer-item font-body text-sm text-muted">
+            &copy; {new Date().getFullYear()} Ryan Kumar
+          </p>
 
-        <div className="footer-item flex items-center gap-6">
-          <a
-            href="https://www.linkedin.com/in/ryan-kumar-4491291aa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
+          <div className="footer-item flex items-center gap-8">
+            <a
+              href="https://www.linkedin.com/in/ryan-kumar-4491291aa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
+              data-cursor-hover
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ryankumar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
+              data-cursor-hover
+            >
+              GitHub
+            </a>
+            <a
+              href="mailto:ryankumar@ryankumar.net"
+              className="font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
+              data-cursor-hover
+            >
+              Email
+            </a>
+          </div>
+
+          <button
+            onClick={scrollToTop}
+            className="footer-item cursor-pointer font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
+            aria-label="Back to top"
+            data-cursor-hover
           >
-            LinkedIn
-          </a>
-          <a
-            href="mailto:ryankumar@ryankumar.net"
-            className="font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
-          >
-            Email
-          </a>
+            Back to top &uarr;
+          </button>
         </div>
-
-        <button
-          onClick={scrollToTop}
-          className="footer-item cursor-pointer font-body text-sm text-muted transition-colors duration-300 hover:text-dark"
-          aria-label="Back to top"
-        >
-          Back to top
-        </button>
       </div>
     </footer>
   );
