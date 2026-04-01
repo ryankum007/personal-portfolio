@@ -107,10 +107,10 @@ export default function Experience() {
                 <div className="grid gap-4 md:grid-cols-12 md:items-start">
                   {/* Number + Date */}
                   <div className="exp-inner md:col-span-2">
-                    <span className="font-display text-[clamp(1rem,1.5vw,1.25rem)] font-semibold text-light/20">
+                    <span className="font-display text-[clamp(1rem,1.5vw,1.25rem)] font-semibold text-light/40">
                       0{i + 1}
                     </span>
-                    <p className="mt-2 font-body text-sm text-light/40">
+                    <p className="mt-2 font-body text-sm text-light/50">
                       {exp.dates}
                     </p>
                   </div>
@@ -123,7 +123,7 @@ export default function Experience() {
                     <p className="mt-2 font-body text-sm italic text-light/50">
                       {exp.role}
                     </p>
-                    <p className="font-body text-sm text-light/30">
+                    <p className="font-body text-sm text-light/50">
                       {exp.location}
                     </p>
                   </div>
@@ -148,7 +148,7 @@ export default function Experience() {
                       {exp.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-light/10 px-3 py-1 font-body text-xs text-light/30 transition-all duration-300 group-hover:border-light/20 group-hover:text-light/50"
+                          className="rounded-full border border-light/10 px-3 py-1 font-body text-xs text-light/50 transition-all duration-300 group-hover:border-light/20 group-hover:text-light/60"
                         >
                           {tag}
                         </span>

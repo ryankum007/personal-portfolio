@@ -3,7 +3,7 @@
 :root {
   --color-dark: #101010;
   --color-light: #F7F7F7;
-  --color-muted: #999999;
+  --color-muted: #636363;
   --font-display: var(--font-playfair);
   --font-body: var(--font-inter);
 }
@@ -111,6 +111,19 @@ p, .body {
 /* Smooth transitions for interactive elements */
 a, button {
   transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focus states for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.bg-dark a:focus-visible,
+.bg-dark button:focus-visible {
+  outline-color: var(--color-light);
 }
 
 /* Hidden scrollbar — Lenis handles scroll */

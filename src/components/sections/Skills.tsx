@@ -197,7 +197,7 @@ export default function Skills() {
               {siteContent.skills.softSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="skill-item rounded-full border border-light/10 px-3 py-1.5 font-body text-xs text-light/40 transition-all duration-300 hover:border-light/25 hover:text-light/60"
+                  className="skill-item rounded-full border border-light/10 px-3 py-1.5 font-body text-xs text-light/50 transition-all duration-300 hover:border-light/25 hover:text-light/70"
                 >
                   {skill}
                 </span>
