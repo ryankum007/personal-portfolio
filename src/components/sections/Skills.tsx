@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextReveal from "@/components/ui/TextReveal";
@@ -8,13 +9,43 @@ import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SkillsScene = dynamic(() => import("@/components/three/SkillsScene"), {
+  ssr: false,
+});
+
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const [showScene, setShowScene] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    setIsMobile(mobile);
+    if (!mobile) {
+      const timer = setTimeout(() => setShowScene(true), 500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
+
+    // Section entrance clip-path reveal
+    gsap.fromTo(
+      section,
+      { clipPath: "inset(6% 0% 0% 0%)" },
+      {
+        clipPath: "inset(0% 0% 0% 0%)",
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 92%",
+        },
+      }
+    );
 
     // Animate skill groups with stagger
     const groups = section.querySelectorAll(".skill-group");
@@ -98,8 +129,10 @@ export default function Skills() {
     <section
       ref={sectionRef}
       id="skills"
-      className="overflow-hidden bg-dark py-[clamp(6rem,12vw,14rem)]"
+      className="relative overflow-hidden bg-dark py-[clamp(6rem,12vw,14rem)]"
     >
+      {/* 3D Scene — wireframe icosahedron */}
+      {showScene && !isMobile && <SkillsScene />}
       {/* Marquee strip */}
       <div
         ref={marqueeRef}

@@ -13,6 +13,8 @@ export default function Philosophy() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const orbRef = useRef<HTMLDivElement>(null);
+  const dashRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -49,6 +51,36 @@ export default function Philosophy() {
         },
       });
     }
+
+    // Floating orb parallax
+    if (orbRef.current) {
+      gsap.to(orbRef.current, {
+        yPercent: -100,
+        xPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+
+    // Floating dash parallax (faster)
+    if (dashRef.current) {
+      gsap.to(dashRef.current, {
+        yPercent: -160,
+        rotate: 90,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
   }, []);
 
   const words = statement.split(" ");
@@ -56,9 +88,19 @@ export default function Philosophy() {
   return (
     <section
       ref={sectionRef}
-      className="relative px-[clamp(1.5rem,5vw,6rem)] py-[clamp(10rem,25vw,24rem)]"
+      className="relative overflow-hidden px-[clamp(1.5rem,5vw,6rem)] py-[clamp(10rem,25vw,24rem)]"
     >
-      <div className="mx-auto max-w-[1400px]">
+      {/* Floating parallax decorative elements */}
+      <div
+        ref={orbRef}
+        className="pointer-events-none absolute top-[20%] right-[12%] z-0 hidden h-32 w-32 rounded-full border border-dark/[0.05] md:block"
+      />
+      <div
+        ref={dashRef}
+        className="pointer-events-none absolute bottom-[30%] left-[6%] z-0 hidden h-[1px] w-16 bg-dark/10 md:block"
+      />
+
+      <div className="relative z-10 mx-auto max-w-[1400px]">
         {/* Decorative line */}
         <div
           ref={lineRef}

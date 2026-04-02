@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextReveal from "@/components/ui/TextReveal";
@@ -9,14 +10,45 @@ import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const ContactScene = dynamic(
+  () => import("@/components/three/ContactScene"),
+  { ssr: false }
+);
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const emailRef = useRef<HTMLDivElement>(null);
+  const [showScene, setShowScene] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    setIsMobile(mobile);
+    if (!mobile) {
+      const timer = setTimeout(() => setShowScene(true), 500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
+
+    // Section entrance clip-path
+    gsap.fromTo(
+      section,
+      { clipPath: "inset(6% 0% 0% 0%)" },
+      {
+        clipPath: "inset(0% 0% 0% 0%)",
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 92%",
+        },
+      }
+    );
 
     const elements = section.querySelectorAll(".contact-reveal");
     gsap.from(elements, {
@@ -63,9 +95,12 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="px-[clamp(1.5rem,5vw,6rem)] py-[clamp(8rem,18vw,18rem)]"
+      className="relative px-[clamp(1.5rem,5vw,6rem)] py-[clamp(8rem,18vw,18rem)]"
     >
-      <div className="mx-auto max-w-[1400px] text-center">
+      {/* 3D Scene — morphing blob */}
+      {showScene && !isMobile && <ContactScene />}
+
+      <div className="relative z-10 mx-auto max-w-[1400px] text-center">
         <TextReveal
           as="span"
           className="label-uppercase text-muted"

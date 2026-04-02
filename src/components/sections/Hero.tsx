@@ -18,6 +18,9 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const floatARef = useRef<HTMLDivElement>(null);
+  const floatBRef = useRef<HTMLDivElement>(null);
+  const floatCRef = useRef<HTMLDivElement>(null);
   const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -108,6 +111,58 @@ export default function Hero() {
         scrub: true,
       },
     });
+
+    // Subtitle parallax at different speed
+    gsap.to(subtitle, {
+      yPercent: 50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    // Floating decorative elements — multi-speed parallax
+    if (floatARef.current) {
+      gsap.to(floatARef.current, {
+        yPercent: -80,
+        rotate: 45,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+    if (floatBRef.current) {
+      gsap.to(floatBRef.current, {
+        yPercent: -120,
+        rotate: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+    if (floatCRef.current) {
+      gsap.to(floatCRef.current, {
+        yPercent: -60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
   }, []);
 
   // Split name into first and last
@@ -121,6 +176,20 @@ export default function Hero() {
     >
       {/* 3D Scene — behind text, desktop only */}
       {showScene && !isMobile && <HeroScene />}
+
+      {/* Floating decorative parallax elements */}
+      <div
+        ref={floatARef}
+        className="pointer-events-none absolute top-[15%] right-[10%] z-0 hidden h-[1px] w-24 rotate-12 bg-dark/10 md:block"
+      />
+      <div
+        ref={floatBRef}
+        className="pointer-events-none absolute bottom-[25%] left-[8%] z-0 hidden h-20 w-20 rounded-full border border-dark/[0.06] md:block"
+      />
+      <div
+        ref={floatCRef}
+        className="pointer-events-none absolute top-[30%] left-[15%] z-0 hidden h-2 w-2 rounded-full bg-dark/10 md:block"
+      />
 
       {/* Name */}
       <h1 ref={nameRef} className="relative z-10 text-center">

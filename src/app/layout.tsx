@@ -6,6 +6,7 @@ import CustomCursor from "@/components/layout/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
 import Navigation from "@/components/layout/Navigation";
 import JsonLd from "@/components/layout/JsonLd";
+import ScrollProgress from "@/components/layout/ScrollProgress";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -77,6 +78,7 @@ export default function RootLayout({
     >
       <body className="grain min-h-full">
         <JsonLd />
+        <ScrollProgress />
         <Preloader />
         <CustomCursor />
         <Navigation />

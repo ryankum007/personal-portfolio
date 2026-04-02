@@ -49,6 +49,21 @@ export default function About() {
       });
     }
 
+    // Heading parallax — moves slower than content for depth
+    const heading = section.querySelector(".about-heading");
+    if (heading) {
+      gsap.to(heading, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+
     // Stats counter animation
     if (stats) {
       const counters = stats.querySelectorAll(".stat-number");
@@ -117,7 +132,7 @@ export default function About() {
         <div ref={textRef} className="md:col-span-7 md:col-start-1">
           <TextReveal
             as="h2"
-            className="mb-10 font-display text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.1] text-dark"
+            className="about-heading mb-10 font-display text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.1] text-dark"
             splitBy="words"
           >
             Building at the intersection of technology and impact

@@ -15,6 +15,21 @@ export default function Experience() {
     const section = sectionRef.current;
     if (!section) return;
 
+    // Section entrance — clip-path reveal from bottom
+    gsap.fromTo(
+      section,
+      { clipPath: "inset(8% 0% 0% 0%)" },
+      {
+        clipPath: "inset(0% 0% 0% 0%)",
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 90%",
+        },
+      }
+    );
+
     // Animate horizontal dividers
     const dividers = section.querySelectorAll(".exp-divider");
     dividers.forEach((divider) => {
