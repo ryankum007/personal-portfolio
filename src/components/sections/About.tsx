@@ -3,205 +3,272 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TextReveal from "@/components/ui/TextReveal";
-import ParallaxImage from "@/components/ui/ParallaxImage";
 import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function SpacedHeading({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span key={i} className="inline-block">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      className="inline-block ml-1"
+    >
+      <path
+        d="M1 11L11 1M11 1H3M11 1V9"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const imageContainerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const textEl = textRef.current;
-    const imageContainer = imageContainerRef.current;
-    const stats = statsRef.current;
-    if (!section || !textEl) return;
+    if (!section) return;
 
-    // Paragraph lines fade-in with stagger
-    const paragraphs = textEl.querySelectorAll(".about-line");
-    gsap.from(paragraphs, {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 60%",
-      },
-    });
-
-    // Image curtain reveal from bottom
-    if (imageContainer) {
-      gsap.from(imageContainer, {
-        clipPath: "inset(100% 0% 0% 0%)",
-        duration: 1.2,
-        ease: "power4.inOut",
-        scrollTrigger: {
-          trigger: imageContainer,
-          start: "top 75%",
-        },
+    // Section heading letters
+    const heading = section.querySelector(".about-main-heading");
+    if (heading) {
+      const letters = heading.querySelectorAll("span");
+      gsap.from(letters, {
+        y: "100%",
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.03,
+        ease: "power4.out",
+        scrollTrigger: { trigger: heading, start: "top 85%" },
       });
     }
 
-    // Heading parallax — moves slower than content for depth
-    const heading = section.querySelector(".about-heading");
-    if (heading) {
-      gsap.to(heading, {
-        yPercent: -15,
+    // Subsection reveals
+    const blocks = section.querySelectorAll(".about-block");
+    blocks.forEach((block) => {
+      gsap.from(block, {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        scrollTrigger: { trigger: block, start: "top 85%" },
+      });
+    });
+
+    // Photo curtain
+    if (photoRef.current) {
+      gsap.from(photoRef.current, {
+        clipPath: "inset(100% 0% 0% 0%)",
+        duration: 1.2,
+        ease: "power4.inOut",
+        scrollTrigger: { trigger: photoRef.current, start: "top 80%" },
+      });
+    }
+
+    // Line reveals
+    const lines = section.querySelectorAll(".about-line-reveal");
+    lines.forEach((line) => {
+      const spans = line.querySelectorAll("span, .line-text");
+      gsap.from(spans.length > 0 ? spans : line, {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.04,
+        ease: "power3.out",
+        scrollTrigger: { trigger: line, start: "top 88%" },
+      });
+    });
+
+    // Quote parallax
+    const quote = section.querySelector(".about-quote");
+    if (quote) {
+      gsap.to(quote, {
+        yPercent: -10,
         ease: "none",
         scrollTrigger: {
-          trigger: section,
+          trigger: quote,
           start: "top bottom",
           end: "bottom top",
           scrub: true,
         },
       });
     }
-
-    // Stats counter animation
-    if (stats) {
-      const counters = stats.querySelectorAll(".stat-number");
-      counters.forEach((counter) => {
-        const target = parseInt(counter.getAttribute("data-target") || "0");
-        gsap.from(counter, {
-          textContent: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          snap: { textContent: 1 },
-          scrollTrigger: {
-            trigger: counter,
-            start: "top 85%",
-          },
-          onUpdate: function () {
-            const el = counter as HTMLElement;
-            el.textContent = Math.round(
-              parseFloat(el.textContent || "0")
-            ).toString();
-          },
-        });
-      });
-
-      // Stat labels fade in
-      const labels = stats.querySelectorAll(".stat-label");
-      gsap.from(labels, {
-        y: 15,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: stats,
-          start: "top 85%",
-        },
-      });
-    }
   }, []);
-
-  // Split bio into sentences for staggered reveal
-  const bioSentences = siteContent.about.bio
-    .split(". ")
-    .filter(Boolean)
-    .map((s) => (s.endsWith(".") ? s : s + "."));
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,12vw,14rem)]"
+      className="px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]"
     >
-      <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-12 md:gap-16">
-        {/* Label */}
-        <div className="md:col-span-12">
-          <TextReveal
-            as="span"
-            className="label-uppercase text-muted"
-            splitBy="chars"
-            stagger={0.02}
-          >
-            About Me
-          </TextReveal>
+      <div className="mx-auto max-w-[1400px]">
+        {/* Section heading — spaced */}
+        <div className="mb-16 flex items-start justify-between">
+          <h2 className="about-main-heading overflow-hidden font-display text-[clamp(2.5rem,8vw,7rem)] font-700 uppercase leading-[0.95] text-dark">
+            <SpacedHeading text="about me" />
+          </h2>
         </div>
 
-        {/* Text content — asymmetric left */}
-        <div ref={textRef} className="md:col-span-7 md:col-start-1">
-          <TextReveal
-            as="h2"
-            className="about-heading mb-10 font-display text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.1] text-dark"
-            splitBy="words"
-          >
-            Building at the intersection of technology and impact
-          </TextReveal>
-
-          <div className="space-y-5">
-            {bioSentences.map((sentence, i) => (
-              <p
-                key={i}
-                className="about-line max-w-[65ch] font-body text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-dark/80"
-              >
-                {sentence}
-              </p>
-            ))}
-          </div>
-
-          {/* Stats row */}
-          <div
-            ref={statsRef}
-            className="mt-12 grid grid-cols-3 gap-8 border-t border-dark/10 pt-10"
-          >
-            <div>
-              <span
-                className="stat-number block font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-dark"
-                data-target="5"
-              >
-                5
-              </span>
-              <span className="stat-label mt-1 block font-body text-sm text-muted">
-                Years Experience
-              </span>
+        {/* Content grid */}
+        <div className="grid gap-12 md:grid-cols-12 md:gap-8">
+          {/* Left column: photo + decorative labels */}
+          <div className="md:col-span-5">
+            <div className="mb-6 flex gap-8">
+              <div className="about-block">
+                <p className="font-body text-[0.7rem] uppercase tracking-wider text-muted">
+                  2/5
+                </p>
+                <p className="mt-1 font-body text-[0.7rem] uppercase tracking-wider text-muted">
+                  for me
+                </p>
+                <p className="mt-1 font-body text-[0.7rem] uppercase tracking-wider text-muted">
+                  eng/2
+                </p>
+              </div>
             </div>
-            <div>
-              <span
-                className="stat-number block font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-dark"
-                data-target="10"
-              >
-                10
-              </span>
-              <span className="stat-label mt-1 block font-body text-sm text-muted">
-                Projects Shipped
-              </span>
-            </div>
-            <div>
-              <span
-                className="stat-number block font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-dark"
-                data-target="8"
-              >
-                8
-              </span>
-              <span className="stat-label mt-1 block font-body text-sm text-muted">
-                Languages
-              </span>
+
+            {/* Photo */}
+            <div
+              ref={photoRef}
+              className="relative aspect-[3/4] w-full max-w-[420px] overflow-hidden"
+              style={{ clipPath: "inset(0% 0% 0% 0%)" }}
+            >
+              <img
+                src={siteContent.about.image}
+                alt="Ryan Kumar"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
-        </div>
 
-        {/* Photo — asymmetric right with parallax */}
-        <div
-          ref={imageContainerRef}
-          className="relative md:col-span-4 md:col-start-9"
-          style={{ clipPath: "inset(0% 0% 0% 0%)" }}
-        >
-          <ParallaxImage
-            src={siteContent.about.image}
-            alt="Ryan Kumar"
-            className="relative aspect-[3/4] w-full"
-            speed={0.15}
-          />
+          {/* Right column: text content */}
+          <div className="space-y-16 md:col-span-6 md:col-start-7">
+            {/* About me block */}
+            <div className="about-block">
+              <h4 className="font-body text-xs uppercase tracking-wider text-muted">
+                about me
+              </h4>
+              <div className="about-line-reveal mt-6">
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/80">
+                  <span className="line-text block">Hello!</span>
+                  <span className="line-text block">
+                    I&apos;m Ryan Kumar
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            {/* My experience */}
+            <div className="about-block">
+              <h3 className="flex items-center gap-2 font-body text-[0.85rem] font-500 text-dark">
+                my experience <ArrowIcon />
+              </h3>
+              <div className="about-line-reveal mt-4 space-y-1">
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  a Software Engineer with over 5
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  years of experience building digital
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  products for companies of all sizes.
+                </p>
+              </div>
+            </div>
+
+            {/* Quote */}
+            <div className="about-block about-quote">
+              <h2 className="font-body text-[clamp(1.5rem,3.5vw,2.8rem)] font-300 leading-[1.25] text-dark">
+                It&apos;s not just a profession — it&apos;s a way of thinking.
+              </h2>
+            </div>
+
+            {/* Philosophy */}
+            <div className="about-block">
+              <div className="about-line-reveal space-y-1">
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  My work is part of my lifestyle. As
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  a software engineer, I am constantly
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  observing the world: I notice how
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  people interact with technology,
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  systems, and interfaces.
+                </p>
+              </div>
+            </div>
+
+            {/* My philosophy */}
+            <div className="about-block">
+              <h3 className="flex items-center gap-2 font-body text-[0.85rem] font-500 text-dark">
+                my philosophy <ArrowIcon />
+              </h3>
+              <div className="about-line-reveal mt-4 space-y-1">
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  I value clarity, meaning, and
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  functionality — both in code and in
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  life. I believe in conscious
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  engineering: leaving only what
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  makes sense and works for results.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA + closing text */}
+            <div className="about-block">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 font-body text-[0.85rem] text-dark transition-opacity hover:opacity-60"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                lets connect <ArrowIcon />
+              </a>
+              <div className="about-line-reveal mt-8 space-y-1">
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  Every project for me is more than
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  a task. It&apos;s a problem I help
+                </p>
+                <p className="font-body text-[0.85rem] leading-relaxed text-dark/70">
+                  solve through engineering.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -3,8 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TextReveal from "@/components/ui/TextReveal";
 import { siteContent } from "@/data/content";
+
+function SpacedHeading({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span key={i} className="inline-block">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,33 +107,17 @@ export default function Projects() {
       {/* Desktop: horizontal scroll layout */}
       {!isMobile ? (
         <div className="flex h-screen items-center">
-          <div ref={trackRef} className="flex gap-8 pl-[clamp(1.5rem,5vw,6rem)]">
+          <div ref={trackRef} className="flex gap-8 pl-[clamp(1.5rem,4vw,3.5rem)]">
             {/* Header card */}
             <div
               ref={headerRef}
               className="flex w-[40vw] shrink-0 flex-col justify-center pr-12"
             >
-              <TextReveal
-                as="span"
-                className="label-uppercase text-muted"
-                splitBy="chars"
-                stagger={0.02}
-              >
-                Selected Work
-              </TextReveal>
+              <span className="label-uppercase text-muted">Swipe</span>
 
-              <TextReveal
-                as="h2"
-                className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-semibold text-dark"
-                splitBy="words"
-              >
-                Projects that define my craft
-              </TextReveal>
-
-              <p className="mt-6 max-w-[35ch] font-body text-sm leading-relaxed text-muted">
-                A selection of projects spanning AI, full-stack web, mobile, and
-                hardware engineering.
-              </p>
+              <h2 className="mt-4 overflow-hidden font-display text-[clamp(2.5rem,7vw,6rem)] font-700 uppercase leading-[0.95] text-dark">
+                <SpacedHeading text="recent works" />
+              </h2>
 
               <div className="mt-10 flex items-center gap-3">
                 <div className="h-[1px] w-12 bg-dark/20" />
@@ -201,24 +196,11 @@ export default function Projects() {
         </div>
       ) : (
         /* Mobile: vertical stacked cards */
-        <div className="px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,12vw,14rem)]">
+        <div className="px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]">
           <div className="mx-auto max-w-[1400px]">
-            <TextReveal
-              as="span"
-              className="label-uppercase text-muted"
-              splitBy="chars"
-              stagger={0.02}
-            >
-              Selected Work
-            </TextReveal>
-
-            <TextReveal
-              as="h2"
-              className="mt-4 mb-12 font-display text-[clamp(2rem,5vw,4rem)] font-semibold text-dark"
-              splitBy="words"
-            >
-              Projects that define my craft
-            </TextReveal>
+            <h2 className="mb-12 overflow-hidden font-display text-[clamp(2.5rem,8vw,5rem)] font-700 uppercase leading-[0.95] text-dark">
+              <SpacedHeading text="recent works" />
+            </h2>
 
             <div className="space-y-6">
               {topProjects.map((project, i) => (

@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TextReveal from "@/components/ui/TextReveal";
-import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,11 +11,89 @@ const SkillsScene = dynamic(() => import("@/components/three/SkillsScene"), {
   ssr: false,
 });
 
+function SpacedHeading({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span key={i} className="inline-block">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
+
+const services = [
+  {
+    number: "00-1",
+    title: "software engineering",
+    items: [
+      "/ System design",
+      "/ Microservices architecture",
+      "/ API development",
+      "/ Performance optimization",
+      "/ CI/CD pipelines",
+    ],
+    description:
+      "I build reliable, scalable software systems that power real business outcomes. From microservices to monoliths, every project combines clean architecture with pragmatic engineering.",
+  },
+  {
+    number: "00-2",
+    title: "AI & machine learning",
+    items: [
+      "/ Data pipelines",
+      "/ Model training",
+      "/ NLP & computer vision",
+      "/ MLOps deployment",
+    ],
+    description:
+      "I design and deploy intelligent systems that extract value from data. From predictive models to NLP pipelines, I bring machine learning from prototype to production.",
+  },
+  {
+    number: "00-3",
+    title: "full-stack development",
+    items: [
+      "/ React / Next.js",
+      "/ Node.js / Spring Boot",
+      "/ Database design",
+      "/ Cloud infrastructure",
+      "/ Responsive interfaces",
+    ],
+    description:
+      "End-to-end web development from database schema to pixel-perfect UI. I work across the entire stack to deliver fast, accessible, and beautiful web applications.",
+  },
+  {
+    number: "00-4",
+    title: "mobile & cross-platform",
+    items: [
+      "/ React Native",
+      "/ iOS & Android",
+      "/ Offline-first design",
+      "/ Push notifications",
+    ],
+    description:
+      "Cross-platform mobile experiences that feel native. I build apps that work seamlessly across devices with offline capabilities and real-time features.",
+  },
+  {
+    number: "00-5",
+    title: "research & data",
+    items: [
+      "/ Data analysis",
+      "/ Visualization",
+      "/ ETL pipelines",
+      "/ Academic research",
+      "/ Technical writing",
+    ],
+    description:
+      "Data-driven insights through rigorous analysis and compelling visualization. From financial modeling to academic research, I turn raw data into actionable knowledge.",
+  },
+];
+
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
   const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 768px)").matches;
@@ -32,211 +108,124 @@ export default function Skills() {
     const section = sectionRef.current;
     if (!section) return;
 
-    // Section entrance clip-path reveal
+    // Section entrance
     gsap.fromTo(
       section,
-      { clipPath: "inset(6% 0% 0% 0%)" },
+      { clipPath: "inset(4% 0% 0% 0%)" },
       {
         clipPath: "inset(0% 0% 0% 0%)",
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 92%",
-        },
+        scrollTrigger: { trigger: section, start: "top 92%" },
       }
     );
 
-    // Animate skill groups with stagger
-    const groups = section.querySelectorAll(".skill-group");
-    groups.forEach((group) => {
-      gsap.from(group, {
-        y: 40,
+    // Header reveal
+    const heading = section.querySelector(".skills-heading");
+    if (heading) {
+      const letters = heading.querySelectorAll("span");
+      gsap.from(letters, {
+        y: "100%",
         opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: group,
-          start: "top 85%",
-        },
+        duration: 0.8,
+        stagger: 0.03,
+        ease: "power4.out",
+        scrollTrigger: { trigger: heading, start: "top 85%" },
       });
-
-      // Each skill item reveals individually
-      const items = group.querySelectorAll(".skill-item");
-      items.forEach((item, j) => {
-        gsap.from(item, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          delay: j * 0.05,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: group,
-            start: "top 80%",
-          },
-        });
-      });
-
-      // Horizontal divider animation within groups
-      const dividers = group.querySelectorAll(".skill-divider");
-      dividers.forEach((divider) => {
-        gsap.from(divider, {
-          scaleX: 0,
-          transformOrigin: "left",
-          duration: 0.6,
-          ease: "power3.inOut",
-          scrollTrigger: {
-            trigger: divider,
-            start: "top 88%",
-          },
-        });
-      });
-    });
-
-    // Infinite marquee with scroll-based speed modulation
-    const marquee = marqueeRef.current;
-    if (marquee) {
-      const inner = marquee.querySelector(".marquee-inner") as HTMLElement;
-      if (inner) {
-        const tween = gsap.to(inner, {
-          xPercent: -50,
-          duration: 25,
-          ease: "none",
-          repeat: -1,
-        });
-
-        // Speed up marquee based on scroll velocity
-        ScrollTrigger.create({
-          trigger: marquee,
-          start: "top bottom",
-          end: "bottom top",
-          onUpdate: (self) => {
-            const velocity = Math.abs(self.getVelocity());
-            const speedMultiplier = 1 + velocity / 2000;
-            tween.timeScale(Math.min(speedMultiplier, 3));
-          },
-        });
-      }
     }
-  }, []);
 
-  const allSkills = [
-    ...siteContent.skills.languages,
-    ...siteContent.skills.frameworks,
-  ];
+    // Service cards stagger
+    const cards = section.querySelectorAll(".service-card");
+    gsap.from(cards, {
+      y: 40,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "power3.out",
+      scrollTrigger: { trigger: cards[0], start: "top 85%" },
+    });
+  }, []);
 
   return (
     <section
       ref={sectionRef}
       id="skills"
-      className="relative overflow-hidden bg-dark py-[clamp(6rem,12vw,14rem)]"
+      className="relative overflow-hidden bg-light px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]"
     >
-      {/* 3D Scene — wireframe icosahedron */}
       {showScene && !isMobile && <SkillsScene />}
-      {/* Marquee strip */}
-      <div
-        ref={marqueeRef}
-        className="mb-20 overflow-hidden border-y border-light/10 py-6"
-      >
-        <div className="marquee-inner flex w-max gap-16 whitespace-nowrap">
-          {[...allSkills, ...allSkills].map((skill, i) => (
-            <span
-              key={i}
-              className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-semibold text-light/15"
-            >
-              {skill}
-            </span>
-          ))}
+
+      <div className="relative z-10 mx-auto max-w-[1400px]">
+        {/* Header row */}
+        <div className="mb-20 flex items-start justify-between">
+          <div>
+            <h2 className="skills-heading overflow-hidden font-display text-[clamp(2.5rem,8vw,7rem)] font-700 uppercase leading-[0.95] text-dark">
+              <SpacedHeading text="services" />
+            </h2>
+          </div>
+          <span className="hidden font-body text-xs uppercase tracking-wider text-muted md:block">
+            dsgn/4
+          </span>
         </div>
-      </div>
 
-      <div className="mx-auto max-w-[1400px] px-[clamp(1.5rem,5vw,6rem)]">
-        <TextReveal
-          as="span"
-          className="label-uppercase text-light/40"
-          splitBy="chars"
-          stagger={0.02}
-        >
-          Technical DNA
-        </TextReveal>
-
-        <TextReveal
-          as="h2"
-          className="mt-4 mb-20 font-display text-[clamp(2rem,5vw,4rem)] font-semibold text-light"
-          splitBy="words"
-        >
-          Skills and expertise
-        </TextReveal>
-
-        <div className="grid gap-16 md:grid-cols-3">
-          {/* Languages */}
-          <div className="skill-group">
-            <h3 className="label-uppercase mb-8 text-light/40">Languages</h3>
-            <div>
-              {siteContent.skills.languages.map((skill, i) => (
-                <div key={skill}>
-                  {i > 0 && (
-                    <div className="skill-divider h-[1px] bg-light/8" />
-                  )}
-                  <p className="skill-item py-3 font-display text-[clamp(1.25rem,2vw,1.75rem)] font-medium text-light/80 transition-colors duration-300 hover:text-light">
-                    {skill}
-                  </p>
+        {/* Service accordion cards */}
+        <div>
+          {services.map((service, i) => (
+            <div
+              key={i}
+              className="service-card group cursor-pointer border-t border-dark/10"
+              onMouseEnter={() => setActiveIndex(i)}
+              onMouseLeave={() => setActiveIndex(null)}
+              onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+            >
+              <div className="py-8 md:py-10">
+                {/* Top row: number + title */}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-6 md:gap-10">
+                    <span className="font-body text-[0.7rem] uppercase tracking-wider text-muted">
+                      {service.number}
+                    </span>
+                    <h3 className="font-display text-[clamp(1.5rem,3.5vw,2.8rem)] font-600 uppercase leading-[1.1] text-dark transition-all duration-300 group-hover:tracking-[0.02em]">
+                      {service.title}
+                    </h3>
+                  </div>
+                  {/* Hover title */}
+                  <span className="hidden font-display text-[clamp(1rem,1.5vw,1.2rem)] font-500 text-dark/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block">
+                    // {service.title}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Frameworks */}
-          <div className="skill-group">
-            <h3 className="label-uppercase mb-8 text-light/40">
-              Frameworks & Tools
-            </h3>
-            <div>
-              {siteContent.skills.frameworks.map((skill, i) => (
-                <div key={skill}>
-                  {i > 0 && (
-                    <div className="skill-divider h-[1px] bg-light/8" />
-                  )}
-                  <p className="skill-item py-3 font-display text-[clamp(1.25rem,2vw,1.75rem)] font-medium text-light/80 transition-colors duration-300 hover:text-light">
-                    {skill}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Certifications & Soft Skills */}
-          <div className="skill-group">
-            <h3 className="label-uppercase mb-8 text-light/40">
-              Certifications
-            </h3>
-            <div>
-              {siteContent.skills.certifications.map((cert, i) => (
-                <div key={cert}>
-                  {i > 0 && (
-                    <div className="skill-divider h-[1px] bg-light/8" />
-                  )}
-                  <p className="skill-item py-3 font-body text-sm leading-relaxed text-light/60">
-                    {cert}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <h3 className="label-uppercase mb-6 mt-12 text-light/40">
-              Soft Skills
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {siteContent.skills.softSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="skill-item rounded-full border border-light/10 px-3 py-1.5 font-body text-xs text-light/50 transition-all duration-300 hover:border-light/25 hover:text-light/70"
+                {/* Expandable content */}
+                <div
+                  className="overflow-hidden transition-all duration-500 ease-out"
+                  style={{
+                    maxHeight: activeIndex === i ? "400px" : "0px",
+                    opacity: activeIndex === i ? 1 : 0,
+                  }}
                 >
-                  {skill}
-                </span>
-              ))}
+                  <div className="mt-6 grid gap-8 md:grid-cols-2 md:pl-[calc(0.7rem+2.5rem+1rem)]">
+                    {/* Bullet list */}
+                    <ul className="space-y-2">
+                      {service.items.map((item, j) => (
+                        <li
+                          key={j}
+                          className="font-body text-[0.8rem] text-dark/70"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Description */}
+                    <p className="font-body text-[0.8rem] leading-relaxed text-dark/60">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+          {/* Final border */}
+          <div className="border-t border-dark/10" />
         </div>
       </div>
     </section>

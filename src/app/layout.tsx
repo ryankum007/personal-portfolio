@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Sofia_Sans_Condensed, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/layout/CustomCursor";
@@ -8,15 +8,15 @@ import Navigation from "@/components/layout/Navigation";
 import JsonLd from "@/components/layout/JsonLd";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const sofia = Sofia_Sans_Condensed({
+  variable: "--font-sofia",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const spline = Spline_Sans_Mono({
+  variable: "--font-spline",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   display: "swap",
@@ -74,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${sofia.variable} ${spline.variable} h-full antialiased`}
     >
       <body className="grain min-h-full">
         <JsonLd />

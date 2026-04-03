@@ -3,10 +3,21 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TextReveal from "@/components/ui/TextReveal";
 import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function SpacedHeading({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span key={i} className="inline-block">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -92,25 +103,12 @@ export default function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="bg-dark px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,12vw,14rem)]"
+      className="bg-dark px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]"
     >
       <div className="mx-auto max-w-[1400px]">
-        <TextReveal
-          as="span"
-          className="label-uppercase text-light/40"
-          splitBy="chars"
-          stagger={0.02}
-        >
-          Experience
-        </TextReveal>
-
-        <TextReveal
-          as="h2"
-          className="mt-4 mb-20 font-display text-[clamp(2rem,5vw,4rem)] font-semibold text-light"
-          splitBy="words"
-        >
-          Where I have worked
-        </TextReveal>
+        <h2 className="mb-20 overflow-hidden font-display text-[clamp(2.5rem,8vw,7rem)] font-700 uppercase leading-[0.95] text-light">
+          <SpacedHeading text="experience" />
+        </h2>
 
         <div>
           {topExperiences.map((exp, i) => (
