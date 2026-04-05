@@ -23,16 +23,10 @@ export default function Hero() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const typewriterRef = useRef<HTMLSpanElement>(null);
   const [showScene, setShowScene] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setIsMobile(mobile);
-    if (!mobile) {
-      // Show 3D scene shortly after load
-      const timer = setTimeout(() => setShowScene(true), 800);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setShowScene(true), 800);
+    return () => clearTimeout(timer);
   }, []);
 
   // Typewriter subtitle effect
@@ -262,8 +256,8 @@ export default function Hero() {
       ref={sectionRef}
       className="relative flex min-h-screen flex-col justify-between overflow-hidden px-[clamp(1.5rem,4vw,3.5rem)] pb-10 pt-28"
     >
-      {/* 3D canvas — desktop only */}
-      {showScene && !isMobile && <HeroScene />}
+      {/* 3D canvas */}
+      {showScene && <HeroScene />}
 
       {/* Top area */}
       <div className="relative z-10">

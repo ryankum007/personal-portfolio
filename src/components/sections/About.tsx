@@ -210,16 +210,11 @@ export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [showScene, setShowScene] = useState(false);
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setIsMobile(mobile);
-    if (!mobile) {
-      const timer = setTimeout(() => setShowScene(true), 500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setShowScene(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -492,8 +487,8 @@ export default function About() {
       id="about"
       className="relative overflow-hidden px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]"
     >
-      {/* 3D planes flying in background — desktop only */}
-      {showScene && !isMobile && <AboutScene />}
+      {/* 3D planes flying in background */}
+      {showScene && <AboutScene />}
 
       {/* Floating decorative shapes — parallax on scroll */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">

@@ -245,17 +245,12 @@ export default function Projects() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showScene, setShowScene] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const projects = siteContent.projects;
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setIsMobile(mobile);
-    if (!mobile) {
-      const timer = setTimeout(() => setShowScene(true), 500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setShowScene(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   // Auto-cycle
@@ -361,7 +356,7 @@ export default function Projects() {
       id="projects"
       className="relative bg-dark px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(6rem,12vw,14rem)]"
     >
-      {showScene && !isMobile && <ExperienceScene />}
+      {showScene && <ExperienceScene />}
 
       <div className="relative z-10 mx-auto max-w-[1400px]">
         {/* Header */}

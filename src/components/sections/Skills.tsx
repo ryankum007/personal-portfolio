@@ -176,15 +176,10 @@ export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [showScene, setShowScene] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setIsMobile(mobile);
-    if (!mobile) {
-      const timer = setTimeout(() => setShowScene(true), 500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setShowScene(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -376,7 +371,7 @@ export default function Skills() {
       id="skills"
       className="relative overflow-hidden bg-dark py-[clamp(6rem,12vw,14rem)]"
     >
-      {showScene && !isMobile && <SkillsScene />}
+      {showScene && <SkillsScene />}
 
       {/* Marquee strip */}
       <div
