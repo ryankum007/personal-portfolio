@@ -15,11 +15,13 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const basedRef = useRef<HTMLDivElement>(null);
   const bioRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const photoRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const typewriterRef = useRef<HTMLSpanElement>(null);
   const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -27,9 +29,59 @@ export default function Hero() {
     const mobile = window.matchMedia("(max-width: 768px)").matches;
     setIsMobile(mobile);
     if (!mobile) {
-      const timer = setTimeout(() => setShowScene(true), 3800);
+      // Show 3D scene shortly after load
+      const timer = setTimeout(() => setShowScene(true), 800);
       return () => clearTimeout(timer);
     }
+  }, []);
+
+  // Typewriter subtitle effect
+  useEffect(() => {
+    if (!typewriterRef.current) return;
+    const phrases = [
+      "Software Engineer",
+      "Analytics & Quant",
+      "Full-Stack Developer",
+      "Business Thinker",
+    ];
+    const el = typewriterRef.current;
+    el.textContent = "";
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const current = phrases[phraseIndex];
+      if (!isDeleting) {
+        el.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          timeout = setTimeout(() => {
+            isDeleting = true;
+            tick();
+          }, 2200);
+          return;
+        }
+        timeout = setTimeout(tick, 45 + Math.random() * 50);
+      } else {
+        el.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          timeout = setTimeout(tick, 500);
+          return;
+        }
+        timeout = setTimeout(tick, 25);
+      }
+    };
+
+    const startTimer = setTimeout(tick, 4400);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(timeout);
+    };
   }, []);
 
   useEffect(() => {
@@ -39,22 +91,50 @@ export default function Hero() {
 
     const tl = gsap.timeline({ delay: 3 });
 
-    // Title chars reveal
+    // Title chars — 3D sweep with perspective
     const chars = title.querySelectorAll(".hero-char");
     tl.from(chars, {
-      y: "100%",
-      duration: 1,
+      y: "120%",
+      rotateX: -90,
+      opacity: 0,
+      duration: 1.4,
       stagger: 0.02,
       ease: "power4.out",
     });
 
-    // Services list
+    // Subtitle line + text
+    if (subtitleRef.current) {
+      const line = subtitleRef.current.querySelector(".hero-line");
+      const text = subtitleRef.current.querySelector(".typewriter-cursor");
+      if (line) {
+        tl.from(
+          line,
+          { scaleX: 0, transformOrigin: "left", duration: 0.6, ease: "power3.inOut" },
+          "-=0.7"
+        );
+      }
+      if (text) {
+        tl.from(
+          text,
+          { opacity: 0, duration: 0.4, ease: "power2.out" },
+          "-=0.3"
+        );
+      }
+    }
+
+    // Services list — staggered from left
     if (servicesRef.current) {
-      const items = servicesRef.current.querySelectorAll("p");
+      const items = servicesRef.current.querySelectorAll(".service-item");
       tl.from(
         items,
-        { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" },
-        "-=0.5"
+        {
+          x: -40,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: "power3.out",
+        },
+        "-=0.4"
       );
     }
 
@@ -62,36 +142,55 @@ export default function Hero() {
     if (basedRef.current) {
       tl.from(
         basedRef.current,
-        { opacity: 0, duration: 0.6, ease: "power2.out" },
+        { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" },
+        "-=0.5"
+      );
+    }
+
+    // Bio
+    if (bioRef.current) {
+      tl.from(
+        bioRef.current,
+        { y: 25, opacity: 0, duration: 0.7, ease: "power3.out" },
         "-=0.4"
       );
     }
 
-    // Photo reveal
-    if (photoRef.current) {
+    // CTAs
+    if (ctaRef.current) {
+      const links = ctaRef.current.querySelectorAll("a");
+      const divider = ctaRef.current.querySelector(".cta-divider");
+      if (divider) {
+        tl.from(
+          divider,
+          { scaleX: 0, transformOrigin: "left", duration: 0.6, ease: "power3.inOut" },
+          "-=0.3"
+        );
+      }
       tl.from(
-        photoRef.current,
-        {
-          clipPath: "inset(100% 0% 0% 0%)",
-          duration: 1.2,
-          ease: "power4.inOut",
-        },
-        "-=0.8"
+        links,
+        { y: 20, opacity: 0, stagger: 0.08, duration: 0.5 },
+        "-=0.3"
       );
     }
 
-    // Bio + CTAs
-    if (bioRef.current) {
-      tl.from(bioRef.current, { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
-    }
-    if (ctaRef.current) {
-      const links = ctaRef.current.querySelectorAll("a");
-      tl.from(links, { y: 20, opacity: 0, stagger: 0.1, duration: 0.5 }, "-=0.3");
+    // Scroll indicator — fade in then pulse
+    if (scrollRef.current) {
+      tl.from(scrollRef.current, { opacity: 0, duration: 0.8 }, "-=0.2");
+      gsap.to(scrollRef.current, {
+        y: 10,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 5.5,
+      });
     }
 
-    // Parallax on scroll
+    // Cinematic parallax on scroll — title drifts up and fades
     gsap.to(title, {
-      yPercent: 20,
+      yPercent: 40,
+      opacity: 0.15,
       ease: "none",
       scrollTrigger: {
         trigger: section,
@@ -101,137 +200,218 @@ export default function Hero() {
       },
     });
 
-    if (photoRef.current) {
-      gsap.to(photoRef.current, {
+    // Subtitle parallax — slightly different rate for depth
+    if (subtitleRef.current) {
+      gsap.to(subtitleRef.current, {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "15% top",
+          end: "85% top",
+          scrub: true,
+        },
+      });
+    }
+
+    // Services list parallax — drifts up at own rate
+    if (servicesRef.current) {
+      gsap.to(servicesRef.current, {
         yPercent: -10,
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "top top",
-          end: "bottom top",
+          start: "35% top",
+          end: "95% top",
+          scrub: true,
+        },
+      });
+    }
+
+    // Bio parallax
+    if (bioRef.current) {
+      gsap.to(bioRef.current, {
+        yPercent: -8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "35% top",
+          end: "95% top",
+          scrub: true,
+        },
+      });
+    }
+
+    // Based location parallax
+    if (basedRef.current) {
+      gsap.to(basedRef.current, {
+        yPercent: -12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "35% top",
+          end: "95% top",
           scrub: true,
         },
       });
     }
   }, []);
 
-  const titleText = "SOFTWARE\nENGINEER";
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden px-[clamp(1.5rem,4vw,3.5rem)] pb-16 pt-28"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden px-[clamp(1.5rem,4vw,3.5rem)] pb-10 pt-28"
     >
-      {/* 3D canvas — desktop only, behind everything */}
+      {/* 3D canvas — desktop only */}
       {showScene && !isMobile && <HeroScene />}
 
-      {/* Label above title — matching reference "LKKR" pattern */}
-      <span className="relative z-10 mb-2 block font-body text-[0.7rem] uppercase tracking-[0.3em] text-muted">
-        rykr
-      </span>
-
-      {/* Title — massive condensed, filling width */}
-      <h1
-        ref={titleRef}
-        className="relative z-10 font-display text-[clamp(3.5rem,13vw,13rem)] font-bold uppercase leading-[0.88] tracking-[-0.02em] text-dark"
-      >
-        {titleText.split("\n").map((line, li) => (
-          <span key={li} className="block overflow-hidden">
-            {line.split("").map((char, ci) => (
-              <span
-                key={`${li}-${ci}`}
-                className="hero-char inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
-          </span>
-        ))}
-      </h1>
-
-      {/* Middle content area — photo + info */}
-      <div className="relative z-10 mt-6 grid gap-8 md:grid-cols-12">
-        {/* Services list — left */}
-        <div
-          ref={servicesRef}
-          className="md:col-span-4 md:col-start-1 md:mt-4"
+      {/* Top area */}
+      <div className="relative z-10">
+        {/* Name — massive display with perspective */}
+        <h1
+          ref={titleRef}
+          className="font-display text-[clamp(3.5rem,14vw,14rem)] font-bold uppercase leading-[0.85] tracking-[-0.03em] text-dark"
+          style={{ perspective: "800px" }}
         >
-          <p className="font-body text-[clamp(0.75rem,1vw,0.9rem)] font-500 uppercase tracking-wider text-dark">
-            / Software Engineering
-          </p>
-          <p className="font-body text-[clamp(0.75rem,1vw,0.9rem)] font-500 uppercase tracking-wider text-dark">
-            / AI &amp; Machine Learning
-          </p>
-          <p className="font-body text-[clamp(0.75rem,1vw,0.9rem)] font-500 uppercase tracking-wider text-dark">
-            / Full-Stack Development
-          </p>
-        </div>
+          {"RYAN\nKUMAR".split("\n").map((line, li) => (
+            <span key={li} className="block overflow-hidden">
+              {line.split("").map((char, ci) => (
+                <span
+                  key={`${li}-${ci}`}
+                  className="hero-char inline-block"
+                  style={{ transformOrigin: "bottom center" }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
+          ))}
+        </h1>
 
-        {/* Photo — center, overlapping title */}
-        <div className="md:col-span-4 md:col-start-5 md:-mt-[12vw]">
-          <div
-            ref={photoRef}
-            className="relative aspect-[3/4] w-full max-w-[400px] overflow-hidden"
-            style={{ clipPath: "inset(0% 0% 0% 0%)" }}
-          >
-            <img
-              src={siteContent.about.image}
-              alt="Ryan Kumar"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Based in — right */}
+        {/* Typewriter subtitle */}
         <div
-          ref={basedRef}
-          className="flex items-start gap-8 font-body text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-[0.35em] text-dark md:col-span-4 md:col-start-9 md:mt-4"
+          ref={subtitleRef}
+          className="relative z-10 mt-6 flex items-center gap-4"
         >
-          <span>based</span>
-          <span>in</span>
-          <span>canada</span>
+          <div className="hero-line h-[1px] w-12 bg-dark/30" />
+          <span
+            ref={typewriterRef}
+            className="typewriter-cursor font-body text-[clamp(0.9rem,1.3vw,1.15rem)] tracking-[0.15em] text-muted"
+          />
         </div>
       </div>
 
-      {/* Bio + CTAs */}
-      <div className="relative z-10 mt-12 grid gap-8 md:grid-cols-12">
+      {/* Middle info row */}
+      <div className="relative z-10 mt-auto grid gap-8 md:grid-cols-12">
+        {/* Services — left */}
+        <div ref={servicesRef} className="md:col-span-4 md:col-start-1">
+          {[
+            "Software Engineering",
+            "Analytics & Quant",
+            "Business Strategy",
+          ].map((s) => (
+            <p
+              key={s}
+              className="service-item border-b border-dark/8 py-3 font-body text-[clamp(0.75rem,1vw,0.9rem)] font-500 uppercase tracking-wider text-dark transition-all duration-300 hover:pl-2 hover:border-dark/20"
+            >
+              {s}
+            </p>
+          ))}
+        </div>
+
+        {/* Bio — center */}
         <p
           ref={bioRef}
-          className="text-center font-body text-[clamp(0.75rem,0.9vw,0.85rem)] uppercase leading-relaxed tracking-wide text-dark md:col-span-6 md:col-start-4"
+          className="rounded-lg bg-light/60 p-3 backdrop-blur-[3px] font-body text-[clamp(0.8rem,1vw,0.95rem)] leading-relaxed text-dark/80 md:col-span-4 md:col-start-5"
         >
-          I&apos;m a software engineer from McMaster University, who builds
-          impactful digital experiences for companies of all sizes
+          {siteContent.personal.heroDescription}
         </p>
+
+        {/* Location — right */}
+        <div
+          ref={basedRef}
+          className="flex flex-col gap-1 md:col-span-3 md:col-start-10 md:items-end"
+        >
+          <span className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-muted">
+            Based in
+          </span>
+          <span className="font-display text-[clamp(1rem,1.5vw,1.25rem)] font-600 uppercase text-dark">
+            Dallas, Texas
+          </span>
+        </div>
       </div>
 
+      {/* Bottom CTAs */}
       <div
         ref={ctaRef}
-        className="relative z-10 mt-10 flex flex-col gap-4 md:flex-row md:justify-between"
+        className="relative z-10 mt-8 flex flex-col gap-4 pt-6 md:flex-row md:items-center md:justify-between"
       >
+        <div className="cta-divider absolute left-0 right-0 top-0 h-[1px] bg-dark/10" />
         <a
           href="#projects"
-          className="group flex items-center gap-3 font-body text-[clamp(0.7rem,0.85vw,0.8rem)] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
+          className="group flex items-center gap-3 font-body text-[clamp(0.7rem,0.85vw,0.8rem)] uppercase tracking-wider text-dark transition-all duration-300 hover:gap-4"
           onClick={(e) => {
             e.preventDefault();
-            document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+            document
+              .querySelector("#projects")
+              ?.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          <span className="font-body text-xs text-muted">recent work</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" />
+          <span className="font-body text-xs text-muted">
+            explore projects
+          </span>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+          >
+            <path
+              d="M1 11L11 1M11 1H3M11 1V9"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
           </svg>
         </a>
 
         <a
-          href={`mailto:${siteContent.personal.email}`}
-          className="group flex items-center gap-3 font-body text-[clamp(0.7rem,0.85vw,0.8rem)] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
+          href={siteContent.personal.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 font-body text-[clamp(0.7rem,0.85vw,0.8rem)] uppercase tracking-wider text-dark transition-all duration-300 hover:gap-4"
         >
-          <span className="text-xs text-muted">available for work</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" />
+          <span className="text-xs text-muted">let&apos;s connect</span>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+          >
+            <path
+              d="M1 11L11 1M11 1H3M11 1V9"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
           </svg>
-          <span className="font-body text-xs">{siteContent.personal.email}</span>
+          <span className="font-body text-xs">linkedin</span>
         </a>
+
+        {/* Scroll indicator */}
+        <div ref={scrollRef} className="hidden items-center gap-2 md:flex">
+          <span className="font-body text-[0.65rem] uppercase tracking-[0.2em] text-muted">
+            scroll
+          </span>
+          <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+            <path
+              d="M5 0V14M5 14L1 10M5 14L9 10"
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
       </div>
     </section>
   );

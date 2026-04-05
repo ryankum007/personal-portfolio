@@ -7,18 +7,6 @@ import { siteContent } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SpacedText({ text }: { text: string }) {
-  return (
-    <>
-      {text.split("").map((char, i) => (
-        <span key={i} className="inline-block">
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
-    </>
-  );
-}
-
 function ArrowIcon() {
   return (
     <svg
@@ -46,7 +34,7 @@ export default function Footer() {
     const update = () => {
       const now = new Date();
       const est = now.toLocaleTimeString("en-US", {
-        timeZone: "America/Toronto",
+        timeZone: "America/Chicago",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -62,6 +50,8 @@ export default function Footer() {
     const footer = footerRef.current;
     if (!footer) return;
 
+    const ta = "play none none none";
+
     // Staggered item reveals
     gsap.from(footer.querySelectorAll(".footer-reveal"), {
       y: 30,
@@ -69,23 +59,33 @@ export default function Footer() {
       duration: 0.7,
       stagger: 0.06,
       ease: "power3.out",
+      immediateRender: false,
       scrollTrigger: {
         trigger: footer,
         start: "top 85%",
+        end: "top 30%",
+        toggleActions: ta,
+        once: true,
       },
     });
 
-    // Giant name letters
+    // Giant name letters — cinematic 3D sweep
     if (nameRef.current) {
       const letters = nameRef.current.querySelectorAll("span");
       gsap.from(letters, {
-        y: "100%",
-        duration: 1,
-        stagger: 0.03,
+        y: "120%",
+        rotateX: -60,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.04,
         ease: "power4.out",
+        immediateRender: false,
         scrollTrigger: {
           trigger: nameRef.current,
-          start: "top 90%",
+          start: "top 92%",
+          end: "top 30%",
+          toggleActions: ta,
+          once: true,
         },
       });
     }
@@ -138,7 +138,19 @@ export default function Footer() {
             href="#about"
             className="font-body text-[0.8rem] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
           >
-            about me
+            about
+          </a>
+          <a
+            href="#timeline"
+            className="font-body text-[0.8rem] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
+          >
+            timeline
+          </a>
+          <a
+            href="#projects"
+            className="font-body text-[0.8rem] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
+          >
+            projects
           </a>
           <a
             href="#skills"
@@ -147,10 +159,10 @@ export default function Footer() {
             skills
           </a>
           <a
-            href="#projects"
+            href="#experience"
             className="font-body text-[0.8rem] uppercase tracking-wider text-dark transition-opacity hover:opacity-60"
           >
-            works
+            experience
           </a>
         </div>
 
@@ -160,39 +172,17 @@ export default function Footer() {
             Location:
           </p>
           <p className="font-body text-[0.8rem] leading-relaxed text-dark">
-            McMaster University<br />
-            Hamilton, Canada
+            Hardin-Simmons University<br />
+            Dallas, Texas
           </p>
         </div>
-      </div>
-
-      {/* Bracket social links row */}
-      <div className="footer-reveal mt-12 flex flex-wrap justify-between gap-4">
-        <a
-          href="https://github.com/ryankumar"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-body text-[0.75rem] tracking-[0.15em] text-dark transition-opacity hover:opacity-60"
-          data-cursor-hover
-        >
-          [ <SpacedText text="github" /> ]
-        </a>
-        <a
-          href={siteContent.personal.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-body text-[0.75rem] tracking-[0.15em] text-dark transition-opacity hover:opacity-60"
-          data-cursor-hover
-        >
-          [ <SpacedText text="linkedin" /> ]
-        </a>
       </div>
 
       {/* Giant name — must span full width like reference */}
       <h2
         ref={nameRef}
         className="mt-10 w-full overflow-hidden font-display font-700 uppercase leading-[0.85] tracking-[-0.04em] text-dark"
-        style={{ fontSize: "min(18vw, 20rem)" }}
+        style={{ fontSize: "min(18vw, 20rem)", perspective: "800px" }}
       >
         {"RYAN KUMAR".split("").map((char, i) => (
           <span key={i} className="inline-block">
@@ -205,7 +195,7 @@ export default function Footer() {
       <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div className="footer-reveal">
           <p className="font-body text-[0.7rem] uppercase tracking-wider text-muted">
-            Hamilton, Canada: (GMT-5) {time}
+            Dallas, Texas: (CST) {time}
           </p>
         </div>
 

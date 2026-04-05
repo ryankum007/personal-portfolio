@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { MeshDistortMaterial, Float } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
 function MorphingBlob() {
@@ -28,16 +28,13 @@ function MorphingBlob() {
 
   return (
     <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.4}>
-      <mesh ref={meshRef} scale={1.8}>
-        <sphereGeometry args={[1, 64, 64]} />
-        <MeshDistortMaterial
+      <mesh ref={meshRef} scale={1.4}>
+        <icosahedronGeometry args={[1, 2]} />
+        <meshStandardMaterial
           color="#101010"
-          roughness={0.3}
-          metalness={0.6}
-          distort={0.4}
-          speed={2}
+          wireframe
           transparent
-          opacity={0.08}
+          opacity={0.04}
         />
       </mesh>
     </Float>

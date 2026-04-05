@@ -16,11 +16,13 @@
   --font-body: var(--font-body);
 }
 
-/* Base */
+/* ─── Base ─── */
 html {
   background-color: var(--color-light);
   color: var(--color-dark);
   scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -36,79 +38,81 @@ body {
   color: var(--color-light);
 }
 
-/* Fluid Typography */
-h1, .h1 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(3rem, 10vw, 10rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+/* ─── Fluid Typography ─── */
+@layer base {
+  h1, .h1 {
+    font-family: var(--font-display), sans-serif;
+    font-size: clamp(3rem, 10vw, 10rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  h2, .h2 {
+    font-family: var(--font-display), sans-serif;
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  h3, .h3 {
+    font-family: var(--font-display), sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  h4, .h4 {
+    font-family: var(--font-body), monospace;
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  p, .body {
+    font-family: var(--font-body), monospace;
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .caption {
+    font-size: clamp(0.75rem, 1vw, 0.875rem);
+    line-height: 1.4;
+  }
+
+  .label-uppercase {
+    font-family: var(--font-body), monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* Spaced character heading (reference style) */
+  .spaced-heading {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
 }
 
-h2, .h2 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-h3, .h3 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.25rem, 2.5vw, 2rem);
-  font-weight: 600;
-  line-height: 1.15;
-}
-
-h4, .h4 {
-  font-family: var(--font-body), monospace;
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-p, .body {
-  font-family: var(--font-body), monospace;
-  font-size: clamp(0.875rem, 1vw, 1rem);
-  line-height: 1.65;
-}
-
-.caption {
-  font-size: clamp(0.75rem, 1vw, 0.875rem);
-  line-height: 1.4;
-}
-
-.label-uppercase {
-  font-family: var(--font-body), monospace;
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-
-/* Spaced character heading (reference style) */
-.spaced-heading {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-}
-
-/* Grain Texture Overlay */
+/* ─── Grain Texture Overlay ─── */
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
-/* Reveal masks */
+/* ─── Reveal Masks ─── */
 .reveal-mask {
   clip-path: inset(0 0 100% 0);
 }
@@ -126,25 +130,40 @@ p, .body {
   transform: translateY(100%);
 }
 
-/* Smooth transitions for interactive elements */
+/* ─── Interactive Elements ─── */
+
+/* Smooth transitions */
 a, button {
-  transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, gap 0.3s ease;
+}
+
+/* Cursor pointer on all clickable elements */
+a, button, [role="button"], [onclick] {
+  cursor: pointer;
 }
 
 /* Focus states for keyboard navigation */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+[role="button"]:focus-visible {
   outline: 2px solid var(--color-dark);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 .bg-dark a:focus-visible,
-.bg-dark button:focus-visible {
+.bg-dark button:focus-visible,
+.bg-dark [role="button"]:focus-visible,
+[id="skills"] a:focus-visible,
+[id="skills"] button:focus-visible,
+[id="skills"] [role="button"]:focus-visible,
+[id="experience"] a:focus-visible,
+[id="experience"] button:focus-visible,
+[id="experience"] [role="button"]:focus-visible {
   outline-color: var(--color-light);
 }
 
-/* Hidden scrollbar — Lenis handles scroll */
+/* ─── Hidden Scrollbar ─── */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -154,15 +173,127 @@ html {
   -ms-overflow-style: none;
 }
 
-/* Mobile typography adjustments */
+/* ─── Typewriter Effects ─── */
+.typewriter-cursor::after {
+  content: "|";
+  animation: blink 0.8s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typewriter-comment {
+  font-family: var(--font-body), monospace;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Collapsible Content ─── */
+.collapsible-content {
+  overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease;
+}
+
+/* ─── Section Transition — edge fade ─── */
+.section-fade-top {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%);
+}
+
+/* ─── Premium Hover Underline ─── */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ─── Marquee Performance ─── */
+.marquee-inner,
+.awards-track,
+.about-marquee-inner {
+  will-change: transform;
+}
+
+/* ─── Mobile ─── */
 @media (max-width: 768px) {
   .label-uppercase {
     font-size: 0.6875rem;
     letter-spacing: 0.12em;
   }
+
+  /* Better touch targets */
+  .exp-card-wrapper [role="button"] {
+    min-height: 44px;
+  }
 }
 
-/* Reduced motion */
+/* ─── Scrollbar-less horizontal scroll ─── */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* ─── Pulse animation for active dot ─── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ─── Timeline card slide-up ─── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Smooth Perspective Containers ─── */
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* ─── Section transition fade edges ─── */
+.section-edge-fade {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+}
+
+/* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -173,5 +304,10 @@ html {
 
   .grain::after {
     display: none;
+  }
+
+  .typewriter-cursor::after {
+    animation: none;
+    opacity: 1;
   }
 }

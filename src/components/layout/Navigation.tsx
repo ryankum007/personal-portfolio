@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const navLinks = [
-  { label: "about me", href: "#about" },
-  { label: "works", href: "#projects" },
+  { label: "about", href: "#about" },
+  { label: "timeline", href: "#timeline" },
+  { label: "projects", href: "#projects" },
   { label: "skills", href: "#skills" },
-  { label: "connect", href: "#contact" },
+  { label: "experience", href: "#experience" },
 ];
 
 function SpacedText({ text, className = "" }: { text: string; className?: string }) {
@@ -127,16 +128,14 @@ export default function Navigation() {
           ))}
         </nav>
 
-        {/* Contact CTA — right side */}
+        {/* Connect CTA — right side */}
         <a
-          href="#contact"
+          href="https://www.linkedin.com/in/ryan-kumar-4491291aa/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden items-center gap-2 font-body text-[0.8rem] font-medium uppercase tracking-[0.05em] text-light underline underline-offset-4 transition-opacity duration-300 hover:opacity-60 lg:flex"
-          onClick={(e) => {
-            e.preventDefault();
-            handleLinkClick("#contact");
-          }}
         >
-          contact me
+          connect
           <svg
             width="12"
             height="12"

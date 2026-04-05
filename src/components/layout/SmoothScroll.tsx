@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,7 @@ export default function SmoothScroll({
 }) {
   const lenisRef = useRef<Lenis | null>(null);
   const rafRef = useRef<((time: number) => void) | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -23,6 +24,9 @@ export default function SmoothScroll({
     });
 
     lenisRef.current = lenis;
+
+    // Expose globally so other components can trigger resize
+    (window as unknown as Record<string, unknown>).__lenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -34,11 +38,31 @@ export default function SmoothScroll({
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
+    // Resize handling — only resize Lenis, never call ScrollTrigger.refresh()
+    // as it causes scroll-triggered animations to replay on page load.
+    // ScrollTrigger positions update naturally via the Lenis scroll listener.
+    const wrapper = wrapperRef.current;
+    let resizeTimer: ReturnType<typeof setTimeout>;
+
+    const ro = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        lenis.resize();
+      }, 300);
+    });
+
+    if (wrapper) {
+      ro.observe(wrapper);
+    }
+
     return () => {
+      clearTimeout(resizeTimer);
+      ro.disconnect();
       if (rafRef.current) gsap.ticker.remove(rafRef.current);
       lenis.destroy();
+      delete (window as unknown as Record<string, unknown>).__lenis;
     };
   }, []);
 
-  return <div id="smooth-wrapper">{children}</div>;
+  return <div ref={wrapperRef} id="smooth-wrapper">{children}</div>;
 }

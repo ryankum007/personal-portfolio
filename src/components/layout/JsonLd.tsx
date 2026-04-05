@@ -6,10 +6,16 @@ const jsonLd = JSON.stringify({
   name: "Ryan Kumar",
   url: "https://ryankumar.net",
   jobTitle: "Software Engineer",
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "McMaster University",
-  },
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "Hardin-Simmons University",
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      name: "McMaster University",
+    },
+  ],
   knowsAbout: [
     "Java",
     "Python",

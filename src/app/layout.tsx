@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     template: "%s | Ryan Kumar",
   },
   description:
-    "Portfolio of Ryan Kumar, a software engineer passionate about innovation in medical and financial technology. McMaster University B.Eng.",
+    "Portfolio of Ryan Kumar, a software engineer with strong analytics and business range. B.S. Computer Science at Hardin-Simmons University.",
   keywords: [
     "Ryan Kumar",
     "Software Engineer",
-    "McMaster University",
+    "Hardin-Simmons University",
     "Full Stack Developer",
+    "Analytics",
     "React",
-    "Next.js",
-    "Java",
     "Python",
+    "Java",
     "Portfolio",
   ],
   authors: [{ name: "Ryan Kumar", url: siteUrl }],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ryan Kumar — Software Engineer",
     description:
-      "Driven software engineer building impactful solutions in healthcare and fintech.",
+      "Software engineer with strong analytics and business range, based in Dallas, Texas.",
     url: siteUrl,
     siteName: "Ryan Kumar",
     locale: "en_US",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ryan Kumar — Software Engineer",
     description:
-      "Driven software engineer building impactful solutions in healthcare and fintech.",
+      "Software engineer with strong analytics and business range, based in Dallas, Texas.",
   },
   robots: {
     index: true,

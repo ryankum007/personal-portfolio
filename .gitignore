@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# debug screenshots
+*.png
+!public/**/*.png
+
+# playwright artifacts
+.playwright-mcp/
+
+# python cache
+__pycache__/
+*.pyc
