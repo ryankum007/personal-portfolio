@@ -549,7 +549,7 @@ export default function About() {
           {/* Left: Photo + identity */}
           <div className="md:col-span-5">
             {/* Photo with 3D tilt + curtain wipe + zoom */}
-            <PolaroidPhoto image="/personal-portfolio/Pics/ED38160B-8097-4853-BED9-8CBE12DE88F7_1_105_c.jpeg" />
+            <PolaroidPhoto image="/Pics/ED38160B-8097-4853-BED9-8CBE12DE88F7_1_105_c.jpeg" />
 
             {/* Quick tags under photo */}
             <div className="mt-6 flex flex-wrap gap-2">
